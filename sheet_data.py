@@ -16,3 +16,24 @@ FEEDBACK = SHEET.worksheet('feedback')
 
 data = USERS.get_all_values()
 print(data)
+
+
+def get_logins():
+    """
+    Gets the data from the users spreadsheet and adds them to a list of lists.
+    """
+    user_data = USERS.get_all_values()
+    return user_data
+
+
+def update_sheet(data, worksheet):
+    """
+    Updates the sheet with new user data or feedback data depending on
+    parameters given.
+    """
+    print(f"adding {worksheet} data")
+    sheet_to_update = SHEET.worksheet(worksheet)
+    sheet_to_update.append_row(data)
+
+
+
