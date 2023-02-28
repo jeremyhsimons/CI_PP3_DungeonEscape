@@ -1,3 +1,12 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+from sheet_data import get_logins
+
+
+def login():
+    print('Please enter your username and password')
+    username = input('\n Username: ')
+    password = input('\n Password: ')
+    print(username)
+    print(password)
+
+
+login()

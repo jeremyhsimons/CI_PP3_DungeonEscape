@@ -19,7 +19,7 @@ def get_logins():
     """
     Gets the data from the users spreadsheet and adds them to a list of lists.
     """
-    user_data = USERS.get_all_values()
+    user_data = USERS.get_all_records()
     return user_data
 
 
@@ -35,3 +35,4 @@ def update_sheet(data, worksheet):
     print(f"{worksheet} data updated successfully!")
 
 
+get_logins()
