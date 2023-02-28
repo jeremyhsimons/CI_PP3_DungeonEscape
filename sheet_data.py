@@ -14,9 +14,6 @@ SHEET = GSPREAD_CLIENT.open('dungeon-escape-sheet')
 USERS = SHEET.worksheet('users')
 FEEDBACK = SHEET.worksheet('feedback')
 
-data = USERS.get_all_values()
-print(data)
-
 
 def get_logins():
     """
@@ -29,11 +26,12 @@ def get_logins():
 def update_sheet(data, worksheet):
     """
     Updates the sheet with new user data or feedback data depending on
-    parameters given.
+    parameters given. Code originally from CI love sandwiches project.
+    See Readme for link.
     """
-    print(f"adding {worksheet} data")
+    print(f"Adding {worksheet} data...")
     sheet_to_update = SHEET.worksheet(worksheet)
     sheet_to_update.append_row(data)
-
+    print(f"{worksheet} data updated successfully!")
 
 
