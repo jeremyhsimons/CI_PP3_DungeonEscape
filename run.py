@@ -1,5 +1,8 @@
 from sheet_data import get_logins
 from sheet_data import update_sheet
+CURRENT_USER = {
+    'score': 0
+    }
 
 
 def signup():
@@ -9,17 +12,17 @@ def signup():
      If they have, it will call the login function.
     """
     print("Do you already have an account? Y/N")
-    sign_up_check = input("\n If yes, press 'y'. if no, press 'n'")
+    sign_up_check = input("\n If yes, press 'y'. if no, press 'n': ")
     if sign_up_check == 'y':
         login()
     elif sign_up_check == 'n':
-        print("Please enter a valid username and password\n")
+        print("Please choose a valid username and password.\n")
         print("Choose a username that you would like your in-game")
         print("character to have.\n")
         print('Make sure you remember the password you choose!')
         print('You will need it to log back in and see your score!')
-        new_uname = input('\n New username')
-        new_pword = input('\n New password')
+        new_uname = input('\n New username: ')
+        new_pword = input('\n New password: ')
         new_user = [new_uname, new_pword, 0]
         update_sheet(new_user, 'users')
 
@@ -39,6 +42,7 @@ def login():
             print('\nValid user.')
             if pword == i['Password']:
                 print('login successful! Welcome!')
+                CURRENT_USER.score = i["Latest Score"]
             else:
                 print('Incorrect password. Please try again.\n')
                 login()

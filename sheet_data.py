@@ -29,7 +29,7 @@ def update_sheet(data, worksheet):
     parameters given. Code originally from CI love sandwiches project.
     See Readme for link.
     """
-    print(f"Adding {worksheet} data...")
+    print(f"\nAdding {worksheet} data...")
     sheet_to_update = SHEET.worksheet(worksheet)
     sheet_to_update.append_row(data)
     print(f"{worksheet} data updated successfully!")
