@@ -20,6 +20,7 @@ def signup():
     """
     print("Do you already have an account? Y/N")
     sign_up_check = input("\n If yes, press 'y'. if no, press 'n': ")
+    # validation needed to handle invalid entry.
     if sign_up_check == 'y':
         login()
     elif sign_up_check == 'n':
@@ -29,9 +30,14 @@ def signup():
         print('Make sure you remember the password you choose!')
         print('You will need it to log back in and see your score!')
         new_uname = input('\n New username: ')
+        # validation needed to handle empty input
+        # validation needed to handle username that already exists.
         new_pword = input('\n New password: ')
+        # call validation function here to return a true or false value.
+        # if true, this code will run.
         new_user = [new_uname, new_pword, 0]
         update_sheet(new_user, 'users')
+        # if false, rewind the code to the point where elif code starts.
 
 
 def login():
