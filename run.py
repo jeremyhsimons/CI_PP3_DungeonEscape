@@ -5,6 +5,13 @@ CURRENT_USER = {
     }
 
 
+def welcome():
+    """
+    Displays a welcome message to the user when they load the game.
+    """
+    print('welcome to Dungeon Escape!')
+
+
 def signup():
     """
      Checks whether the user has signed up already.
@@ -53,4 +60,9 @@ def login():
         login()
 
 
-signup()
+def main():
+    """
+    The function which controls the calling of all other functions in the file.
+    """
+    welcome()
+    signup()
