@@ -1,14 +1,4 @@
 # Code to demonstrate how to make a game board/map using a list of lists.
-big_list = [
-    ['1', '2', '3', '4', '5'], ['1', '.', '3', '4', '5'],
-    ['1', '2', '3', '4', '5']
-    ]
-
-for i in big_list:
-    x = " ".join(i)
-    print(x)
-
-
 rooms = []
 
 
@@ -29,9 +19,9 @@ class Door:
     A class that defines the common features of different
     doors that the player may come across in the game.
     """
-    def __init__(self, status, type, position):
+    def __init__(self, status, door_type, position):
         self.status = status
-        self.type = type
+        self.door_type = door_type
         self.position = position
 
 
@@ -45,6 +35,9 @@ class Room:
         self.special_event = special_event
 
     def generate_new_room(self):
+        """
+        A method that creates a new room.
+        """
         room_layout = [
             ["O", "-", "-", "-", "-", " ", "-", "-", "-", "-", "O"],
             ["|", ".", ".", ".", ".", ".", ".", ".", ".", ".", "|"],
