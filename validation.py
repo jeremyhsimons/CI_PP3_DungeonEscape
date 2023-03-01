@@ -15,3 +15,4 @@ def validate_yes_no(data):
         print('valid data')
         return True
 
+
