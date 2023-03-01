@@ -19,7 +19,7 @@ def validate_yes_no(data):
         return True
 
 
-def validate_signup(value1, value2):
+def validate_details(value1, value2):
     """
     Checks whether the data that new users enter for their 
     username and password is valid, and checks whether the username

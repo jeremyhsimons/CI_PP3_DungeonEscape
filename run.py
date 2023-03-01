@@ -2,6 +2,7 @@ from sheet_data import get_logins
 from sheet_data import update_sheet
 
 from validation import validate_yes_no
+from validation import validate_details
 CURRENT_USER = {
     'score': 0
     }
@@ -28,22 +29,29 @@ def signup():
         if sign_up_check == 'y':
             login()
         elif sign_up_check == 'n':
-            print("Please choose a valid username and password.\n")
-            print("Choose a username that you would like your in-game")
-            print("character to have.\n")
-            print('Make sure you remember the password you choose!')
-            print('You will need it to log back in and see your score!')
-            new_uname = input('\n New username: ')
-            new_pword = input('\n New password: ')
-            # validation needed to handle empty input.
-            # validation needed to handle username that already exists.
-            # call validation function here to return a true or false value.
-            # if true, this code will run.
-            new_user = [new_uname, new_pword, 0]
-            update_sheet(new_user, 'users')
-            # if false, rewind the code to the point where elif code starts.
+            add_user()
     else:
         signup()
+
+
+def add_user():
+    """
+    Takes new username and password input from user and stores it
+    in google sheet if it passes validation.
+    """
+    print("Please choose a valid username and password.\n")
+    print("Choose a username that you would like your in-game")
+    print("character to have.\n")
+    print('Make sure you remember the password you choose!')
+    print('You will need it to log back in and see your score!')
+    new_uname = input('\n New username: ')
+    new_pword = input('\n New password: ')
+    check_details = validate_details(new_uname, new_pword)
+    if check_details:
+        new_user = [new_uname, new_pword, 0]
+        update_sheet(new_user, 'users')
+    else:
+        add_user()
 
 
 def login():
