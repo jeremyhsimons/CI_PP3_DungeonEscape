@@ -1,5 +1,7 @@
 from sheet_data import get_logins
 from sheet_data import update_sheet
+
+from validation import validate_yes_no
 CURRENT_USER = {
     'score': 0
     }
@@ -21,23 +23,25 @@ def signup():
     print("Do you already have an account? Y/N")
     sign_up_check = input("\n If yes, press 'y'. if no, press 'n': ")
     # validation needed to handle invalid entry.
-    if sign_up_check == 'y':
-        login()
-    elif sign_up_check == 'n':
-        print("Please choose a valid username and password.\n")
-        print("Choose a username that you would like your in-game")
-        print("character to have.\n")
-        print('Make sure you remember the password you choose!')
-        print('You will need it to log back in and see your score!')
-        new_uname = input('\n New username: ')
-        # validation needed to handle empty input
-        # validation needed to handle username that already exists.
-        new_pword = input('\n New password: ')
-        # call validation function here to return a true or false value.
-        # if true, this code will run.
-        new_user = [new_uname, new_pword, 0]
-        update_sheet(new_user, 'users')
-        # if false, rewind the code to the point where elif code starts.
+    signup_validation = validate_yes_no(sign_up_check)
+    if signup_validation:
+        if sign_up_check == 'y':
+            login()
+        elif sign_up_check == 'n':
+            print("Please choose a valid username and password.\n")
+            print("Choose a username that you would like your in-game")
+            print("character to have.\n")
+            print('Make sure you remember the password you choose!')
+            print('You will need it to log back in and see your score!')
+            new_uname = input('\n New username: ')
+            # validation needed to handle empty input
+            # validation needed to handle username that already exists.
+            new_pword = input('\n New password: ')
+            # call validation function here to return a true or false value.
+            # if true, this code will run.
+            new_user = [new_uname, new_pword, 0]
+            update_sheet(new_user, 'users')
+            # if false, rewind the code to the point where elif code starts.
 
 
 def login():
@@ -72,3 +76,6 @@ def main():
     """
     welcome()
     signup()
+
+
+main()
