@@ -35,7 +35,7 @@ def signup():
             print('You will need it to log back in and see your score!')
             new_uname = input('\n New username: ')
             new_pword = input('\n New password: ')
-            # validation needed to handle empty input
+            # validation needed to handle empty input.
             # validation needed to handle username that already exists.
             # call validation function here to return a true or false value.
             # if true, this code will run.
