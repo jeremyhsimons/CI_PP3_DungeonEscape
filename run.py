@@ -1,3 +1,6 @@
+import os
+from time import sleep
+
 from sheet_data import get_logins
 from sheet_data import update_sheet
 
@@ -6,13 +9,50 @@ from validation import validate_details
 CURRENT_USER = {
     'score': 0
     }
+NEW_SECTION = "-"*30
 
 
 def welcome():
     """
     Displays a welcome message to the user when they load the game.
     """
-    print('welcome to Dungeon Escape!')
+    print('\nwelcome to...')
+    sleep(0.2)
+    print(" ______                                                     ")
+    sleep(0.2)
+    print("|_   _ `.                                                   ")
+    sleep(0.2)
+    print("  | | `. \ __   _   _ .--.   .--./) .---.   .--.   _ .--.   ")
+    sleep(0.2)
+    print("  | |  | |[  | | | [ `.-. | / /'`\;/ /__\\/ .'`\ \[ `.-. |  ")
+    sleep(0.2)
+    print(" _| |_.' / | \_/ |, | | | | \ \._//| \__.,| \__. | | | | |  ")
+    sleep(0.2)
+    print("|______.'  '.__.'_/[___||__].',__`  '.__.' '.__.' [___||__] ")
+    sleep(0.2)
+    print(" ________                  ( ( __))            _            ")
+    sleep(0.2)
+    print("|_   __  |                                    | |           ")
+    sleep(0.2)
+    print("  | |_ \_| .--.   .---.  ,--.  _ .--.   .---. | |           ")
+    sleep(0.2)
+    print("  |  _| _ ( (`\] / /'`\]`'_\ :[ '/'`\ \/ /__\\| |           ")
+    sleep(0.2)
+    print(" _| |__/ | `'.'. | \__. // | |,| \__/ || \__.,|_|           ")
+    sleep(0.2)
+    print("|________|[\__) )'.___.'\'-;__/| ;.__/  '.__.'(_)           ")
+    sleep(0.2)
+    print("                              [__|                          ")
+    sleep(0.2)
+    print(f"\n{NEW_SECTION}")
+
+
+def clear_screen():
+    """
+    Clears the terminal of content.
+    It is called when the user needs a new "screen" or viewport.
+    """
+    os.system("cls" if os.name == 'nt' else "clear")
 
 
 def signup():
@@ -21,9 +61,8 @@ def signup():
      If not, it will add their new user data to the sheet.
      If they have, it will call the login function.
     """
-    print("Do you already have an account? Y/N")
+    print("\nDo you already have an account? Y/N")
     sign_up_check = input("\n If yes, press 'y'. if no, press 'n': ")
-    # validation needed to handle invalid entry.
     signup_validation = validate_yes_no(sign_up_check)
     if signup_validation:
         if sign_up_check == 'y':
@@ -39,10 +78,10 @@ def add_user():
     Takes new username and password input from user and stores it
     in google sheet if it passes validation.
     """
-    print("Please choose a valid username and password.\n")
+    print("\nPlease choose a valid username and password.\n")
     print("Choose a username that you would like your in-game")
     print("character to have.\n")
-    print('Make sure you remember the password you choose!')
+    print('Make sure you remember the password you choose.')
     print('You will need it to log back in and see your score!')
     new_uname = input('\n New username: ')
     new_pword = input('\n New password: ')
