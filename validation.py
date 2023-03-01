@@ -4,9 +4,9 @@ def validate_yes_no(data):
     to a y/n question in the game.
     """
     try:
-        if data != "y":
+        if not (data == "y" or data == "n"):
             raise ValueError(
-                f"Please answer yes or no (y or n). You answered {data}"
+                f"Please answer yes or no (y or n). You answered '{data}'."
                 )
     except ValueError as e:
         print(f"Invalid response: {e}")
@@ -15,5 +15,3 @@ def validate_yes_no(data):
         print('valid data')
         return True
 
-
-validate_yes_no("y")
