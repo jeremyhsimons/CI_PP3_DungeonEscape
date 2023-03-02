@@ -7,6 +7,7 @@ from sheet_data import update_sheet
 from validation import validate_yes_no
 from validation import validate_details
 CURRENT_USER = {
+    'name' : ""
     'score': 0
     }
 NEW_SECTION = "-"*30
@@ -109,6 +110,7 @@ def login():
             if pword == i['Password']:
                 print('login successful! Welcome!')
                 CURRENT_USER['score'] = i["Latest Score"]
+                CURRENT_USER['name'] = i['Username']
             else:
                 print('Incorrect password. Please try again.\n')
                 login()
