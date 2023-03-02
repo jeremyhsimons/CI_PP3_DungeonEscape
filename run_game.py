@@ -63,10 +63,7 @@ def start_game():
     The function that controls the flow of the game
     """
     level_order = random_layout_selector()
-    # GAME_LAYOUT = level_order
     generate_levels(level_order)
-    print(GAME_LAYOUT)
-    print(LEVELS_DICT)
 
 
 def random_layout_selector():
@@ -93,5 +90,25 @@ def generate_levels(data):
         this_game_layout.append(level.layouts[i])
     return this_game_layout
 
+def multiplication_question():
+    """
+    A function that generates a random multiplication question
+    that the player must complete to continue.
+    """
+    num1 = random.randint(1, 10)
+    num2 = random.randint(1, 10)
+    print(f"What is {num1} multiplied by {num2}?")
+    player_answer = int(input("\nType your answer here: "))
+    # call a validation function here
+    answer = num1 * num2
+    if player_answer == answer:
+        print("\nCorrect! +10 points")
+        return True
+    else:
+        print("\nUh oh! That was incorrect...You lose 1 life!")
+        print(f"The correct answer was {answer}")
+        return False
+
 
 start_game()
+multiplication_question()
