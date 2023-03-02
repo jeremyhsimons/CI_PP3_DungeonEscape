@@ -1,8 +1,7 @@
-# Code to demonstrate how to make a game board/map using a list of lists.
-rooms = []
-#from run import CURRENT_USER
+import random
+from run import CURRENT_USER
 
-#print(CURRENT_USER)
+
 class Player:
     """
     A class that defines the common features of users/players
@@ -68,7 +67,7 @@ def start_game():
 
 def random_layout_selector():
     layout_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    random_order = shuffle(layout_order)
+    random_order = random.shuffle(layout_order)
     print(random_order)
 
 start_game()
