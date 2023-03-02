@@ -8,6 +8,7 @@ from validation import validate_yes_no
 from validation import validate_details
 
 from run_game import start_game
+from run_game import clear_screen
 
 CURRENT_USER = {
     'name' : "",
@@ -50,14 +51,6 @@ def welcome():
     sleep(0.2)
     print(f"\n{NEW_SECTION}")
     sleep(0.2)
-
-
-def clear_screen():
-    """
-    Clears the terminal of content.
-    It is called when the user needs a new "screen" or viewport.
-    """
-    os.system("cls" if os.name == 'nt' else "clear")
 
 
 def signup():

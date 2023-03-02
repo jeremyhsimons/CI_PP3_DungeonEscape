@@ -1,9 +1,12 @@
 import random
 
+from time import sleep
+
 GAME_LAYOUT = []
 LEVELS_DICT = {}
 LEVELS_PLAYED = 0
 CURRENT_PLAYER = {}
+NEW_SECTION = "-"*30
 
 class Player:
     """
@@ -66,8 +69,8 @@ def start_game():
     """
     level_order = random_layout_selector()
     generate_levels(level_order)
-    CURRENT_PLAYER = generate_player()
-    run_menu()
+    current_player = generate_player()
+    run_menu(current_player)
 
 
 def random_layout_selector():
@@ -105,8 +108,24 @@ def generate_player():
     player = Player(player_name, 3, 0)
     return player
 
-def run_menu():
-    print(f"Welcome {CURRENT_PLAYER.name}! What would you like to do?")
+
+def clear_screen():
+    """
+    Clears the terminal of content.
+    It is called when the user needs a new "screen" or viewport.
+    """
+    os.system("cls" if os.name == 'nt' else "clear")
+
+
+def run_menu(player):
+    """
+    Creates a menu for the player to decide whether or not to
+    read the instructions, quit, or play the game.
+    """
+    print(NEW_SECTION)
+    sleep(0.2)
+    print(f"Welcome {player.name}! What would you like to do?\n")
+    sleep(0.2)
     print("Press i for game instructions")
     print("Press s to start the game")
     print("Press x to quit")
@@ -118,6 +137,7 @@ def run_menu():
         print("let the games begin!")
     elif menu_selection == "x":
         quit_game()
+
 
 def multiplication_question():
     """
@@ -137,5 +157,6 @@ def multiplication_question():
         print("\nUh oh! That was incorrect...You lose 1 life!")
         print(f"The correct answer was {answer}")
         return False
+
 
 start_game()
