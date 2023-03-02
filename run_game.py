@@ -1,5 +1,4 @@
 import random
-from run import CURRENT_USER
 
 
 class Player:
@@ -62,12 +61,12 @@ def start_game():
     """
     random_layout_selector()
     level = Level(0, 1)
-    print(level.layouts[0])
 
 
 def random_layout_selector():
     layout_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    random_order = random.shuffle(layout_order)
-    print(random_order)
+    print(layout_order)
+    random.shuffle(layout_order)
+    print(layout_order)
 
 start_game()
