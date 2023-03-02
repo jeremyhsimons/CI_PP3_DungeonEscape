@@ -1,7 +1,9 @@
 import random
+
 GAME_LAYOUT = []
 LEVELS_DICT = {}
 LEVELS_PLAYED = 0
+CURRENT_PLAYER = {}
 
 class Player:
     """
@@ -64,6 +66,7 @@ def start_game():
     """
     level_order = random_layout_selector()
     generate_levels(level_order)
+    CURRENT_PLAYER = generate_player()
 
 
 def random_layout_selector():
@@ -90,6 +93,19 @@ def generate_levels(data):
         this_game_layout.append(level.layouts[i])
     return this_game_layout
 
+
+def generate_player():
+    """
+    A function to generate an instance of the player class
+    to keep track of the player's score and lives
+    """
+    print("What is your name?")
+    player_name = input("Type here: ")
+    player = Player(player_name, 3, 0)
+    print(player.name)
+    return player
+
+
 def multiplication_question():
     """
     A function that generates a random multiplication question
@@ -109,6 +125,3 @@ def multiplication_question():
         print(f"The correct answer was {answer}")
         return False
 
-
-start_game()
-multiplication_question()

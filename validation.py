@@ -15,7 +15,6 @@ def validate_yes_no(data):
         print(f"Invalid response: {e}")
         return False
     else:
-        print('valid data')
         return True
 
 

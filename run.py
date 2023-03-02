@@ -6,6 +6,9 @@ from sheet_data import update_sheet
 
 from validation import validate_yes_no
 from validation import validate_details
+
+from run_game import start_game
+
 CURRENT_USER = {
     'name' : "",
     'score': 0
@@ -46,6 +49,7 @@ def welcome():
     print("                              [__|                          ")
     sleep(0.2)
     print(f"\n{NEW_SECTION}")
+    sleep(0.2)
 
 
 def clear_screen():
@@ -80,10 +84,8 @@ def add_user():
     in google sheet if it passes validation.
     """
     print("\nPlease choose a valid username and password.\n")
-    print("Choose a username that you would like your in-game")
-    print("character to have.\n")
-    print('Make sure you remember the password you choose.')
-    print('You will need it to log back in and see your score!')
+    print('Make sure you remember the username and password you choose.')
+    print('You will need them to log back in and see your score!')
     new_uname = input('\n New username: ')
     new_pword = input('\n New password: ')
     check_details = validate_details(new_uname, new_pword)
@@ -106,11 +108,16 @@ def login():
     logins_checked = 0
     for i in logins:
         if uname == i['Username']:
-            print('\nValid user.')
             if pword == i['Password']:
                 print('login successful! Welcome!')
                 CURRENT_USER['score'] = i["Latest Score"]
                 CURRENT_USER['name'] = i['Username']
+                sleep(1)
+                clear_screen()
+                sleep(0.2)
+                print(NEW_SECTION)
+                sleep(0.2)
+                start_game()
             else:
                 print('Incorrect password. Please try again.\n')
                 login()
