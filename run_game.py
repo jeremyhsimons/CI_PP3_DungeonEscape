@@ -67,6 +67,7 @@ def start_game():
     level_order = random_layout_selector()
     generate_levels(level_order)
     CURRENT_PLAYER = generate_player()
+    run_menu()
 
 
 def random_layout_selector():
@@ -102,9 +103,21 @@ def generate_player():
     print("What is your name?")
     player_name = input("Type here: ")
     player = Player(player_name, 3, 0)
-    print(player.name)
     return player
 
+def run_menu():
+    print(f"Welcome {CURRENT_PLAYER.name}! What would you like to do?")
+    print("Press i for game instructions")
+    print("Press s to start the game")
+    print("Press x to quit")
+    menu_selection = input("Type your choice here:")
+    # call a validation function here
+    if menu_selection == "i":
+        print("These are the instructions")
+    elif menu_selection == "s":
+        print("let the games begin!")
+    elif menu_selection == "x":
+        quit_game()
 
 def multiplication_question():
     """
@@ -125,3 +138,4 @@ def multiplication_question():
         print(f"The correct answer was {answer}")
         return False
 
+start_game()
