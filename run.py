@@ -7,7 +7,7 @@ from sheet_data import update_sheet
 from validation import validate_yes_no
 from validation import validate_details
 CURRENT_USER = {
-    'name' : ""
+    'name' : "",
     'score': 0
     }
 NEW_SECTION = "-"*30

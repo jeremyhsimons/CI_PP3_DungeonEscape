@@ -1,7 +1,8 @@
 # Code to demonstrate how to make a game board/map using a list of lists.
 rooms = []
-from run import CURRENT_USER
+#from run import CURRENT_USER
 
+#print(CURRENT_USER)
 class Player:
     """
     A class that defines the common features of users/players
@@ -22,13 +23,20 @@ class Level:
     """
 
     layouts = [
-        ["O", "-", "-", "-", "-", "-", "-", "-", "-", "-", "O"],
+        [["O", "-", "-", "-", "-", "-", "-", "-", "-", "-", "O"],
         ["|", ".", ".", ".", ".", ".", ".", ".", ".", ".", "|"],
         ["|", "-", "-", "-", "-", "-", "-", "-", "-", "-", "|"],
         [" ", ".", ".", ".", ".", ".", ".", ".", ".", ".", " "],
         ["|", "-", "-", "-", "-", "-", "-", "-", "-", "-", "|"],
         ["|", ".", ".", ".", ".", ".", ".", ".", ".", ".", "|"],
-        ["O", "-", "-", "-", "-", "-", "-", "-", "-", "-", "O"]
+        ["O", "-", "-", "-", "-", "-", "-", "-", "-", "-", "O"]],
+        [["O", "-", "-", "-", "-", "-", "-", "-", "-", "-", "O"],
+        ["|", ".", ".", ".", ".", ".", ".", ".", ".", ".", "|"],
+        ["|", "-", "-", "-", "-", "-", "-", "-", "-", "-", "|"],
+        [" ", ".", ".", ".", ".", ".", ".", ".", ".", ".", " "],
+        ["|", "-", "-", "-", "-", "-", "-", "-", "-", "-", "|"],
+        ["|", ".", ".", ".", ".", ".", ".", ".", ".", ".", "|"],
+        ["O", "-", "-", "-", "-", "-", "-", "-", "-", "-", "O"]],
     ]
 
     def __init__(self, layout_number, level_number):
@@ -44,9 +52,9 @@ class Level:
 # | . | . | @ . . . . |
 # O - - - - - - - - - O
 
-for j in room_layout:
-    y = " ".join(j)
-    print(y)
+# for j in room_layout:
+#    y = " ".join(j)
+#    print(y)
 
 
 def start_game():
@@ -54,8 +62,13 @@ def start_game():
     The function that controls the flow of the game
     """
     random_layout_selector()
-    level = Level(, 1)
+    level = Level(0, 1)
+    print(level.layouts[0])
 
 
 def random_layout_selector():
-    
+    layout_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    random_order = shuffle(layout_order)
+    print(random_order)
+
+start_game()
