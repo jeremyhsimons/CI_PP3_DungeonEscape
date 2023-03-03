@@ -27,7 +27,7 @@ def validate_details(value1, value2):
     value2 is the password.
     """
     try:
-        if value1 == " " or value2 == " ":
+        if value1 == " " or value2 == " " or value1 == "" or value2 == "":
             raise ValueError(
                 "You cannot submit an empty field as your username/password."
             )
@@ -39,7 +39,7 @@ def validate_details(value1, value2):
         for i in existing_users:
             if i['Username'] == value1:
                 raise ValueError(
-                    "This username already exists. Please choose another."
+                    "This username already exists."
                 )
     except ValueError as f:
         print(f"Invalid username: {f}")
