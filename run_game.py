@@ -1,4 +1,9 @@
 import random
+import os
+from colorama import init
+from colorama import Fore
+init(autoreset=True)
+
 
 from time import sleep
 
@@ -7,6 +12,7 @@ LEVELS_DICT = {}
 LEVELS_PLAYED = 0
 CURRENT_PLAYER = {}
 NEW_SECTION = "-"*30
+
 
 class Player:
     """
@@ -159,4 +165,4 @@ def multiplication_question():
         return False
 
 
-start_game()
+#start_game()

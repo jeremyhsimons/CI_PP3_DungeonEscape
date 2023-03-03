@@ -1,4 +1,3 @@
-import os
 from time import sleep
 
 from sheet_data import get_logins
@@ -10,8 +9,13 @@ from validation import validate_details
 from run_game import start_game
 from run_game import clear_screen
 
+from colorama import init
+from colorama import Fore
+
+init(autoreset=True)
+
 CURRENT_USER = {
-    'name' : "",
+    'name': "",
     'score': 0
     }
 NEW_SECTION = "-"*30
@@ -23,31 +27,31 @@ def welcome():
     """
     print('\nwelcome to...')
     sleep(0.2)
-    print(" ______                                                     ")
+    print(Fore.RED + " ______                                                     ")
     sleep(0.2)
-    print("|_   _ `.                                                   ")
+    print(Fore.RED + "|_   _ `.                                                   ")
     sleep(0.2)
-    print("  | | `. \ __   _   _ .--.   .--./) .---.   .--.   _ .--.   ")
+    print(Fore.MAGENTA + "  | | `. \ __   _   _ .--.   .--./) .---.   .--.   _ .--.   ")
     sleep(0.2)
-    print("  | |  | |[  | | | [ `.-. | / /'`\;/ /__\\/ .'`\ \ [ `.-. |  ")
+    print(Fore.MAGENTA + "  | |  | |[  | | | [ `.-. | / /'`\;/ /__\\/ .'`\ \ [ `.-. |  ")
     sleep(0.2)
-    print(" _| |_.' / | \_/ |, | | | | \ \._//| \__.,| \__. | | | | |  ")
+    print(Fore.MAGENTA + " _| |_.' / | \_/ |, | | | | \ \._//| \__.,| \__. | | | | |  ")
     sleep(0.2)
-    print("|______.'  '.__.'_/[___||__].',__`  '.__.' '.__.' [___||__] ")
+    print(Fore.RED + "|______.'  '.__.'_/[___||__].',__`  '.__.' '.__.' [___||__] ")
     sleep(0.2)
-    print(" ________                  ( ( __))            _            ")
+    print(Fore.RED + " ________                  ( ( __))            _            ")
     sleep(0.2)
-    print("|_   __  |                                    | |           ")
+    print(Fore.RED + "|_   __  |                                    | |           ")
     sleep(0.2)
-    print("  | |_ \_| .--.   .---.  ,--.  _ .--.   .---. | |           ")
+    print(Fore.RED + "  | |_ \_| .--.   .---.  ,--.  _ .--.   .---. | |           ")
     sleep(0.2)
-    print("  |  _| _ ( (`\] / /'`\]`'_\ :[ '/'`\ \/ /__\\ | |           ")
+    print(Fore.MAGENTA + "  |  _| _ ( (`\] / /'`\]`'_\ :[ '/'`\ \/ /__\\ | |           ")
     sleep(0.2)
-    print(" _| |__/ | `'.'. | \__. // | |,| \__/ || \__.,|_|           ")
+    print(Fore.MAGENTA + " _| |__/ | `'.'. | \__. // | |,| \__/ || \__.,|_|           ")
     sleep(0.2)
-    print("|________|[\__) )'.___.'\'-;__/ | ;.__/  '.__.'(_)           ")
+    print(Fore.RED + "|________|[\__) )'.___.'\'-;__/ | ;.__/  '.__.'(_)           ")
     sleep(0.2)
-    print("                              [__|                          ")
+    print(Fore.RED + "                              [__|                          ")
     sleep(0.2)
     print(f"\n{NEW_SECTION}")
     sleep(0.2)
