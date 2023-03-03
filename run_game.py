@@ -1,11 +1,10 @@
+from time import sleep
 import random
 import os
 from colorama import init
 from colorama import Fore
 init(autoreset=True)
 
-
-from time import sleep
 
 GAME_LAYOUT = []
 LEVELS_DICT = {}
@@ -88,6 +87,7 @@ def random_layout_selector():
     random.shuffle(layout_order)
     return layout_order
 
+
 def generate_levels(data):
     """
     A function to create new instances of the Level class and return
@@ -98,7 +98,7 @@ def generate_levels(data):
     for i in data:
         level_num += 1
         level = Level(level_num, i)
-        LEVELS_DICT.update({f"{level_num}" : i})
+        LEVELS_DICT.update({f"{level_num}": i})
         GAME_LAYOUT.append(level.layouts[i])
         this_game_layout.append(level.layouts[i])
     return this_game_layout
@@ -109,8 +109,8 @@ def generate_player():
     A function to generate an instance of the player class
     to keep track of the player's score and lives
     """
-    print("What is your name?")
-    player_name = input("Type here: ")
+    print(Fore.GREEN + "What is your name?")
+    player_name = input("Type here: \n")
     player = Player(player_name, 3, 0)
     return player
 
@@ -135,7 +135,7 @@ def run_menu(player):
     print("Press i for game instructions")
     print("Press s to start the game")
     print("Press x to quit")
-    menu_selection = input("Type your choice here: ")
+    menu_selection = input("Type your choice here: \n")
     # call a validation function here
     if menu_selection == "i":
         print("These are the instructions")
@@ -153,7 +153,7 @@ def multiplication_question():
     num1 = random.randint(1, 10)
     num2 = random.randint(1, 10)
     print(f"What is {num1} multiplied by {num2}?")
-    player_answer = int(input("\nType your answer here: "))
+    player_answer = int(input("\nType your answer here: \n"))
     # call a validation function here
     answer = num1 * num2
     if player_answer == answer:

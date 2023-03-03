@@ -64,7 +64,7 @@ def signup():
      If they have, it will call the login function.
     """
     print("\nDo you already have an account? Y/N")
-    sign_up_check = input("\n If yes, press 'y'. if no, press 'n': ")
+    sign_up_check = input("\n If yes, press 'y'. if no, press 'n': \n")
     signup_validation = validate_yes_no(sign_up_check)
     if signup_validation:
         if sign_up_check == 'y':
@@ -83,8 +83,8 @@ def add_user():
     print("\nPlease choose a valid username and password.\n")
     print('Make sure you remember the username and password you choose.')
     print('You will need them to log back in and see your score!')
-    new_uname = input('\n New username: ')
-    new_pword = input('\n New password: ')
+    new_uname = input('\n New username: \n')
+    new_pword = input(' New password: \n')
     check_details = validate_details(new_uname, new_pword)
     if check_details:
         new_user = [new_uname, new_pword, 0]
@@ -100,8 +100,8 @@ def login():
     """
     logins = get_logins()
     print('Please enter your username and password')
-    uname = input('\n Username: ')
-    pword = input('\n Password: ')
+    uname = input('\n Username: \n')
+    pword = input(' Password: \n')
     logins_checked = 0
     for i in logins:
         if uname == i['Username']:

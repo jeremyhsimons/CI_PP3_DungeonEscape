@@ -20,7 +20,7 @@ def validate_yes_no(data):
 
 def validate_details(value1, value2):
     """
-    Checks whether the data that new users enter for their 
+    Checks whether the data that new users enter for their
     username and password is valid, and checks whether the username
     already exists.
     value1 is the username.
