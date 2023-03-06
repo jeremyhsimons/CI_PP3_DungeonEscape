@@ -1,8 +1,12 @@
 from time import sleep
 import random
 import os
+
+from validation import validate_main_menu
+
 from colorama import init
 from colorama import Fore
+
 init(autoreset=True)
 
 
@@ -136,13 +140,15 @@ def run_menu(player):
     print("Press s to start the game")
     print("Press x to quit")
     menu_selection = input("Type your choice here: \n")
-    # call a validation function here
-    if menu_selection == "i":
-        print("These are the instructions")
-    elif menu_selection == "s":
-        print("let the games begin!")
-    elif menu_selection == "x":
-        quit_game()
+    if validate_main_menu(menu_selection):
+        if menu_selection == "i":
+            print("These are the instructions")
+        elif menu_selection == "s":
+            print("let the games begin!")
+        elif menu_selection == "x":
+            quit_game()
+    else:
+        run_menu(player)
 
 
 def multiplication_question():

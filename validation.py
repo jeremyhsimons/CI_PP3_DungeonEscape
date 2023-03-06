@@ -48,3 +48,20 @@ def validate_details(value1, value2):
     print('Yay! New user!')
     return True
 
+
+def validate_main_menu(data):
+    """
+    Checks whether the user's input for the main menu
+    when accessing the game is valid."
+    """
+    try:
+        if not (data == "i" or data == "s" or data == "x"):
+            raise ValueError(
+                f"Please select i, s or x. You selected {data}"
+            )
+    except ValueError as g:
+        print(f"Invalid selection: {g}")
+        return False
+
+    else:
+        return True
