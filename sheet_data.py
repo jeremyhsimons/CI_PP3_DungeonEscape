@@ -35,4 +35,3 @@ def update_sheet(data, worksheet):
     print(f"{worksheet} data updated successfully!")
 
 
-get_logins()

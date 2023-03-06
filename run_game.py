@@ -191,9 +191,9 @@ def quit_game():
         if validate_yes_no(feedback_yes_no):
             if feedback_yes_no == "y":
                 feedback_message = input("\nPlease leave your message here: \n")
+                feedback_data = [feedback_message]
                 # call validation function to stop long message.
-                # update_sheet(feedback_message, "feedback")
-                print(feedback_message)
+                update_sheet(feedback_data, "feedback")
                 sleep(2)
                 clear_screen()
                 print("Thanks for the feedback and Thanks for playing!")
