@@ -70,13 +70,14 @@ def validate_math(data):
     """
     Checks if the user's input for a math question is an integer.
     """
+    print(data)
     try:
-        if not isinstance(data, int):
-            raise TypeError(
+        if not data.isdigit():
+            raise ValueError(
                 f"Please enter a valid number. You entered {data}"
             )
-    except TypeError as h:
+    except ValueError as h:
         print(f"Invalid Answer: {h}")
         return False
-    else: 
+    else:
         return True

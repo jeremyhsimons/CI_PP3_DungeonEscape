@@ -6,6 +6,7 @@ from sheet_data import update_sheet
 
 from validation import validate_main_menu
 from validation import validate_yes_no
+from validation import validate_math
 
 from colorama import init
 from colorama import Fore
@@ -228,16 +229,21 @@ def bonus_question():
     print(NEW_SECTION)
     sleep(0.2)
     print(f"What is {num1} multiplied by {num2}?")
-    player_answer = int(input("\nType your answer here: \n"))
-    # call a validation function here
-    answer = num1 * num2
-    if player_answer == answer:
-        print("\nCorrect! +20 points")
-        return True
+    player_answer = input("\nType your answer here: \n")
+    if validate_math(player_answer):
+        player_answer_int = int(player_answer)
+        answer = num1 * num2
+        if player_answer_int == answer:
+            print("\nCorrect! +20 points")
+            # return player to the level, change @ marker to X, add points
+            return True
+        else:
+            print("\nUh oh! That was incorrect...You lose 1 life!")
+            print(f"The correct answer was {answer}")
+            # return player to the level, change @ marker to X, minus lives
+            return False
     else:
-        print("\nUh oh! That was incorrect...You lose 1 life!")
-        print(f"The correct answer was {answer}")
-        return False
+        bonus_question()
 
 
 def quit_game():
