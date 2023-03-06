@@ -17,7 +17,7 @@ init(autoreset=True)
 LEVELS_LIST = []
 LEVELS_PLAYED = 0
 CURRENT_PLAYER = {}
-NEW_SECTION = "-"*30
+NEW_SECTION = "-  "*26
 
 
 class Player:
@@ -204,8 +204,16 @@ def get_level(levels):
     Runs the level and prints it to the terminal.
     """
     for i in range(len(levels)):
+        clear_screen()
+        print("stats")
+        print(NEW_SECTION)
         print_level(levels, i)
-        print(" ")
+        print("stats")
+        print("Enter your move in the form DIRECTION,STEPS")
+        print("Direction = L, R, U, or D (left, right, up, down)")
+        print("Steps = a number between 1 and 9")
+        print("e.g. U,3 will move your character up 3 steps")
+        input("\nEnter your move here.")
 
 
 def print_level(levels, level_number):
