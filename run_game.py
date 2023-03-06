@@ -330,6 +330,6 @@ def quit_game():
         quit_game()
 
 
-start_game()
+# start_game()
 
 # bonus_question()
