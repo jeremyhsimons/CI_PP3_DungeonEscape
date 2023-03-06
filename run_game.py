@@ -14,8 +14,7 @@ from colorama import Fore
 init(autoreset=True)
 
 
-GAME_LAYOUT = []
-LEVELS_DICT = {}
+LEVELS_LIST = []
 LEVELS_PLAYED = 0
 CURRENT_PLAYER = {}
 NEW_SECTION = "-"*30
@@ -35,7 +34,7 @@ class Player:
 class Level:
     """
     A class that defines the levels that the player will encounter.
-    a level will be passed a layout number to select which layout 
+    a level will be passed a layout number to select which layout
     will be presented to the player, and a level_number to keep
     track of how far the player has progressed.
     """
@@ -133,7 +132,7 @@ def random_layout_selector():
     A function to order the appearance of the different levels
     (stored in the level class.)
     """
-    layout_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    layout_order = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     random.shuffle(layout_order)
     return layout_order
 
@@ -145,11 +144,10 @@ def generate_levels(data):
     """
     this_game_layout = []
     level_num = 0
-    for i in range(len(data)):
+    for i in data:
         level_num += 1
         level = Level(level_num, i)
-        LEVELS_DICT.update({f"{level_num}": i})
-        GAME_LAYOUT.append(level.layouts[i])
+        LEVELS_LIST.append({f"{level_num}": level.layouts[i]})
         this_game_layout.append(level.layouts[i])
     return this_game_layout
 
