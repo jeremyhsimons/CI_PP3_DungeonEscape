@@ -2,7 +2,10 @@ from time import sleep
 import random
 import os
 
+from sheet_data import update_sheet
+
 from validation import validate_main_menu
+from validation import validate_yes_no
 
 from colorama import init
 from colorama import Fore
@@ -171,4 +174,43 @@ def multiplication_question():
         return False
 
 
+def quit_game():
+    """
+    Checks if the user would like to write some feedback on
+    the game before thanking them and exiting the program.
+    """
+    clear_screen()
+    sleep(0.2)
+    print(NEW_SECTION)
+    sleep(0.2)
+    print("Are you sure you want to quit?")
+    quit_yes_no = input("\nType y for yes, n for no: \n")
+    if validate_yes_no(quit_yes_no):
+        print("Would you like to give us feedback on this game?")
+        feedback_yes_no = input("\nType y for yes, n for no: \n")
+        if validate_yes_no(feedback_yes_no):
+            if feedback_yes_no == "y":
+                feedback_message = input("\nPlease leave your message here: \n")
+                # call validation function to stop long message.
+                # update_sheet(feedback_message, "feedback")
+                print(feedback_message)
+                sleep(2)
+                clear_screen()
+                print("Thanks for the feedback and Thanks for playing!")
+                print("See you next time!")
+                print(NEW_SECTION)
+                print("Click 'Run Program' to begin!")
+            else:
+                print("Thanks for playing! See you next time!")
+                print(NEW_SECTION)
+                print("Click 'Run Program' to begin!")
+        else:
+            quit_game()
+    else:
+        quit_game()
+
+
 #start_game()
+
+quit_game()
+
