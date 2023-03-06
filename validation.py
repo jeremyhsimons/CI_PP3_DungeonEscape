@@ -62,6 +62,5 @@ def validate_main_menu(data):
     except ValueError as g:
         print(f"Invalid selection: {g}")
         return False
-
     else:
         return True
