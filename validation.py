@@ -81,3 +81,12 @@ def validate_math(data):
         return False
     else:
         return True
+
+
+def validate_navigation(data):
+    """
+    Checks if the user's input for moving around the level
+    matches what is expected.
+    """
+    nav_input = data.split(",")
+    print(nav_input)

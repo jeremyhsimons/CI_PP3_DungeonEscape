@@ -7,6 +7,7 @@ from sheet_data import update_sheet
 from validation import validate_main_menu
 from validation import validate_yes_no
 from validation import validate_math
+from validation import validate_navigation
 
 from colorama import init
 from colorama import Fore
@@ -208,12 +209,14 @@ def get_level(levels):
         print("stats")
         print(NEW_SECTION)
         print_level(levels, i)
-        print("stats")
+        run_level(levels, i)
         print("Enter your move in the form DIRECTION,STEPS")
         print("Direction = L, R, U, or D (left, right, up, down)")
         print("Steps = a number between 1 and 9")
         print("e.g. U,3 will move your character up 3 steps")
-        input("\nEnter your move here.")
+        nav_str = input("\nEnter your move here.")
+        validate_navigation(nav_str)
+        sleep(5)
 
 
 def print_level(levels, level_number):
@@ -223,6 +226,20 @@ def print_level(levels, level_number):
     for j in levels[level_number]:
         y = " ".join(j)
         print(y)
+
+
+def run_level(levels, level_number):
+    """
+    Runs the game logic for each level.
+    """
+    print("Enter your move in the form DIRECTION,STEPS")
+    print("Direction = L, R, U, or D (left, right, up, down)")
+    print("Steps = a number between 1 and 9")
+    print("e.g. U,3 will move your character up 3 steps")
+    nav_str = input("\nEnter your move here.")
+    validate_navigation(nav_str)
+    sleep(5)
+
 
 
 def multiplication_question():
