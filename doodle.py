@@ -71,6 +71,12 @@ layouts = [
      ["O", "-", "-", "-", "-", "-", "-", "-", "-", "-", "O"]],
 ]
 
-for j in layouts[9]:
-    y = " ".join(j)
-    print(y)
+for i in range(len(layouts)):
+    def print_level():
+        for j in layouts[i]:
+            y = " ".join(j)
+            print(y)
+    print_level()
+    print(" ")
+
+#print(layouts)
