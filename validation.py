@@ -64,3 +64,19 @@ def validate_main_menu(data):
         return False
     else:
         return True
+
+
+def validate_math(data):
+    """
+    Checks if the user's input for a math question is an integer.
+    """
+    try:
+        if not isinstance(data, int):
+            raise TypeError(
+                f"Please enter a valid number. You entered {data}"
+            )
+    except TypeError as h:
+        print(f"Invalid Answer: {h}")
+        return False
+    else: 
+        return True
