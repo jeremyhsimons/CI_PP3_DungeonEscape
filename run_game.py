@@ -44,7 +44,7 @@ class Level:
         [["O", "-", "-", "-", "-", "-", "-", "-", "-", "-", "O"],
          ["|", ".", "%", ".", "|", "@", ".", ".", ".", ".", "|"],
          ["|", ".", "|", ".", "|", "_", "_", ".", "|", ".", "|"],
-         ["X", ".", "|", ".", ".", ".", ".", ".", "|", ".", " "],
+         ["A", ".", "|", ".", ".", ".", ".", ".", "|", ".", "B"],
          ["|", ".", "|", ".", "|", "_", "_", "_", "|", ".", "|"],
          ["|", ".", "|", ".", "|", "@", ".", ".", ".", ".", "|"],
          ["O", "-", "-", "-", "-", "-", "-", "-", "-", "-", "O"]],
@@ -123,9 +123,9 @@ def start_game():
     The function that controls the flow of the game
     """
     level_order = random_layout_selector()
-    generate_levels(level_order)
+    game_layout = generate_levels(level_order)
     current_player = generate_player()
-    run_menu(current_player)
+    run_menu(current_player, game_layout)
 
 
 def random_layout_selector():
@@ -145,7 +145,7 @@ def generate_levels(data):
     """
     this_game_layout = []
     level_num = 0
-    for i in data:
+    for i in range(len(data)):
         level_num += 1
         level = Level(level_num, i)
         LEVELS_DICT.update({f"{level_num}": i})
@@ -173,7 +173,7 @@ def clear_screen():
     os.system("cls" if os.name == 'nt' else "clear")
 
 
-def run_menu(player):
+def run_menu(player, levels):
     """
     Creates a menu for the player to decide whether or not to
     read the instructions, quit, or play the game.
@@ -190,11 +190,33 @@ def run_menu(player):
         if menu_selection == "i":
             print("These are the instructions")
         elif menu_selection == "s":
-            print("let the games begin!")
+            print("Starting...")
+            sleep(0.5)
+            print(NEW_SECTION)
+            sleep(0.5)
+            get_level(levels)
         elif menu_selection == "x":
             quit_game()
     else:
-        run_menu(player)
+        run_menu(player, levels)
+
+
+def get_level(levels):
+    """
+    Runs the level and prints it to the terminal.
+    """
+    for i in range(len(levels)):
+        print_level(levels, i)
+        print(" ")
+
+
+def print_level(levels, level_number):
+    """
+    Prints the current level to the terminal.
+    """
+    for j in levels[level_number]:
+        y = " ".join(j)
+        print(y)
 
 
 def multiplication_question():
@@ -265,7 +287,7 @@ def quit_game():
         feedback_yes_no = input("\nType y for yes, n for no: \n")
         if validate_yes_no(feedback_yes_no):
             if feedback_yes_no == "y":
-                feedback_message = input("\nPlease leave your message here: \n")
+                feedback_message = input("\nLeave your message here: \n")
                 feedback_data = [feedback_message]
                 # call validation function to stop long message.
                 update_sheet(feedback_data, "feedback")
@@ -285,7 +307,6 @@ def quit_game():
         quit_game()
 
 
-#start_game()
+start_game()
 
-bonus_question()
-
+# bonus_question()
