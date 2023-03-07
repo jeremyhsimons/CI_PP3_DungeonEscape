@@ -16,7 +16,6 @@ init(autoreset=True)
 
 
 LEVELS_LIST = []
-LEVELS_PLAYED = 0
 CURRENT_PLAYER = {}
 NEW_SECTION = "-  "*26
 
@@ -139,12 +138,18 @@ def start_game():
         LEVELS_PLAYED = 0
         lives = current_player.lives
         points = current_player.points
+        game_stats = [
+            f"Level: {LEVELS_PLAYED + 1}", 
+            f"Lives: {lives}", 
+            f"points: {points}"
+            ]
         for i in range(len(game_layout)):  # MAIN LOOP
-            get_new_level = get_level(game_layout, i)
+            get_new_level = get_level(game_layout, i, game_stats)
             # returns a list: [layout, number]
             print_level(get_new_level)
         # no return, just prints level to terminal
-            run_level(get_new_level)
+            run_level(get_new_level, lives)
+
             LEVELS_PLAYED += 1
             points += 15
             if LEVELS_PLAYED >= 10:
@@ -223,12 +228,12 @@ def run_menu(player):
         run_menu(player)
 
 
-def get_level(levels, level_number):
+def get_level(levels, level_number, stats):
     """
     Runs the level and prints it to the terminal.
     """
     clear_screen()
-    print("stats")
+    print(stats)
     print(NEW_SECTION)
     current_level = [levels[level_number], level_number]
     return current_level
@@ -243,29 +248,39 @@ def print_level(data):
         print(y)
 
 
-def run_level(current_level):
+def run_level(current_level, lives):
     """
     Runs the game logic for each level.
     """
-    print("Enter your move in the form DIRECTION,STEPS")
-    print("Direction = L, R, U, or D (left, right, up, down)")
-    print("Steps = a number between 1 and 9")
-    print("e.g. U,3 will move your character up 3 steps")
-    nav_str = input("\nEnter your move here.")
-    if validate_navigation(nav_str):
-        nav_data = nav_str.split(",")
-        int_nav_data = [nav_data[0], int(nav_data[1])]
-        player_position = [0, 3]
-        new_position = calc_navigation(int_nav_data, player_position)
-        if new_position[0] > 10 or new_position[0] < 0:
-            print("You've moved out of bounds! You lose 1 life")
-        elif new_position[1] > 6 or new_position[1] < 0:
-            print("You've moved out of bounds! You lose 1 life")
+    while current_level[0][3][10] == "b":
+        print("Enter your move in the form DIRECTION,STEPS")
+        print("Direction = L, R, U, or D (left, right, up, down)")
+        print("Steps = a number between 1 and 9")
+        print("e.g. U,3 will move your character up 3 steps")
+        nav_str = input("\nEnter your move here.")
+        if validate_navigation(nav_str):
+            nav_data = nav_str.split(",")
+            int_nav_data = [nav_data[0], int(nav_data[1])]
+            player_position = [0, 3]
+            new_position = calc_navigation(int_nav_data, player_position)
+            if new_position[0] > 10 or new_position[0] < 0:
+                print("You've moved out of bounds! You lose 1 life")
+                lives -= 1
+                run_level(current_level, lives)
+            elif new_position[1] > 6 or new_position[1] < 0:
+                print("You've moved out of bounds!")
+                print("You lose 1 life and must restart the level.")
+                lives -= 1
+                run_level(current_level, lives)
+            else:
+                print("position OK")
+                if nav_data[0] == "R":
+                    check_move_right(
+                        current_level, player_position, new_position, lives
+                        )
+                sleep(1)
         else:
-            print("position OK")
-            sleep(2)
-    else:
-        run_level(current_level)
+            run_level(current_level, lives)
 
 
 def calc_navigation(nav, position):
@@ -274,10 +289,9 @@ def calc_navigation(nav, position):
     they will move to based on their input.
     """
     if nav[0] == "L":
-        new_position = [(position[0] - nav[1]), position[1]]
-        print(new_position)
-        # nav_result = loop_left(position, new_position)
-        return new_position
+        position = [(position[0] - nav[1]), position[1]]
+        print(position)
+        return position
     if nav[0] == "R":
         position = [(position[0] + nav[1]), position[1]]
         print(position)
@@ -290,6 +304,66 @@ def calc_navigation(nav, position):
         position = [position[0], (position[1] + nav[1])]
         print(position)
         return position
+
+
+def check_move_left(level, pos1, pos2):
+    """
+    Checks the players move by looping back through the level
+    list to see if their route is valid.
+    """
+
+
+def check_move_right(level, pos1, pos2, lives):
+    """
+    Checks the players move by looping forward through the level
+    list to see if their route is valid.
+    """
+    level_layout = level[0]
+    route = level_layout[pos1[1]][pos1[0]:pos2[0]+1]
+    if check_route(route, lives):
+        level_layout[pos1[1]][pos1[0]] = "."
+        level_layout[pos2[1]][pos2[0]] = "A"
+        return level_layout
+
+
+def check_move_up(level):
+    """
+    Checks the player's move by looping back through the elements of
+    each level list with the same index as the player horizontal position.
+    """
+
+
+def check_move_down(level):
+    """
+    Checks the player's move by looping forward through the elements of
+    each level list with the same index as the player horizontal position.
+    """
+
+
+def check_route(route, lives):
+    """
+    Checks if the player runs into any obstacles in their move.
+    """
+    for i in route:
+        if i == ".":
+            print("OK")
+        elif i == "|" or i == "-" or i == "_" or i == "O":
+            print(NEW_SECTION)
+            print("You tried to move through a wall!")
+            print("You lose one life and move back to the start.")
+            lives -= 1
+            return False
+        elif i == "%":
+            print("math1")
+        elif i == "@":
+            print("math2")
+        else:
+            print("An unknown error occurred. Restarting level.")
+            sleep(1)
+            print(NEW_SECTION)
+            sleep(1)
+            return False
+        return True
 
 
 def multiplication_question():
