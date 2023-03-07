@@ -147,6 +147,7 @@ def start_game():
             get_new_level = get_level(game_layout, i)
             # returns a list: [layout, number]
             print_level(game_layout)
+            sleep(0.5)
             run_level(get_new_level, lives, game_stats)
 
             LEVELS_PLAYED += 1
@@ -239,6 +240,8 @@ def print_level(data):
     """
     Prints the current level to the terminal.
     """
+    clear_screen()
+    print(NEW_SECTION)
     for j in data[0]:
         y = " ".join(j)
         print(y)
@@ -250,8 +253,7 @@ def run_level(current_level, lives, stats):
     """
     while current_level[0][3][10] == "B":
         current_layout = current_level[0]
-        clear_screen()
-        print(stats)
+        print(f"\n{stats}")
         print(NEW_SECTION)
         print("Enter your move in the form DIRECTION,STEPS")
         print("Direction = L, R, U, or D (left, right, up, down)")
@@ -365,7 +367,8 @@ def check_route(route, lives):
             print(NEW_SECTION)
             sleep(1)
             return False
-        return True
+
+    return True
 
 
 def multiplication_question():
