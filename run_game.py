@@ -145,7 +145,6 @@ def start_game():
             print_level(get_new_level)
         # no return, just prints level to terminal
             run_level(get_new_level)
-
             LEVELS_PLAYED += 1
             points += 15
             if LEVELS_PLAYED >= 10:
@@ -228,12 +227,11 @@ def get_level(levels, level_number):
     """
     Runs the level and prints it to the terminal.
     """
-    for i in range(len(levels)):
-        clear_screen()
-        print("stats")
-        print(NEW_SECTION)
-        current_level = [levels[level_number], level_number]
-        return current_level
+    clear_screen()
+    print("stats")
+    print(NEW_SECTION)
+    current_level = [levels[level_number], level_number]
+    return current_level
 
 
 def print_level(data):
