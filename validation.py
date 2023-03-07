@@ -89,7 +89,6 @@ def validate_navigation(data):
     matches what is expected.
     """
     nav_input = data.split(",")
-    
     try:
         if not (
             nav_input[0] == "L"
@@ -104,13 +103,13 @@ def validate_navigation(data):
         print(f"Invalid direction: {i}")
         return False
     try:
-        if nav_input[1] > 9:
-            raise ValueError(
-                "You cannot travel more than 9 steps at a time."
-            )
-        elif not nav_input[1].isdigit():
+        if not nav_input[1].isdigit():
             raise ValueError(
                 "Please enter a number between 1 and 9 for the steps value."
+            )
+        if int(nav_input[1]) > 9:
+            raise ValueError(
+                "You cannot travel more than 9 steps at a time."
             )
     except ValueError as j:
         print(f"Invalid steps: {j}")

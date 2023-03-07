@@ -210,13 +210,6 @@ def get_level(levels):
         print(NEW_SECTION)
         print_level(levels, i)
         run_level(levels, i)
-        print("Enter your move in the form DIRECTION,STEPS")
-        print("Direction = L, R, U, or D (left, right, up, down)")
-        print("Steps = a number between 1 and 9")
-        print("e.g. U,3 will move your character up 3 steps")
-        nav_str = input("\nEnter your move here.")
-        validate_navigation(nav_str)
-        sleep(5)
 
 
 def print_level(levels, level_number):
@@ -237,8 +230,8 @@ def run_level(levels, level_number):
     print("Steps = a number between 1 and 9")
     print("e.g. U,3 will move your character up 3 steps")
     nav_str = input("\nEnter your move here.")
-    validate_navigation(nav_str)
-    sleep(5)
+    if validate_navigation(nav_str):
+    sleep(1)
 
 
 def multiplication_question():
@@ -329,6 +322,6 @@ def quit_game():
         quit_game()
 
 
-# start_game()
+start_game()
 
 # bonus_question()
