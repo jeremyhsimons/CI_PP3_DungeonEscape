@@ -355,7 +355,7 @@ def check_route(route, lives):
     """
     for i in route:
         print(i)
-        if i == "." or i == "A":
+        if i == "." or i == "A" or i == "@" or i == "%":
             print("OK")
         elif i == "|" or i == "-" or i == "_" or i == "O":
             print(NEW_SECTION)
@@ -363,10 +363,12 @@ def check_route(route, lives):
             print("You lose one life and move back to the start.")
             lives -= 1
             return False
-        elif i == "%":
-            print("math1")
-        elif i == "@":
-            print("math2")
+        
+        #elif i == "%":
+            #print("math1")
+        #elif i == "@":
+            #print("math2")
+        
         else:
             print("An unknown error occurred. Restarting level.")
             sleep(1)
