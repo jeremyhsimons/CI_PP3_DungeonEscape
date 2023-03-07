@@ -146,8 +146,6 @@ def start_game():
         for i in range(len(game_layout)):  # MAIN LOOP
             get_new_level = get_level(game_layout, i, game_stats)
             # returns a list: [layout, number]
-            print_level(get_new_level)
-        # no return, just prints level to terminal
             run_level(get_new_level, lives)
 
             LEVELS_PLAYED += 1
@@ -253,6 +251,8 @@ def run_level(current_level, lives):
     Runs the game logic for each level.
     """
     while current_level[0][3][10] == "b":
+        current_layout = current_level[0]
+        print_level(current_layout)
         print("Enter your move in the form DIRECTION,STEPS")
         print("Direction = L, R, U, or D (left, right, up, down)")
         print("Steps = a number between 1 and 9")
