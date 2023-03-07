@@ -88,6 +88,15 @@ def validate_navigation(data):
     Checks if the user's input for moving around the level
     matches what is expected.
     """
+    try:
+        if "," not in data:
+            raise ValueError(
+                 "Please separate the direction and steps with ','"
+            )
+    except ValueError as k:
+        print(f"Invalid entry: {k}")
+        return False
+
     nav_input = data.split(",")
     try:
         if not (
