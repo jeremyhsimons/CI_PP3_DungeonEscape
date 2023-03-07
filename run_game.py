@@ -251,6 +251,7 @@ def run_level(current_level, lives, stats):
     """
     Runs the game logic for each level.
     """
+    player_position = [0, 3]
     while current_level[0][3][10] == "B":
         current_layout = current_level[0]
         print(f"\n{stats}")
@@ -263,7 +264,6 @@ def run_level(current_level, lives, stats):
         if validate_navigation(nav_str):
             nav_data = nav_str.split(",")
             int_nav_data = [nav_data[0], int(nav_data[1])]
-            player_position = [0, 3]
             new_position = calc_navigation(int_nav_data, player_position)
             if new_position[0] > 10 or new_position[0] < 0:
                 print("You've moved out of bounds! You lose 1 life")
@@ -284,9 +284,13 @@ def run_level(current_level, lives, stats):
                         )
                     if move_result[1]:
                         print("successful move")
-                sleep(1)
+                        current_layout = move_result[0]
+                        player_position = new_position
+                        print(current_layout)
+                        current_level[0] = current_layout
+                        print_level(current_level)
         else:
-            run_level(current_level, lives)
+            run_level(current_level, lives, stats)
 
 
 def calc_navigation(nav, position):
