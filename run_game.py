@@ -241,7 +241,6 @@ def run_level(levels, level_number):
     sleep(5)
 
 
-
 def multiplication_question():
     """
     A function that generates a random multiplication question
@@ -306,7 +305,7 @@ def quit_game():
     print("Are you sure you want to quit?")
     quit_yes_no = input("\nType y for yes, n for no: \n")
     if validate_yes_no(quit_yes_no):
-        print("Would you like to give us feedback on this game?")
+        print("\nWould you like to give us feedback on this game?")
         feedback_yes_no = input("\nType y for yes, n for no: \n")
         if validate_yes_no(feedback_yes_no):
             if feedback_yes_no == "y":
