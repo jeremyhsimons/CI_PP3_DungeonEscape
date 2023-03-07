@@ -144,14 +144,15 @@ def start_game():
             f"points: {points}"
             ]
         for i in range(len(game_layout)):  # MAIN LOOP
-            get_new_level = get_level(game_layout, i, game_stats)
+            get_new_level = get_level(game_layout, i)
             # returns a list: [layout, number]
-            run_level(get_new_level, lives)
+            print_level(game_layout)
+            run_level(get_new_level, lives, game_stats)
 
             LEVELS_PLAYED += 1
             points += 15
             if LEVELS_PLAYED >= 10:
-                quit_game()
+                print("Game ended")
 
 
 def random_layout_selector():
@@ -226,13 +227,10 @@ def run_menu(player):
         run_menu(player)
 
 
-def get_level(levels, level_number, stats):
+def get_level(levels, level_number):
     """
-    Runs the level and prints it to the terminal.
+    Gets the current level from the .
     """
-    clear_screen()
-    print(stats)
-    print(NEW_SECTION)
     current_level = [levels[level_number], level_number]
     return current_level
 
@@ -246,13 +244,15 @@ def print_level(data):
         print(y)
 
 
-def run_level(current_level, lives):
+def run_level(current_level, lives, stats):
     """
     Runs the game logic for each level.
     """
-    while current_level[0][3][10] == "b":
+    while current_level[0][3][10] == "B":
         current_layout = current_level[0]
-        print_level(current_layout)
+        clear_screen()
+        print(stats)
+        print(NEW_SECTION)
         print("Enter your move in the form DIRECTION,STEPS")
         print("Direction = L, R, U, or D (left, right, up, down)")
         print("Steps = a number between 1 and 9")
@@ -273,7 +273,6 @@ def run_level(current_level, lives):
                 lives -= 1
                 run_level(current_level, lives)
             else:
-                print("position OK")
                 if nav_data[0] == "R":
                     check_move_right(
                         current_level, player_position, new_position, lives
@@ -324,6 +323,8 @@ def check_move_right(level, pos1, pos2, lives):
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return level_layout
+    else:
+        run_level(level, lives)
 
 
 def check_move_up(level):
@@ -345,7 +346,8 @@ def check_route(route, lives):
     Checks if the player runs into any obstacles in their move.
     """
     for i in route:
-        if i == ".":
+        print(i)
+        if i == "." or "A":
             print("OK")
         elif i == "|" or i == "-" or i == "_" or i == "O":
             print(NEW_SECTION)
