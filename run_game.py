@@ -125,7 +125,31 @@ def start_game():
     level_order = random_layout_selector()
     game_layout = generate_levels(level_order)
     current_player = generate_player()
-    run_menu(current_player, game_layout)
+    menu = run_menu(current_player)
+    if menu == 1:
+        print("instructions")
+    elif menu == 2:
+        quit_game()
+    elif menu == 3:
+        # All wrapped in For loop that loops through game layout.
+        # Successfull passing of each level, triggers next iteration.
+        # Each successful iteration adds 1 to LEVELS_PLAYED
+        # At the end of each iteration, LEVELS_PLAYED is checked to see
+        # if winning conditions are met.
+        LEVELS_PLAYED = 0
+        lives = current_player.lives
+        points = current_player.points
+        for i in range(len(game_layout)):  # MAIN LOOP
+            get_new_level = get_level(game_layout, i)
+            # returns a list: [layout, number]
+            print_level(get_new_level)
+        # no return, just prints level to terminal
+            run_level(get_new_level)
+
+            LEVELS_PLAYED += 1
+            points += 15
+            if LEVELS_PLAYED >= 10:
+                quit_game()
 
 
 def random_layout_selector():
@@ -172,7 +196,7 @@ def clear_screen():
     os.system("cls" if os.name == 'nt' else "clear")
 
 
-def run_menu(player, levels):
+def run_menu(player):
     """
     Creates a menu for the player to decide whether or not to
     read the instructions, quit, or play the game.
@@ -187,20 +211,20 @@ def run_menu(player, levels):
     menu_selection = input("Type your choice here: \n")
     if validate_main_menu(menu_selection):
         if menu_selection == "i":
-            print("These are the instructions")
+            return 1
         elif menu_selection == "s":
             print("Starting...")
             sleep(0.5)
             print(NEW_SECTION)
             sleep(0.5)
-            get_level(levels)
+            return 3
         elif menu_selection == "x":
-            quit_game()
+            return 2
     else:
-        run_menu(player, levels)
+        run_menu(player)
 
 
-def get_level(levels):
+def get_level(levels, level_number):
     """
     Runs the level and prints it to the terminal.
     """
@@ -208,20 +232,20 @@ def get_level(levels):
         clear_screen()
         print("stats")
         print(NEW_SECTION)
-        print_level(levels, i)
-        run_level(levels, i)
+        current_level = [levels[level_number], level_number]
+        return current_level
 
 
-def print_level(levels, level_number):
+def print_level(data):
     """
     Prints the current level to the terminal.
     """
-    for j in levels[level_number]:
+    for j in data[0]:
         y = " ".join(j)
         print(y)
 
 
-def run_level(levels, level_number):
+def run_level(current_level):
     """
     Runs the game logic for each level.
     """
@@ -243,7 +267,7 @@ def run_level(levels, level_number):
             print("position OK")
             sleep(2)
     else:
-        run_level(levels, level_number)
+        run_level(current_level)
 
 
 def calc_navigation(nav, position):
