@@ -231,7 +231,43 @@ def run_level(levels, level_number):
     print("e.g. U,3 will move your character up 3 steps")
     nav_str = input("\nEnter your move here.")
     if validate_navigation(nav_str):
-    sleep(1)
+        nav_data = nav_str.split(",")
+        int_nav_data = [nav_data[0], int(nav_data[1])]
+        player_position = [0, 3]
+        new_position = calc_navigation(int_nav_data, player_position)
+        if new_position[0] > 10 or new_position[0] < 0:
+            print("You've moved out of bounds! You lose 1 life")
+        elif new_position[1] > 6 or new_position[1] < 0:
+            print("You've moved out of bounds! You lose 1 life")
+        else:
+            print("position OK")
+            sleep(2)
+    else:
+        run_level(levels, level_number)
+
+
+def calc_navigation(nav, position):
+    """
+    Calculates where the player is in the level, and where
+    they will move to based on their input.
+    """
+    if nav[0] == "L":
+        new_position = [(position[0] - nav[1]), position[1]]
+        print(new_position)
+        # nav_result = loop_left(position, new_position)
+        return new_position
+    if nav[0] == "R":
+        position = [(position[0] + nav[1]), position[1]]
+        print(position)
+        return position
+    if nav[0] == "U":
+        position = [position[0], (position[1] - nav[1])]
+        print(position)
+        return position
+    if nav[0] == "D":
+        position = [position[0], (position[1] + nav[1])]
+        print(position)
+        return position
 
 
 def multiplication_question():
