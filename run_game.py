@@ -139,8 +139,8 @@ def start_game():
         lives = current_player.lives
         points = current_player.points
         game_stats = [
-            f"Level: {LEVELS_PLAYED + 1}", 
-            f"Lives: {lives}", 
+            f"Level: {LEVELS_PLAYED + 1}",
+            f"Lives: {lives}",
             f"points: {points}"
             ]
         for i in range(len(game_layout)):  # MAIN LOOP
@@ -252,9 +252,12 @@ def run_level(current_level, lives, stats):
     Runs the game logic for each level.
     """
     player_position = [0, 3]
+    game_lives = lives
+    game_stats = stats
     while current_level[0][3][10] == "B":
         current_layout = current_level[0]
-        print(f"\n{stats}")
+        print(game_lives)
+        print(f"\n{game_stats}")
         print(NEW_SECTION)
         print("Enter your move in the form DIRECTION,STEPS")
         print("Direction = L, R, U, or D (left, right, up, down)")
@@ -289,6 +292,10 @@ def run_level(current_level, lives, stats):
                         print(current_layout)
                         current_level[0] = current_layout
                         print_level(current_level)
+                    elif move_result[1] == 0:
+                        run_level(current_level, lives, stats)
+                    else:
+                        pass
         else:
             run_level(current_level, lives, stats)
 
@@ -334,9 +341,11 @@ def check_move_right(level, pos1, pos2, lives, stats):
     if check_route(route, lives):
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, True]
+        return [level_layout, True, lives]
+    elif check_route(route, lives) == 0:
+        return [level_layout, 0, lives]
     else:
-        run_level(level, lives, stats)
+        return [level_layout, False, lives]
 
 
 def check_move_up(level):
@@ -365,7 +374,6 @@ def check_route(route, lives):
             print(NEW_SECTION)
             print("You tried to move through a wall!")
             print("You lose one life and move back to the start.")
-            lives -= 1
             return False
         
         #elif i == "%":
@@ -378,7 +386,7 @@ def check_route(route, lives):
             sleep(1)
             print(NEW_SECTION)
             sleep(1)
-            return False
+            return 0
 
     return True
 
