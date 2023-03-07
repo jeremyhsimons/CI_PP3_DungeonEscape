@@ -268,17 +268,22 @@ def run_level(current_level, lives, stats):
             if new_position[0] > 10 or new_position[0] < 0:
                 print("You've moved out of bounds! You lose 1 life")
                 lives -= 1
-                run_level(current_level, lives)
+                run_level(current_level, lives, stats)
             elif new_position[1] > 6 or new_position[1] < 0:
                 print("You've moved out of bounds!")
                 print("You lose 1 life and must restart the level.")
                 lives -= 1
-                run_level(current_level, lives)
+                run_level(current_level, lives, stats)
             else:
                 if nav_data[0] == "R":
-                    check_move_right(
-                        current_level, player_position, new_position, lives
+                    move_result = check_move_right(
+                        current_level,
+                        player_position,
+                        new_position,
+                        lives, stats
                         )
+                    if move_result[1]:
+                        print("successful move")
                 sleep(1)
         else:
             run_level(current_level, lives)
@@ -314,19 +319,20 @@ def check_move_left(level, pos1, pos2):
     """
 
 
-def check_move_right(level, pos1, pos2, lives):
+def check_move_right(level, pos1, pos2, lives, stats):
     """
     Checks the players move by looping forward through the level
     list to see if their route is valid.
     """
     level_layout = level[0]
     route = level_layout[pos1[1]][pos1[0]:pos2[0]+1]
+    print(route)
     if check_route(route, lives):
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
-        return level_layout
+        return [level_layout, True]
     else:
-        run_level(level, lives)
+        run_level(level, lives, stats)
 
 
 def check_move_up(level):
@@ -349,7 +355,7 @@ def check_route(route, lives):
     """
     for i in route:
         print(i)
-        if i == "." or "A":
+        if i == "." or i == "A":
             print("OK")
         elif i == "|" or i == "-" or i == "_" or i == "O":
             print(NEW_SECTION)
