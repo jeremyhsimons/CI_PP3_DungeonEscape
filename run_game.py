@@ -268,17 +268,24 @@ def run_level(current_level, lives, stats):
         if validate_navigation(nav_str):
             nav_data = nav_str.split(",")
             int_nav_data = [nav_data[0], int(nav_data[1])]
-            new_position = calc_navigation(int_nav_data, player_position, current_level)
-            if int_nav_data[0] > 10 or int_nav_data[0] < 0:
-                print("You've moved out of bounds! You lose 1 life")
+            player_move = calc_navigation(
+                int_nav_data,
+                player_position,
+                current_level)
+            if player_move[2] is False:
                 lives -= 1
+                print_level(current_level)
                 run_level(current_level, lives, stats)
-            elif int_nav_data[1] > 6 or int_nav_data[1] < 0:
-                print("You've moved out of bounds!")
-                print("You lose 1 life and must restart the level.")
-                lives -= 1
-                run_level(current_level, lives, stats)
-          
+            if player_move[1] is True:
+                print("Successful move")
+                sleep(2)
+            elif player_move[1] == 0:
+                print("level complete")
+                sleep(2)
+            else:
+                print("You lose a life!")
+                sleep(2)
+        """
             if nav_data[0] == "R":
                 move_result = check_move_right(
                     current_level,
@@ -357,8 +364,9 @@ def run_level(current_level, lives, stats):
             clear_screen()
             sleep(1)
             level_win = True
-        else:
-            run_level(current_level, lives, stats)
+        """
+        #else:
+            #run_level(current_level, lives, stats)
 
 
 def check_out_of_bounds(data):
@@ -394,6 +402,8 @@ def calc_navigation(nav, position, level):
     if nav[0] == "D":
         new_position = [position[0], (position[1] + nav[1])]
         outcome = check_move_down(level, position, new_position)
+    out_of_bounds = check_out_of_bounds(new_position)
+    outcome = outcome.append(out_of_bounds)
     return outcome
 
 
