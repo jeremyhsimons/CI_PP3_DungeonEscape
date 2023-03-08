@@ -276,7 +276,7 @@ def run_level(current_level, lives, stats):
                 print("You lose 1 life and must restart the level.")
                 lives -= 1
                 run_level(current_level, lives, stats)
-            
+          
             if nav_data[0] == "R":
                 move_result = check_move_right(
                     current_level,
@@ -293,7 +293,7 @@ def run_level(current_level, lives, stats):
                 elif move_result[1] == 0:
                     run_level(current_level, lives, stats)
                 else:
-                    pass
+                    print("PLEASE TRY AGAIN")
 
             if nav_data[0] == "L":
                 move_result = check_move_left(
@@ -311,12 +311,12 @@ def run_level(current_level, lives, stats):
                 elif move_result[1] == 0:
                     run_level(current_level, lives, stats)
                 else:
-                    pass
+                    print("PLEASE TRY AGAIN")
 
             if nav_data[0] == "D":
                 move_result = check_move_down(
-                    current_level, 
-                    player_position, 
+                    current_level,
+                    player_position,
                     new_position
                     )
                 if move_result[1]:
@@ -329,12 +329,12 @@ def run_level(current_level, lives, stats):
                 elif move_result[1] == 0:
                     run_level(current_level, lives, stats)
                 else:
-                    pass
+                    print("PLEASE TRY AGAIN")
 
             if nav_data[0] == "U":
                 move_result = check_move_up(
-                    current_level, 
-                    player_position, 
+                    current_level,
+                    player_position,
                     new_position
                     )
                 if move_result[1]:
@@ -347,8 +347,7 @@ def run_level(current_level, lives, stats):
                 elif move_result[1] == 0:
                     run_level(current_level, lives, stats)
                 else:
-                    pass
-
+                    print("PLEASE TRY AGAIN")
 
         else:
             run_level(current_level, lives, stats)
@@ -422,7 +421,7 @@ def check_move_up(level, pos1, pos2):
     col = []
     for i in range(len(level_layout)):
         col.append(level_layout[i][pos1[0]])
-    route = col[pos1[1]:pos2[1] + 1]
+    route = col[pos2[1]:pos1[1] + 1]
     if check_route(route):
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
@@ -459,26 +458,18 @@ def check_route(route):
     """
     for i in route:
         if i == "." or i == "A" or i == "@" or i == "%":
-            pass
+            return True
         elif i == "|" or i == "-" or i == "_" or i == "O":
             print(NEW_SECTION)
             print("You tried to move through a wall!")
             print("You lose one life and move back to the start.")
             return False
-        
-        #elif i == "%":
-            #print("math1")
-        #elif i == "@":
-            #print("math2")
-        
         else:
             print("An unknown error occurred. Restarting level.")
             sleep(1)
             print(NEW_SECTION)
             sleep(1)
             return 0
-
-    return True
 
 
 def process_move_result(move_result, current_level, current_layout, new_position):
