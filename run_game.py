@@ -256,10 +256,8 @@ def run_level(current_level, lives, stats):
     game_stats = stats
     while current_level[0][3][10] == "B":
         current_layout = current_level[0]
-        print(game_lives)
         print(f"\n{game_stats}")
         print(NEW_SECTION)
-        print(player_position)
         print("Enter your move in the form DIRECTION,STEPS")
         print("Direction = L, R, U, or D (left, right, up, down)")
         print("Steps = a number between 1 and 9")
@@ -315,6 +313,43 @@ def run_level(current_level, lives, stats):
                 else:
                     pass
 
+            if nav_data[0] == "D":
+                move_result = check_move_down(
+                    current_level, 
+                    player_position, 
+                    new_position
+                    )
+                if move_result[1]:
+                    print("successful move")
+                    current_layout = move_result[0]
+                    player_position = new_position
+                    print(current_layout)
+                    current_level[0] = current_layout
+                    print_level(current_level)
+                elif move_result[1] == 0:
+                    run_level(current_level, lives, stats)
+                else:
+                    pass
+
+            if nav_data[0] == "U":
+                move_result = check_move_up(
+                    current_level, 
+                    player_position, 
+                    new_position
+                    )
+                if move_result[1]:
+                    print("successful move")
+                    current_layout = move_result[0]
+                    player_position = new_position
+                    print(current_layout)
+                    current_level[0] = current_layout
+                    print_level(current_level)
+                elif move_result[1] == 0:
+                    run_level(current_level, lives, stats)
+                else:
+                    pass
+
+
         else:
             run_level(current_level, lives, stats)
 
@@ -348,7 +383,7 @@ def check_move_left(level, pos1, pos2):
     list to see if their route is valid.
     """
     level_layout = level[0]
-    route = level_layout[pos1[1]][pos2[0]:pos1[0]+1]
+    route = level_layout[pos1[1]][pos2[0]:pos1[0] + 1]
     print(route)
     if check_route(route):
         level_layout[pos1[1]][pos1[0]] = "."
@@ -366,7 +401,7 @@ def check_move_right(level, pos1, pos2):
     list to see if their route is valid.
     """
     level_layout = level[0]
-    route = level_layout[pos1[1]][pos1[0]:pos2[0]+1]
+    route = level_layout[pos1[1]][pos1[0]:pos2[0] + 1]
     print(route)
     if check_route(route):
         level_layout[pos1[1]][pos1[0]] = "."
@@ -378,18 +413,44 @@ def check_move_right(level, pos1, pos2):
         return [level_layout, False]
 
 
-def check_move_up(level):
+def check_move_up(level, pos1, pos2):
     """
     Checks the player's move by looping back through the elements of
     each level list with the same index as the player horizontal position.
     """
+    level_layout = level[0]
+    col = []
+    for i in range(len(level_layout)):
+        col.append(level_layout[i][pos1[0]])
+    route = col[pos1[1]:pos2[1] + 1]
+    if check_route(route):
+        level_layout[pos1[1]][pos1[0]] = "."
+        level_layout[pos2[1]][pos2[0]] = "A"
+        return [level_layout, True]
+    elif check_route(route) == 0:
+        return [level_layout, 0]
+    else:
+        return [level_layout, False]
 
 
-def check_move_down(level):
+def check_move_down(level, pos1, pos2):
     """
     Checks the player's move by looping forward through the elements of
     each level list with the same index as the player horizontal position.
     """
+    level_layout = level[0]
+    col = []
+    for i in range(len(level_layout)):
+        col.append(level_layout[i][pos1[0]])
+    route = col[pos1[1]:pos2[1] + 1]
+    if check_route(route):
+        level_layout[pos1[1]][pos1[0]] = "."
+        level_layout[pos2[1]][pos2[0]] = "A"
+        return [level_layout, True]
+    elif check_route(route) == 0:
+        return [level_layout, 0]
+    else:
+        return [level_layout, False]
 
 
 def check_route(route):
