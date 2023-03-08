@@ -149,6 +149,8 @@ def start_game():
             print_level(game_layout)
             sleep(0.5)
             run_level(get_new_level, lives, game_stats)
+            clear_screen()
+            print("### LEVEL COMPLETED ###")
 
             LEVELS_PLAYED += 1
             points += 15
@@ -252,26 +254,26 @@ def run_level(current_level, lives, stats):
     Runs the game logic for each level.
     """
     player_position = [0, 3]
-    game_lives = lives
-    game_stats = stats
-    while current_level[0][3][10] == "B":
+    level_win = False
+
+    while level_win is False:
         current_layout = current_level[0]
-        print(f"\n{game_stats}")
+        print(f"\n{stats}")
         print(NEW_SECTION)
         print("Enter your move in the form DIRECTION,STEPS")
         print("Direction = L, R, U, or D (left, right, up, down)")
         print("Steps = a number between 1 and 9")
         print("e.g. U,3 will move your character up 3 steps")
-        nav_str = input("\nEnter your move here.")
+        nav_str = input("\nEnter your move here: \n")
         if validate_navigation(nav_str):
             nav_data = nav_str.split(",")
             int_nav_data = [nav_data[0], int(nav_data[1])]
-            new_position = calc_navigation(int_nav_data, player_position)
-            if new_position[0] > 10 or new_position[0] < 0:
+            new_position = calc_navigation(int_nav_data, player_position, current_level)
+            if int_nav_data[0] > 10 or int_nav_data[0] < 0:
                 print("You've moved out of bounds! You lose 1 life")
                 lives -= 1
                 run_level(current_level, lives, stats)
-            elif new_position[1] > 6 or new_position[1] < 0:
+            elif int_nav_data[1] > 6 or int_nav_data[1] < 0:
                 print("You've moved out of bounds!")
                 print("You lose 1 life and must restart the level.")
                 lives -= 1
@@ -283,7 +285,7 @@ def run_level(current_level, lives, stats):
                     player_position,
                     new_position,
                     )
-                if move_result[1]:
+                if move_result[1] is True:
                     print("successful move")
                     current_layout = move_result[0]
                     player_position = new_position
@@ -291,8 +293,8 @@ def run_level(current_level, lives, stats):
                     current_level[0] = current_layout
                     print_level(current_level)
                 elif move_result[1] == 0:
-                    run_level(current_level, lives, stats)
-                elif not move_result[1]:
+                    pass
+                else:
                     print("PLEASE TRY AGAIN")
                     sleep(5)
 
@@ -310,7 +312,7 @@ def run_level(current_level, lives, stats):
                     current_level[0] = current_layout
                     print_level(current_level)
                 elif move_result[1] == 0:
-                    run_level(current_level, lives, stats)
+                    pass
                 elif not move_result[1]:
                     print("PLEASE TRY AGAIN")
                     sleep(5)
@@ -329,7 +331,7 @@ def run_level(current_level, lives, stats):
                     current_level[0] = current_layout
                     print_level(current_level)
                 elif move_result[1] == 0:
-                    run_level(current_level, lives, stats)
+                    pass
                 elif not move_result[1]:
                     print("PLEASE TRY AGAIN")
                     sleep(5)
@@ -348,32 +350,51 @@ def run_level(current_level, lives, stats):
                     current_level[0] = current_layout
                     print_level(current_level)
                 elif move_result[1] == 0:
-                    run_level(current_level, lives, stats)
+                    pass
                 elif not move_result[1]:
                     print("PLEASE TRY AGAIN")
                     sleep(5)
-
+            clear_screen()
+            sleep(1)
+            level_win = True
         else:
             run_level(current_level, lives, stats)
 
 
-def calc_navigation(nav, position):
+def check_out_of_bounds(data):
+    """
+    Checks if the player is trying to move beyond the
+    boundaries of the level.
+    """
+    if data[0] > 10 or data[0] < 0:
+        print("You've moved out of bounds! You lose 1 life")
+        return False
+    elif data[1] > 6 or data[1] < 0:
+        print("You've moved out of bounds!")
+        print("You lose 1 life and must restart the level.")
+        return False
+    else:
+        return True
+
+
+def calc_navigation(nav, position, level):
     """
     Calculates where the player is in the level, and where
     they will move to based on their input.
     """
     if nav[0] == "L":
-        position = [(position[0] - nav[1]), position[1]]
-        return position
+        new_position = [(position[0] - nav[1]), position[1]]
+        outcome = check_move_left(level, position, new_position)
     if nav[0] == "R":
-        position = [(position[0] + nav[1]), position[1]]
-        return position
+        new_position = [(position[0] + nav[1]), position[1]]
+        outcome = check_move_right(level, position, new_position)
     if nav[0] == "U":
-        position = [position[0], (position[1] - nav[1])]
-        return position
+        new_position = [position[0], (position[1] - nav[1])]
+        outcome = check_move_up(level, position, new_position)
     if nav[0] == "D":
-        position = [position[0], (position[1] + nav[1])]
-        return position
+        new_position = [position[0], (position[1] + nav[1])]
+        outcome = check_move_down(level, position, new_position)
+    return outcome
 
 
 def check_move_left(level, pos1, pos2):
