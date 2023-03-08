@@ -257,7 +257,6 @@ def run_level(current_level, lives, stats):
     level_win = False
 
     while level_win is False:
-        original_level = current_level
         current_layout = current_level[0]
         print(f"\n{stats}")
         print(NEW_SECTION)
@@ -275,8 +274,8 @@ def run_level(current_level, lives, stats):
             int_nav_data,
             player_position,
             current_layout)
-          
-        if player_move[2] is False:
+         
+        if player_move[3] is False:
             sleep(1)
             print("You moved out of bounds!")
             sleep(1)
@@ -284,16 +283,25 @@ def run_level(current_level, lives, stats):
             clear_screen()
             sleep(1)
             print_level([current_layout, 1])
-            run_level(original_level, lives, stats)
-        if player_move[1] is True:
-            print("Successful move")
-            
+            run_level(current_level, lives, stats)
+        if player_move[1]:
+            print(player_move)
+            current_layout = player_move[0]
+            player_position = player_move[2]
+            current_level[0] = current_layout
+            clear_screen()
+            print_level(current_level)
+        elif not player_move[1]:
+            lives -= 1
+            sleep(2)
         elif player_move[1] == 0:
-            print("level complete")
+            level_win = True
             sleep(2)
-        else:
-            print("You lose a life!")
-            sleep(2)
+    clear_screen()
+    print(NEW_SECTION)
+    print(f"Level {current_level[1]} complete")
+    print(lives)
+    return lives
 
 
 def check_out_of_bounds(data):
@@ -342,14 +350,14 @@ def check_move_left(level, pos1, pos2):
     route = level_layout[pos1[1]][pos2[0]:pos1[0] + 1]
     route_checked = check_route(route)
 
-    if route_checked is True:
+    if route_checked == 1:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, True, pos2, out_of_bounds]
+        return [level_layout, 1, pos2, out_of_bounds]
     elif route_checked == 0:
         return [level_layout, 0, pos2, out_of_bounds]
     else:
-        return [level_layout, False, pos2, out_of_bounds]
+        return [level_layout, 2, pos2, out_of_bounds]
 
 
 def check_move_right(level, pos1, pos2):
@@ -362,14 +370,14 @@ def check_move_right(level, pos1, pos2):
     route = level_layout[pos1[1]][pos1[0]:pos2[0] + 1]
     route_checked = check_route(route)
 
-    if route_checked is True:
+    if route_checked == 1:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, True, pos2, out_of_bounds]
+        return [level_layout, 1, pos2, out_of_bounds]
     elif route_checked == 0:
         return [level_layout, 0, pos2, out_of_bounds]
     else:
-        return [level_layout, False, pos2, out_of_bounds]
+        return [level_layout, 2, pos2, out_of_bounds]
 
 
 def check_move_up(level, pos1, pos2):
@@ -384,15 +392,15 @@ def check_move_up(level, pos1, pos2):
         col.append(level_layout[i][pos1[0]])
     route = col[pos2[1]:pos1[1] + 1]
     route_checked = check_route(route)
-    
-    if route_checked is True:
+
+    if route_checked == 1:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, True, pos2, out_of_bounds]
+        return [level_layout, 1, pos2, out_of_bounds]
     elif route_checked == 0:
         return [level_layout, 0, pos2, out_of_bounds]
     else:
-        return [level_layout, False, pos2, out_of_bounds]
+        return [level_layout, 2, pos2, out_of_bounds]
 
 
 def check_move_down(level, pos1, pos2):
@@ -408,14 +416,14 @@ def check_move_down(level, pos1, pos2):
     route = col[pos1[1]:pos2[1] + 1]
     route_checked = check_route(route)
 
-    if route_checked is True:
+    if route_checked == 1:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, True, pos2, out_of_bounds]
+        return [level_layout, 1, pos2, out_of_bounds]
     elif route_checked == 0:
         return [level_layout, 0, pos2, out_of_bounds]
     else:
-        return [level_layout, False, pos2, out_of_bounds]
+        return [level_layout, 2, pos2, out_of_bounds]
 
 
 def check_route(route):
@@ -427,11 +435,11 @@ def check_route(route):
         sleep(1)
         print("You lose one life!")
         sleep(1)
-        return False
-    elif "B" in route:
+        return 2
+    elif "B" and not ("|" or "_" or "-" or "O") in route:
         return 0
     else:
-        return True
+        return 1
 
 
 def multiplication_question():
