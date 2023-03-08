@@ -149,10 +149,8 @@ def start_game():
             print_level(get_new_level)
             sleep(0.5)
             lives = run_level(get_new_level, lives, game_stats)
-            clear_screen()
-            print("### LEVEL COMPLETED ###")
-            points += 10
-
+            print(f"### LEVEL COMPLETED ### Lives remaining: {lives}")
+            sleep(0.5)
             LEVELS_PLAYED += 1
             points += 15
             if LEVELS_PLAYED >= 10:
@@ -303,13 +301,14 @@ def run_level(current_level, lives, stats):
             sleep(2)
             break
     clear_screen()
-    sleep(0.2)
+    level_win = True
+    sleep(2)
     print(NEW_SECTION)
     sleep(0.2)
-    print(f"Level {current_level[1]} complete")
+    print(f"Level {current_level[1] + 1} complete")
     sleep(0.2)
     print(lives)
-    sleep(10)
+    sleep(2)
     return lives
 
 
