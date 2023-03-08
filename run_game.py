@@ -400,6 +400,7 @@ def check_move_right(level, pos1, pos2):
     """
     level_layout = level[0]
     route = level_layout[pos1[1]][pos1[0]:pos2[0] + 1]
+    print(route)
     if check_route(route):
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
@@ -454,40 +455,15 @@ def check_route(route):
     """
     Checks if the player runs into any obstacles in their move.
     """
-    for i in route:
-        if i == "." or i == "A" or i == "@" or i == "%":
-            pass
-        elif i == "|" or i == "-" or i == "_" or i == "O":
-            print(NEW_SECTION)
-            print("You tried to move through a wall!")
-            print("You lose one life and move back to the start.")
-            sleep(1)
-            return False
-        else:
-            print("An unknown error occurred. Restarting level.")
-            sleep(1)
-            print(NEW_SECTION)
-            sleep(1)
-            return 0
-    return True
-
-
-def process_move_result(move_result, current_level, current_layout, new_position):
-    """
-    Tells the run_level function what to do with result from
-    player's move.
-    """
-    if move_result[1]:
-        print("successful move")
-        current_layout = move_result[0]
-        player_position = new_position
-        print(current_layout)
-        current_level[0] = current_layout
-        print_level(current_level)
-    elif move_result[1] == 0:
-        run_level(current_level, lives, stats)
+    if ("|", "_", "-", "O") in route:
+        print("You tried to navigate into a wall.")
+        print("You lose one life!")
+        return False
+    elif "B" in route:
+        return 0
     else:
-        pass
+        return True
+
 
 
 def multiplication_question():
