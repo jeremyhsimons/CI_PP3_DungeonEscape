@@ -257,6 +257,7 @@ def run_level(current_level, lives, stats):
     level_win = False
 
     while level_win is False:
+        original_level = current_level
         current_layout = current_level[0]
         print(f"\n{stats}")
         print(NEW_SECTION)
@@ -268,107 +269,31 @@ def run_level(current_level, lives, stats):
         if validate_navigation(nav_str):
             nav_data = nav_str.split(",")
             int_nav_data = [nav_data[0], int(nav_data[1])]
-            player_move = calc_navigation(
-                int_nav_data,
-                player_position,
-                current_level)
-            
-            if player_move[2] is False:
-                lives -= 1
-                print_level(current_level)
-                run_level(current_level, lives, stats)
-            if player_move[1] is True:
-                print("Successful move")
-                sleep(2)
-            elif player_move[1] == 0:
-                print("level complete")
-                sleep(2)
-            else:
-                print("You lose a life!")
-                sleep(2)
-        """
-            if nav_data[0] == "R":
-                move_result = check_move_right(
-                    current_level,
-                    player_position,
-                    new_position,
-                    )
-                if move_result[1] is True:
-                    print("successful move")
-                    current_layout = move_result[0]
-                    player_position = new_position
-                    print(current_layout)
-                    current_level[0] = current_layout
-                    print_level(current_level)
-                elif move_result[1] == 0:
-                    pass
-                else:
-                    print("PLEASE TRY AGAIN")
-                    sleep(5)
-
-            if nav_data[0] == "L":
-                move_result = check_move_left(
-                    current_level,
-                    player_position,
-                    new_position,
-                    )
-                if move_result[1]:
-                    print("successful move")
-                    current_layout = move_result[0]
-                    player_position = new_position
-                    print(current_layout)
-                    current_level[0] = current_layout
-                    print_level(current_level)
-                elif move_result[1] == 0:
-                    pass
-                elif not move_result[1]:
-                    print("PLEASE TRY AGAIN")
-                    sleep(5)
-
-            if nav_data[0] == "D":
-                move_result = check_move_down(
-                    current_level,
-                    player_position,
-                    new_position
-                    )
-                if move_result[1]:
-                    print("successful move")
-                    current_layout = move_result[0]
-                    player_position = new_position
-                    print(current_layout)
-                    current_level[0] = current_layout
-                    print_level(current_level)
-                elif move_result[1] == 0:
-                    pass
-                elif not move_result[1]:
-                    print("PLEASE TRY AGAIN")
-                    sleep(5)
-
-            if nav_data[0] == "U":
-                move_result = check_move_up(
-                    current_level,
-                    player_position,
-                    new_position
-                    )
-                if move_result[1]:
-                    print("successful move")
-                    current_layout = move_result[0]
-                    player_position = new_position
-                    print(current_layout)
-                    current_level[0] = current_layout
-                    print_level(current_level)
-                elif move_result[1] == 0:
-                    pass
-                elif not move_result[1]:
-                    print("PLEASE TRY AGAIN")
-                    sleep(5)
+        else:
+            run_level(current_level, lives, stats)
+        player_move = calc_navigation(
+            int_nav_data,
+            player_position,
+            current_layout)
+          
+        if player_move[2] is False:
+            sleep(1)
+            print("You moved out of bounds!")
+            sleep(1)
+            lives -= 1
             clear_screen()
             sleep(1)
-            level_win = True
-        
-        #else:
-            #run_level(current_level, lives, stats)
-        """
+            print_level([current_layout, 1])
+            run_level(original_level, lives, stats)
+        if player_move[1] is True:
+            print("Successful move")
+            sleep(2)
+        elif player_move[1] == 0:
+            print("level complete")
+            sleep(2)
+        else:
+            print("You lose a life!")
+            sleep(2)
 
 
 def check_out_of_bounds(data):
@@ -413,11 +338,11 @@ def check_move_left(level, pos1, pos2):
     list to see if their route is valid.
     """
     out_of_bounds = check_out_of_bounds(pos2)
-    level_layout = level[0]
+    level_layout = level
     route = level_layout[pos1[1]][pos2[0]:pos1[0] + 1]
     route_checked = check_route(route)
 
-    if route_checked:
+    if route_checked is True:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, True, out_of_bounds]
@@ -433,11 +358,11 @@ def check_move_right(level, pos1, pos2):
     list to see if their route is valid.
     """
     out_of_bounds = check_out_of_bounds(pos2)
-    level_layout = level[0]
+    level_layout = level
     route = level_layout[pos1[1]][pos1[0]:pos2[0] + 1]
     route_checked = check_route(route)
 
-    if route_checked:
+    if route_checked is True:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, True, out_of_bounds]
@@ -453,14 +378,14 @@ def check_move_up(level, pos1, pos2):
     each level list with the same index as the player horizontal position.
     """
     out_of_bounds = check_out_of_bounds(pos2)
-    level_layout = level[0]
+    level_layout = level
     col = []
     for i in range(len(level_layout)):
         col.append(level_layout[i][pos1[0]])
     route = col[pos2[1]:pos1[1] + 1]
     route_checked = check_route(route)
     
-    if route_checked:
+    if route_checked is True:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, True, out_of_bounds]
@@ -476,14 +401,14 @@ def check_move_down(level, pos1, pos2):
     each level list with the same index as the player horizontal position.
     """
     out_of_bounds = check_out_of_bounds(pos2)
-    level_layout = level[0]
+    level_layout = level
     col = []
     for i in range(len(level_layout)):
         col.append(level_layout[i][pos1[0]])
     route = col[pos1[1]:pos2[1] + 1]
     route_checked = check_route(route)
 
-    if route_checked:
+    if route_checked is True:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, True, out_of_bounds]
