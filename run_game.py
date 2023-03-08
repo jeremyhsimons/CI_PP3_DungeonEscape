@@ -272,6 +272,7 @@ def run_level(current_level, lives, stats):
                 int_nav_data,
                 player_position,
                 current_level)
+            
             if player_move[2] is False:
                 lives -= 1
                 print_level(current_level)
@@ -364,9 +365,10 @@ def run_level(current_level, lives, stats):
             clear_screen()
             sleep(1)
             level_win = True
-        """
+        
         #else:
             #run_level(current_level, lives, stats)
+        """
 
 
 def check_out_of_bounds(data):
@@ -402,8 +404,6 @@ def calc_navigation(nav, position, level):
     if nav[0] == "D":
         new_position = [position[0], (position[1] + nav[1])]
         outcome = check_move_down(level, position, new_position)
-    out_of_bounds = check_out_of_bounds(new_position)
-    outcome = outcome.append(out_of_bounds)
     return outcome
 
 
@@ -412,17 +412,19 @@ def check_move_left(level, pos1, pos2):
     Checks the players move by looping back through the level
     list to see if their route is valid.
     """
+    out_of_bounds = check_out_of_bounds(pos2)
     level_layout = level[0]
     route = level_layout[pos1[1]][pos2[0]:pos1[0] + 1]
     route_checked = check_route(route)
+
     if route_checked:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, True]
+        return [level_layout, True, out_of_bounds]
     elif route_checked == 0:
-        return [level_layout, 0]
+        return [level_layout, 0, out_of_bounds]
     else:
-        return [level_layout, False]
+        return [level_layout, False, out_of_bounds]
 
 
 def check_move_right(level, pos1, pos2):
@@ -430,6 +432,7 @@ def check_move_right(level, pos1, pos2):
     Checks the players move by looping forward through the level
     list to see if their route is valid.
     """
+    out_of_bounds = check_out_of_bounds(pos2)
     level_layout = level[0]
     route = level_layout[pos1[1]][pos1[0]:pos2[0] + 1]
     route_checked = check_route(route)
@@ -437,11 +440,11 @@ def check_move_right(level, pos1, pos2):
     if route_checked:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, True]
+        return [level_layout, True, out_of_bounds]
     elif route_checked == 0:
-        return [level_layout, 0]
+        return [level_layout, 0, out_of_bounds]
     else:
-        return [level_layout, False]
+        return [level_layout, False, out_of_bounds]
 
 
 def check_move_up(level, pos1, pos2):
@@ -449,20 +452,22 @@ def check_move_up(level, pos1, pos2):
     Checks the player's move by looping back through the elements of
     each level list with the same index as the player horizontal position.
     """
+    out_of_bounds = check_out_of_bounds(pos2)
     level_layout = level[0]
     col = []
     for i in range(len(level_layout)):
         col.append(level_layout[i][pos1[0]])
     route = col[pos2[1]:pos1[1] + 1]
     route_checked = check_route(route)
+    
     if route_checked:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, True]
+        return [level_layout, True, out_of_bounds]
     elif route_checked == 0:
-        return [level_layout, 0]
+        return [level_layout, 0, out_of_bounds]
     else:
-        return [level_layout, False]
+        return [level_layout, False, out_of_bounds]
 
 
 def check_move_down(level, pos1, pos2):
@@ -470,20 +475,22 @@ def check_move_down(level, pos1, pos2):
     Checks the player's move by looping forward through the elements of
     each level list with the same index as the player horizontal position.
     """
+    out_of_bounds = check_out_of_bounds(pos2)
     level_layout = level[0]
     col = []
     for i in range(len(level_layout)):
         col.append(level_layout[i][pos1[0]])
     route = col[pos1[1]:pos2[1] + 1]
     route_checked = check_route(route)
+
     if route_checked:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, True]
+        return [level_layout, True, out_of_bounds]
     elif route_checked == 0:
-        return [level_layout, 0]
+        return [level_layout, 0, out_of_bounds]
     else:
-        return [level_layout, False]
+        return [level_layout, False, out_of_bounds]
 
 
 def check_route(route):
