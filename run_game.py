@@ -259,6 +259,7 @@ def run_level(current_level, lives, stats):
         print(game_lives)
         print(f"\n{game_stats}")
         print(NEW_SECTION)
+        print(player_position)
         print("Enter your move in the form DIRECTION,STEPS")
         print("Direction = L, R, U, or D (left, right, up, down)")
         print("Steps = a number between 1 and 9")
@@ -277,25 +278,43 @@ def run_level(current_level, lives, stats):
                 print("You lose 1 life and must restart the level.")
                 lives -= 1
                 run_level(current_level, lives, stats)
-            else:
-                if nav_data[0] == "R":
-                    move_result = check_move_right(
-                        current_level,
-                        player_position,
-                        new_position,
-                        lives,
-                        )
-                    if move_result[1]:
-                        print("successful move")
-                        current_layout = move_result[0]
-                        player_position = new_position
-                        print(current_layout)
-                        current_level[0] = current_layout
-                        print_level(current_level)
-                    elif move_result[1] == 0:
-                        run_level(current_level, lives, stats)
-                    else:
-                        pass
+            
+            if nav_data[0] == "R":
+                move_result = check_move_right(
+                    current_level,
+                    player_position,
+                    new_position,
+                    )
+                if move_result[1]:
+                    print("successful move")
+                    current_layout = move_result[0]
+                    player_position = new_position
+                    print(current_layout)
+                    current_level[0] = current_layout
+                    print_level(current_level)
+                elif move_result[1] == 0:
+                    run_level(current_level, lives, stats)
+                else:
+                    pass
+
+            if nav_data[0] == "L":
+                move_result = check_move_left(
+                    current_level,
+                    player_position,
+                    new_position,
+                    )
+                if move_result[1]:
+                    print("successful move")
+                    current_layout = move_result[0]
+                    player_position = new_position
+                    print(current_layout)
+                    current_level[0] = current_layout
+                    print_level(current_level)
+                elif move_result[1] == 0:
+                    run_level(current_level, lives, stats)
+                else:
+                    pass
+
         else:
             run_level(current_level, lives, stats)
 
@@ -323,7 +342,7 @@ def calc_navigation(nav, position):
         return position
 
 
-def check_move_left(level, pos1, pos2, lives):
+def check_move_left(level, pos1, pos2):
     """
     Checks the players move by looping back through the level
     list to see if their route is valid.
@@ -334,14 +353,14 @@ def check_move_left(level, pos1, pos2, lives):
     if check_route(route):
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, True, lives]
+        return [level_layout, True]
     elif check_route(route) == 0:
-        return [level_layout, 0, lives]
-    else: 
-        return [level_layout, False, lives]
+        return [level_layout, 0]
+    else:
+        return [level_layout, False]
 
 
-def check_move_right(level, pos1, pos2, lives):
+def check_move_right(level, pos1, pos2):
     """
     Checks the players move by looping forward through the level
     list to see if their route is valid.
@@ -352,11 +371,11 @@ def check_move_right(level, pos1, pos2, lives):
     if check_route(route):
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, True, lives]
+        return [level_layout, True]
     elif check_route(route) == 0:
-        return [level_layout, 0, lives]
+        return [level_layout, 0]
     else:
-        return [level_layout, False, lives]
+        return [level_layout, False]
 
 
 def check_move_up(level):
@@ -378,9 +397,8 @@ def check_route(route):
     Checks if the player runs into any obstacles in their move.
     """
     for i in route:
-        print(i)
         if i == "." or i == "A" or i == "@" or i == "%":
-            print("OK")
+            pass
         elif i == "|" or i == "-" or i == "_" or i == "O":
             print(NEW_SECTION)
             print("You tried to move through a wall!")
@@ -400,6 +418,24 @@ def check_route(route):
             return 0
 
     return True
+
+
+def process_move_result(move_result, current_level, current_layout, new_position):
+    """
+    Tells the run_level function what to do with result from
+    player's move.
+    """
+    if move_result[1]:
+        print("successful move")
+        current_layout = move_result[0]
+        player_position = new_position
+        print(current_layout)
+        current_level[0] = current_layout
+        print_level(current_level)
+    elif move_result[1] == 0:
+        run_level(current_level, lives, stats)
+    else:
+        pass
 
 
 def multiplication_question():
