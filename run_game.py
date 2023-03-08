@@ -146,11 +146,12 @@ def start_game():
         for i in range(len(game_layout)):  # MAIN LOOP
             get_new_level = get_level(game_layout, i)
             # returns a list: [layout, number]
-            print_level(game_layout)
+            print_level(get_new_level)
             sleep(0.5)
-            run_level(get_new_level, lives, game_stats)
+            lives = run_level(get_new_level, lives, game_stats)
             clear_screen()
             print("### LEVEL COMPLETED ###")
+            points += 10
 
             LEVELS_PLAYED += 1
             points += 15
@@ -258,6 +259,7 @@ def run_level(current_level, lives, stats):
 
     while level_win is False:
         current_layout = current_level[0]
+        level_screenshot = current_level[0]
         print(f"\n{stats}")
         print(NEW_SECTION)
         print("Enter your move in the form DIRECTION,STEPS")
@@ -277,30 +279,37 @@ def run_level(current_level, lives, stats):
          
         if player_move[3] is False:
             sleep(1)
-            print("You moved out of bounds!")
+            print("Restarting level!")
+            player_position = [0, 3]
             sleep(1)
             lives -= 1
             clear_screen()
             sleep(1)
-            print_level([current_layout, 1])
+            print_level([level_screenshot, 1])
             run_level(current_level, lives, stats)
-        if player_move[1]:
-            print(player_move)
+        if player_move[1] == 1:
+            sleep(0.2)
             current_layout = player_move[0]
             player_position = player_move[2]
             current_level[0] = current_layout
-            clear_screen()
             print_level(current_level)
-        elif not player_move[1]:
+        elif player_move[1] == 2:
+            print("WAAAA")
             lives -= 1
             sleep(2)
         elif player_move[1] == 0:
-            level_win = True
+            print("WIN LEVEL")
+            print(player_move)
             sleep(2)
+            break
     clear_screen()
+    sleep(0.2)
     print(NEW_SECTION)
+    sleep(0.2)
     print(f"Level {current_level[1]} complete")
+    sleep(0.2)
     print(lives)
+    sleep(10)
     return lives
 
 
@@ -436,7 +445,7 @@ def check_route(route):
         print("You lose one life!")
         sleep(1)
         return 2
-    elif "B" and not ("|" or "_" or "-" or "O") in route:
+    elif "B" in route:
         return 0
     else:
         return 1
