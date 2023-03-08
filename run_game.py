@@ -292,8 +292,9 @@ def run_level(current_level, lives, stats):
                     print_level(current_level)
                 elif move_result[1] == 0:
                     run_level(current_level, lives, stats)
-                else:
+                elif not move_result[1]:
                     print("PLEASE TRY AGAIN")
+                    sleep(5)
 
             if nav_data[0] == "L":
                 move_result = check_move_left(
@@ -310,8 +311,9 @@ def run_level(current_level, lives, stats):
                     print_level(current_level)
                 elif move_result[1] == 0:
                     run_level(current_level, lives, stats)
-                else:
+                elif not move_result[1]:
                     print("PLEASE TRY AGAIN")
+                    sleep(5)
 
             if nav_data[0] == "D":
                 move_result = check_move_down(
@@ -328,8 +330,9 @@ def run_level(current_level, lives, stats):
                     print_level(current_level)
                 elif move_result[1] == 0:
                     run_level(current_level, lives, stats)
-                else:
+                elif not move_result[1]:
                     print("PLEASE TRY AGAIN")
+                    sleep(5)
 
             if nav_data[0] == "U":
                 move_result = check_move_up(
@@ -346,8 +349,9 @@ def run_level(current_level, lives, stats):
                     print_level(current_level)
                 elif move_result[1] == 0:
                     run_level(current_level, lives, stats)
-                else:
+                elif not move_result[1]:
                     print("PLEASE TRY AGAIN")
+                    sleep(5)
 
         else:
             run_level(current_level, lives, stats)
@@ -360,19 +364,15 @@ def calc_navigation(nav, position):
     """
     if nav[0] == "L":
         position = [(position[0] - nav[1]), position[1]]
-        print(position)
         return position
     if nav[0] == "R":
         position = [(position[0] + nav[1]), position[1]]
-        print(position)
         return position
     if nav[0] == "U":
         position = [position[0], (position[1] - nav[1])]
-        print(position)
         return position
     if nav[0] == "D":
         position = [position[0], (position[1] + nav[1])]
-        print(position)
         return position
 
 
@@ -383,15 +383,14 @@ def check_move_left(level, pos1, pos2):
     """
     level_layout = level[0]
     route = level_layout[pos1[1]][pos2[0]:pos1[0] + 1]
-    print(route)
     if check_route(route):
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, True]
+    elif not check_route(route):
+        return [level_layout, False]
     elif check_route(route) == 0:
         return [level_layout, 0]
-    else:
-        return [level_layout, False]
 
 
 def check_move_right(level, pos1, pos2):
@@ -401,15 +400,14 @@ def check_move_right(level, pos1, pos2):
     """
     level_layout = level[0]
     route = level_layout[pos1[1]][pos1[0]:pos2[0] + 1]
-    print(route)
     if check_route(route):
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, True]
+    elif not check_route(route):
+        return [level_layout, False]
     elif check_route(route) == 0:
         return [level_layout, 0]
-    else:
-        return [level_layout, False]
 
 
 def check_move_up(level, pos1, pos2):
@@ -426,10 +424,10 @@ def check_move_up(level, pos1, pos2):
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, True]
+    elif not check_route(route):
+        return [level_layout, False]
     elif check_route(route) == 0:
         return [level_layout, 0]
-    else:
-        return [level_layout, False]
 
 
 def check_move_down(level, pos1, pos2):
@@ -446,10 +444,10 @@ def check_move_down(level, pos1, pos2):
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, True]
+    elif not check_route(route):
+        return [level_layout, False]
     elif check_route(route) == 0:
         return [level_layout, 0]
-    else:
-        return [level_layout, False]
 
 
 def check_route(route):
@@ -458,11 +456,12 @@ def check_route(route):
     """
     for i in route:
         if i == "." or i == "A" or i == "@" or i == "%":
-            return True
+            pass
         elif i == "|" or i == "-" or i == "_" or i == "O":
             print(NEW_SECTION)
             print("You tried to move through a wall!")
             print("You lose one life and move back to the start.")
+            sleep(1)
             return False
         else:
             print("An unknown error occurred. Restarting level.")
@@ -470,6 +469,7 @@ def check_route(route):
             print(NEW_SECTION)
             sleep(1)
             return 0
+    return True
 
 
 def process_move_result(move_result, current_level, current_layout, new_position):
