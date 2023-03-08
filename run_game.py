@@ -383,14 +383,15 @@ def check_move_left(level, pos1, pos2):
     """
     level_layout = level[0]
     route = level_layout[pos1[1]][pos2[0]:pos1[0] + 1]
-    if check_route(route):
+    route_checked = check_route(route)
+    if route_checked:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, True]
-    elif not check_route(route):
-        return [level_layout, False]
-    elif check_route(route) == 0:
+    elif route_checked == 0:
         return [level_layout, 0]
+    else:
+        return [level_layout, False]
 
 
 def check_move_right(level, pos1, pos2):
@@ -400,15 +401,16 @@ def check_move_right(level, pos1, pos2):
     """
     level_layout = level[0]
     route = level_layout[pos1[1]][pos1[0]:pos2[0] + 1]
-    print(route)
-    if check_route(route):
+    route_checked = check_route(route)
+
+    if route_checked:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, True]
-    elif not check_route(route):
-        return [level_layout, False]
-    elif check_route(route) == 0:
+    elif route_checked == 0:
         return [level_layout, 0]
+    else:
+        return [level_layout, False]
 
 
 def check_move_up(level, pos1, pos2):
@@ -421,14 +423,15 @@ def check_move_up(level, pos1, pos2):
     for i in range(len(level_layout)):
         col.append(level_layout[i][pos1[0]])
     route = col[pos2[1]:pos1[1] + 1]
-    if check_route(route):
+    route_checked = check_route(route)
+    if route_checked:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, True]
-    elif not check_route(route):
-        return [level_layout, False]
-    elif check_route(route) == 0:
+    elif route_checked == 0:
         return [level_layout, 0]
+    else:
+        return [level_layout, False]
 
 
 def check_move_down(level, pos1, pos2):
@@ -441,29 +444,31 @@ def check_move_down(level, pos1, pos2):
     for i in range(len(level_layout)):
         col.append(level_layout[i][pos1[0]])
     route = col[pos1[1]:pos2[1] + 1]
-    if check_route(route):
+    route_checked = check_route(route)
+    if route_checked:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, True]
-    elif not check_route(route):
-        return [level_layout, False]
-    elif check_route(route) == 0:
+    elif route_checked == 0:
         return [level_layout, 0]
+    else:
+        return [level_layout, False]
 
 
 def check_route(route):
     """
     Checks if the player runs into any obstacles in their move.
     """
-    if ("|", "_", "-", "O") in route:
+    if ("|" or "_" or "-" or "O") in route:
         print("You tried to navigate into a wall.")
+        sleep(1)
         print("You lose one life!")
+        sleep(1)
         return False
     elif "B" in route:
         return 0
     else:
         return True
-
 
 
 def multiplication_question():
