@@ -140,7 +140,7 @@ def validate_string(data):
         print(f"Invalid entry: {m}")
         return False
     try:
-        if type(data) == type(123):
+        if isinstance(data, int):
             raise TypeError(
                 "You cannot enter a number in this field."
             )
@@ -148,7 +148,7 @@ def validate_string(data):
         print(f"Invalid entry: {o}")
         return False
     try:
-        if type(data) == type(True):
+        if isinstance(data, bool):
             raise TypeError(
                 "You cannot enter a Boolean in this field"
             )
