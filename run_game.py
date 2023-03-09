@@ -147,24 +147,29 @@ def start_game():
             # returns a list: [layout, number]
             print_level(get_new_level)
             sleep(0.5)
-            lives = run_level(get_new_level, lives)
-            sleep(0.5)
-            LEVELS_PLAYED += 1
-            points += 15
-            print(Fore.GREEN + f"+ 15 points! You have {points} points")
-            sleep(1)
-            maths_answer = maths_question()
-            if maths_answer is True:
-                points += 20
+            level_result = run_level(get_new_level, lives)
+            if level_result[1] == 0:
+                sleep(0.5)
+                lives = level_result[0]
+                LEVELS_PLAYED += 1
+                points += 15
+                print(Fore.GREEN + f"+ 15 points! You have {points} points")
                 sleep(1)
-                print(f"You have {points} points!")
-            else:
-                lives -= 1
-                sleep(1)
-                print(f"You have {lives} lives remaining.")
-            if LEVELS_PLAYED >= 10:
-                print("Game ended")
-                return [points, lives]
+                maths_answer = maths_question()
+                if maths_answer is True:
+                    points += 20
+                    sleep(1)
+                    print(f"You have {points} points!")
+                else:
+                    lives -= 1
+                    sleep(1)
+                    print(f"You have {lives} lives remaining.")
+                if LEVELS_PLAYED >= 10:
+                    print("Game ended")
+                    return [points, lives]
+            elif level_result[1] == 1:
+                break
+        quit_game()
 
 
 def random_layout_selector():
@@ -282,7 +287,7 @@ def run_level(current_level, lives):
         print("e.g. U,3 will move your character up 3 steps")
         nav_str = input("\nEnter your move here (press x to quit): \n")
         if nav_str == "x":
-            quit_game()
+            return [lives, 1]
         if validate_navigation(nav_str):
             nav_data = nav_str.split(",")
             int_nav_data = [nav_data[0], int(nav_data[1])]
@@ -323,7 +328,7 @@ def run_level(current_level, lives):
     sleep(0.2)
     print(lives)
     sleep(2)
-    return lives
+    return [lives, 0]
 
 
 def reset(data):
