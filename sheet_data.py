@@ -33,5 +33,3 @@ def update_sheet(data, worksheet):
     sheet_to_update = SHEET.worksheet(worksheet)
     sheet_to_update.append_row(data)
     print(f"{worksheet} data updated successfully!")
-
-

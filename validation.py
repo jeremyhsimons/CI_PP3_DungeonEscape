@@ -70,7 +70,6 @@ def validate_math(data):
     """
     Checks if the user's input for a math question is an integer.
     """
-    print(data)
     try:
         if not data.isdigit():
             raise ValueError(
