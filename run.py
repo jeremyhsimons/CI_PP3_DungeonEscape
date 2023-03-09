@@ -68,11 +68,11 @@ def signup():
     signup_validation = validate_yes_no(sign_up_check)
     if signup_validation:
         if sign_up_check == 'y':
-            login()
+            return True
         elif sign_up_check == 'n':
-            add_user()
+            return False
     else:
-        signup()
+        return signup()
 
 
 def add_user():
@@ -130,7 +130,13 @@ def main():
     The function which controls the calling of all other functions in the file.
     """
     welcome()
-    signup()
+    if signup():
+        login()
+    else:
+        add_user()
+        login()
+    game_result = start_game()
+    print(game_result)
 
 
 main()
