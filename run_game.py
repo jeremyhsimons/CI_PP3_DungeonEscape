@@ -596,6 +596,3 @@ def player_die():
     else:
         sleep(1)
         player_die()
-
-
-# start_game()
