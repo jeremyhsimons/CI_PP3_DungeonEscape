@@ -554,11 +554,16 @@ def quit_game():
 
 
 def player_die():
+    """
+    Runs this code to check if the player wants
+    to play again after dying.
+    """
     clear_screen()
     sleep(0.2)
     print(Fore.RED + "### UH OH ###")
     sleep(0.2)
     print(Fore.RED + "### YOU DIED ###")
+    sleep(0.2)
     print("Press y to start again, press n to quit")
     replay_yes_no = input("\nType choice here: \n")
     if validate_yes_no(replay_yes_no):
