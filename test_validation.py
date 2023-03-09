@@ -63,7 +63,6 @@ class TestValidate(unittest.TestCase):
         """
         print("hello")
 
-
     def test_validate_string(self):
         """
         Tests that validate_string returns expected values.
@@ -77,12 +76,24 @@ class TestValidate(unittest.TestCase):
         self.assertEqual(validation.validate_string(123), False)
         self.assertEqual(validation.validate_string(True), False)
 
-
-
     def test_validate_message(self):
         """
         Tests that validate_message returns expected values.
         """
+        self.assertEqual(validation.validate_message("Hello, world!"), True)
+        # Edge cases
+        self.assertEqual(validation.validate_message(""), False)
+        self.assertEqual(validation.validate_message(" "), False)
+        self.assertEqual(validation.validate_message(
+            """
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            """
+            ), False)
+
+
 
 
 

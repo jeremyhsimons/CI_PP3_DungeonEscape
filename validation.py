@@ -165,6 +165,14 @@ def validate_message(data):
     Reduces the chance of abuse of the database (google sheet).
     """
     try:
+        if data == "" or data == " ":
+            raise ValueError(
+                "You cannot submit an empty field or only spaces."
+            )
+    except ValueError as q:
+        print(f"Invalid entry: {q}")
+        return False
+    try:
         if len(data) > 80:
             raise ValueError(
                 "You cannot have a feedback message longer than 80 characters."
