@@ -45,7 +45,7 @@ def validate_details(value1, value2):
         print(f"Invalid username: {f}")
         return False
 
-    print('Yay! New user!')
+    print('New user confirmed...')
     return True
 
 

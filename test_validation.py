@@ -18,6 +18,12 @@ class TestValidate(unittest.TestCase):
         self.assertEqual(validation.validate_yes_no("Y"), False)
         self.assertEqual(validation.validate_yes_no("nn"), False)
 
+    def test_validate_details(self):
+        """
+        Tests if validate_details function returns expected values.
+        """
+        self.assertEqual(validation.validate_details("User123", "Password123"), True)
+
 
 # code below from Corey Schafer
 if __name__ == '__main__':
