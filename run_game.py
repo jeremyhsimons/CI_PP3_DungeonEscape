@@ -141,6 +141,8 @@ def start_game():
         lives = current_player.lives
         points = current_player.points
         for i in range(len(game_layout)):  # MAIN LOOP
+            if lives == 0:
+                player_die()
             get_new_level = get_level(game_layout, i)
             # returns a list: [layout, number]
             print_level(get_new_level)
@@ -151,6 +153,15 @@ def start_game():
             points += 15
             print(Fore.GREEN + f"+ 15 points! You have {points} points")
             sleep(1)
+            maths_answer = maths_question()
+            if maths_answer is True:
+                points += 20
+                sleep(1)
+                print(f"You have {points} points!")
+            else:
+                lives -= 1
+                sleep(1)
+                print(f"You have {lives} lives remaining.")
             if LEVELS_PLAYED >= 10:
                 print("Game ended")
                 return [points, lives]
@@ -474,37 +485,15 @@ def check_route(route):
         return 1
 
 
-def multiplication_question():
+def maths_question():
     """
-    A function that generates a random multiplication question
-    that the player must complete to continue.
-    """
-    num1 = random.randint(2, 10)
-    num2 = random.randint(2, 10)
-    print(f"What is {num1} multiplied by {num2}?")
-    player_answer = input("\nType your answer here: \n")
-    if validate_math(player_answer):
-        player_answer_int = int(player_answer)
-        answer = num1 * num2
-        if player_answer_int == answer:
-            print("\nCorrect! +10 points")
-            return True
-        else:
-            print("\nUh oh! That was incorrect...You lose 1 life!")
-            print(f"The correct answer was {answer}")
-            return False
-    else:
-        multiplication_question()
-
-
-def bonus_question():
-    """
-    A more difficult and optional question that is called each
-    time the player navigates to . symbol in the level.
+    A maths question that is called between each level. Player
+    must answer correctly to avoid losing a life. If they answer
+    correctly they also get bonus points.
     """
     num1 = random.randint(5, 20)
     num2 = random.randint(5, 20)
-    print("BONUS QUESTION:")
+    print("MULTIPLICATION QUESTION:")
     sleep(0.2)
     print(NEW_SECTION)
     sleep(0.2)
@@ -523,7 +512,7 @@ def bonus_question():
             # return player to the level, change . marker to X, minus lives
             return False
     else:
-        bonus_question()
+        maths_question()
 
 
 def quit_game():
