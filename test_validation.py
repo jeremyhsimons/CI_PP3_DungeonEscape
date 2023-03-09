@@ -22,13 +22,19 @@ class TestValidate(unittest.TestCase):
         """
         Tests if validate_details function returns expected values.
         """
-        self.assertEqual(validation.validate_details("User123", "Password123"), True)
+        self.assertEqual(
+            validation.validate_details("User123", "Password123"), True
+            )
         # Testing an existing user's details -> should return false.
-        self.assertEqual(validation.validate_details("test_user", "password"), False)
+        self.assertEqual(
+            validation.validate_details("test_user", "password"), False
+            )
         # Edge cases.
         self.assertEqual(validation.validate_details("User123", " "), False)
         self.assertEqual(validation.validate_details("User123", ""), False)
-        self.assertEqual(validation.validate_details(" ", "Password123"), False)
+        self.assertEqual(
+            validation.validate_details(" ", "Password123"), False
+            )
         self.assertEqual(validation.validate_details("", "Password123"), False)
 
     def test_validate_main_menu(self):
@@ -60,8 +66,21 @@ class TestValidate(unittest.TestCase):
 
     def test_validate_navigation(self):
         """
+        Tests if the validate_navigation function returns expected values.
         """
-        print("hello")
+        self.assertEqual(validation.validate_navigation("U,1"), True)
+        self.assertEqual(validation.validate_navigation("D,2"), True)
+        self.assertEqual(validation.validate_navigation("R,3"), True)
+        self.assertEqual(validation.validate_navigation("L,4"), True)
+        #
+        self.assertEqual(validation.validate_navigation(""), False)
+        self.assertEqual(validation.validate_navigation(" "), False)
+        self.assertEqual(validation.validate_navigation("U1"), False)
+        self.assertEqual(validation.validate_navigation("U,12"), False)
+        self.assertEqual(validation.validate_navigation("d,1"), False)
+        self.assertEqual(validation.validate_navigation("1,1"), False)
+        self.assertEqual(validation.validate_navigation("1"), False)
+        self.assertEqual(validation.validate_navigation("D,D"), False)
 
     def test_validate_string(self):
         """
@@ -92,13 +111,6 @@ class TestValidate(unittest.TestCase):
             aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
             """
             ), False)
-
-
-
-
-
-
-
 
 
 # code below from Corey Schafer
