@@ -8,6 +8,7 @@ from validation import validate_main_menu
 from validation import validate_yes_no
 from validation import validate_math
 from validation import validate_navigation
+from validation import validate_string
 
 from colorama import init
 from colorama import Fore
@@ -187,8 +188,11 @@ def generate_player():
     """
     print(Fore.GREEN + "What is your name?")
     player_name = input("Type here: \n")
-    player = Player(player_name, 3, 0)
-    return player
+    if validate_string(player_name):
+        player = Player(player_name, 3, 0)
+        return player
+    else:
+        generate_player()
 
 
 def clear_screen():

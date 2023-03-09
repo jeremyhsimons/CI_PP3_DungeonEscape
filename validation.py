@@ -125,3 +125,20 @@ def validate_navigation(data):
         return False
     else:
         return True
+
+
+def validate_string(data):
+    """
+    Checks that the player has not entered an empty string
+    in an input.
+    """
+    try:
+        if data == "" or data == " ":
+            raise ValueError(
+                "You cannot have an entry that is empty/only spaces."
+            )
+    except ValueError as m:
+        print(f"Invalid entry: {m}")
+        return False
+    else:
+        return True
