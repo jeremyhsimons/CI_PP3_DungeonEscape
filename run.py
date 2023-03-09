@@ -193,7 +193,9 @@ def main():
         add_user()
         login()
     game_result = start_game()
+    sleep(2)
     print(game_result)
+    end_game_menu(game_result)
 
 
 main()

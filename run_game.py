@@ -153,6 +153,7 @@ def start_game():
                 points += 15
                 print(Fore.GREEN + f"+ 15 points! You have {points} points")
                 sleep(1)
+                clear_screen()
                 maths_answer = maths_question()
                 if maths_answer is True:
                     points += 20
