@@ -10,7 +10,7 @@ class TestValidate(unittest.TestCase):
         """
         self.assertEqual(validation.validate_yes_no("y"), True)
         self.assertEqual(validation.validate_yes_no("n"), True)
-        # Edge cases
+        # Edge cases.
         self.assertEqual(validation.validate_yes_no(""), False)
         self.assertEqual(validation.validate_yes_no(" "), False)
         self.assertEqual(validation.validate_yes_no("1"), False)
@@ -25,10 +25,24 @@ class TestValidate(unittest.TestCase):
         self.assertEqual(validation.validate_details("User123", "Password123"), True)
         # Testing an existing user's details.
         self.assertEqual(validation.validate_details("test_user", "password"), False)
+        # Edge cases.
         self.assertEqual(validation.validate_details("User123", " "), False)
         self.assertEqual(validation.validate_details("User123", ""), False)
         self.assertEqual(validation.validate_details(" ", "Password123"), False)
         self.assertEqual(validation.validate_details("", "Password123"), False)
+
+    def test_validate_main_menu(self):
+        """
+        Tests if the validate_main_menu function returns expected values.
+        """
+        self.assertEqual(validation.validate_main_menu("x"), True)
+        self.assertEqual(validation.validate_main_menu("s"), True)
+        self.assertEqual(validation.validate_main_menu("i"), True)
+        self.assertEqual(validation.validate_main_menu("X"), False)
+        self.assertEqual(validation.validate_main_menu(" "), False)
+        self.assertEqual(validation.validate_main_menu(""), False)
+        self.assertEqual(validation.validate_main_menu("1"), False)
+        self.assertEqual(validation.validate_main_menu("%"), False)
 
 
 # code below from Corey Schafer
