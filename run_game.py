@@ -16,9 +16,6 @@ from colorama import Fore
 
 init(autoreset=True)
 
-
-LEVELS_LIST = []
-CURRENT_PLAYER = {}
 NEW_SECTION = "-  "*26
 
 
@@ -138,7 +135,7 @@ def start_game():
         # Each successful iteration adds 1 to LEVELS_PLAYED
         # At the end of each iteration, LEVELS_PLAYED is checked to see
         # if winning conditions are met.
-        LEVELS_PLAYED = 0
+        levels_played = 0
         lives = current_player.lives
         points = current_player.points
         for i in range(len(game_layout)):  # MAIN LOOP
@@ -152,7 +149,7 @@ def start_game():
             if level_result[1] == 0:
                 sleep(0.5)
                 lives = level_result[0]
-                LEVELS_PLAYED += 1
+                levels_played += 1
                 points += 15
                 print(Fore.GREEN + f"+ 15 points! You have {points} points")
                 sleep(1)
@@ -165,7 +162,7 @@ def start_game():
                     lives -= 1
                     sleep(1)
                     print(f"You have {lives} lives remaining.")
-                if LEVELS_PLAYED >= 10:
+                if levels_played >= 10:
                     print("Game ended")
                     return [points, lives]
             elif level_result[1] == 1:
@@ -193,7 +190,6 @@ def generate_levels(data):
     for i in data:
         level_num += 1
         level = Level(level_num, i)
-        LEVELS_LIST.append({f"{level_num}": level.layouts[i]})
         this_game_layout.append(level.layouts[i])
     return this_game_layout
 
