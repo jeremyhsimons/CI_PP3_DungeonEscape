@@ -253,8 +253,10 @@ def run_level(current_level, lives):
     level_win = False
 
     while level_win is False:
+        if lives == 0:
+            player_die()
         current_layout = current_level[0]
-        level_screenshot = current_level[0]
+        print(f"Level: {current_level[1] + 1}, Lives: {lives}")
         print(NEW_SECTION)
         print("Enter your move in the form DIRECTION,STEPS")
         print("Direction = L, R, U, or D (left, right, up, down)")
@@ -271,15 +273,15 @@ def run_level(current_level, lives):
             player_position,
             current_layout)
 
-        if player_move[3] is False:
+        if player_move[0] is False:
             sleep(1)
             print("Restarting level!")
             player_position = [0, 3]
             sleep(1)
             lives -= 1
             clear_screen()
-            sleep(1)
-            print_level([level_screenshot, 1])
+            reset_level = reset(current_level)
+            print_level([reset_level, current_level[1]])
         if player_move[1] == 1:
             sleep(0.2)
             current_layout = player_move[0]
@@ -302,6 +304,19 @@ def run_level(current_level, lives):
     print(lives)
     sleep(2)
     return lives
+
+
+def reset(data):
+    """
+    Resets the player's position in the level
+    if the player goes out of bounds.
+    """
+    for i in data[0]:
+        for j in range(len(i)):
+            if i[j] == "A":
+                i[j] = "."
+    data[0][3][0] = "A"
+    return data[0]
 
 
 def check_out_of_bounds(data):
@@ -346,6 +361,8 @@ def check_move_left(level, pos1, pos2):
     list to see if their route is valid.
     """
     out_of_bounds = check_out_of_bounds(pos2)
+    if out_of_bounds is False:
+        return [False, "FALSE"]
     level_layout = level
     route = level_layout[pos1[1]][pos2[0]:pos1[0] + 1]
     route_checked = check_route(route)
@@ -366,11 +383,13 @@ def check_move_right(level, pos1, pos2):
     list to see if their route is valid.
     """
     out_of_bounds = check_out_of_bounds(pos2)
+    if out_of_bounds is False:
+        return [False, "FALSE"]
     level_layout = level
     route = level_layout[pos1[1]][pos1[0]:pos2[0] + 1]
     route_checked = check_route(route)
 
-    if route_checked == 1:
+    if route_checked == 1 and out_of_bounds is True:
         level_layout[pos1[1]][pos1[0]] = "."
         level_layout[pos2[1]][pos2[0]] = "A"
         return [level_layout, 1, pos2, out_of_bounds]
@@ -386,6 +405,8 @@ def check_move_up(level, pos1, pos2):
     each level list with the same index as the player horizontal position.
     """
     out_of_bounds = check_out_of_bounds(pos2)
+    if out_of_bounds is False:
+        return [False, "FALSE"]
     level_layout = level
     col = []
     for i in range(len(level_layout)):
@@ -409,6 +430,8 @@ def check_move_down(level, pos1, pos2):
     each level list with the same index as the player horizontal position.
     """
     out_of_bounds = check_out_of_bounds(pos2)
+    if out_of_bounds is False:
+        return [False, "FALSE"]
     level_layout = level
     col = []
     for i in range(len(level_layout)):
@@ -530,6 +553,23 @@ def quit_game():
         quit_game()
 
 
-start_game()
+def player_die():
+    clear_screen()
+    sleep(0.2)
+    print(Fore.RED + "### UH OH ###")
+    sleep(0.2)
+    print(Fore.RED + "### YOU DIED ###")
+    print("Press y to start again, press n to quit")
+    replay_yes_no = input("\nType choice here: \n")
+    if validate_yes_no(replay_yes_no):
+        if replay_yes_no == "y":
+            print("Restarting Game")
+            start_game()
+        elif replay_yes_no == "n":
+            quit_game()
+    else:
+        sleep(1)
+        player_die()
 
-# bonus_question()
+
+start_game()
