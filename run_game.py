@@ -9,6 +9,7 @@ from validation import validate_yes_no
 from validation import validate_math
 from validation import validate_navigation
 from validation import validate_string
+from validation import validate_message
 
 from colorama import init
 from colorama import Fore
@@ -203,7 +204,7 @@ def generate_player():
     to keep track of the player's score and lives
     """
     print(Fore.GREEN + "What is your name?")
-    player_name = input("\nType here: \n")
+    player_name = input("Type here: \n")
     if validate_string(player_name):
         player = Player(player_name, 3, 0)
         return player
@@ -542,16 +543,24 @@ def quit_game():
             feedback_yes_no = input("\nType y for yes, n for no: \n")
             if validate_yes_no(feedback_yes_no):
                 if feedback_yes_no == "y":
-                    feedback_message = input("\nLeave your message here: \n")
+                    feedback_message = input(
+                        "\nLeave your message here (max 80 char): \n"
+                        )
                     feedback_data = [feedback_message]
-                    # call validation function to stop long message.
-                    update_sheet(feedback_data, "feedback")
-                    sleep(2)
-                    clear_screen()
-                    print("Thanks for the feedback and Thanks for playing!")
-                    print("See you next time!")
-                    print(NEW_SECTION)
-                    print("Click 'Run Program' to begin!")
+                    if validate_message(feedback_message):
+                        update_sheet(feedback_data, "feedback")
+                        sleep(2)
+                        clear_screen()
+                        print("Thanks for the feedback and for playing!")
+                        print("See you next time!")
+                        print(NEW_SECTION)
+                        print("Click 'Run Program' to begin!")
+                    else:
+                        print("Quitting game for security reasons")
+                        sleep(0.5)
+                        print("Thanks for playing! See you next time!")
+                        print(NEW_SECTION)
+                        print("Click 'Run Program' to begin!")
                 else:
                     print("Thanks for playing! See you next time!")
                     print(NEW_SECTION)

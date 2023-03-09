@@ -142,3 +142,20 @@ def validate_string(data):
         return False
     else:
         return True
+
+
+def validate_message(data):
+    """
+    Checks that the user is not adding an overly long message.
+    Reduces the chance of abuse of the database (google sheet).
+    """
+    try:
+        if len(data) > 80:
+            raise ValueError(
+                "You cannot have a feedback message longer than 80 characters."
+            )
+    except ValueError as n:
+        print(f"Invalid entry: {n}")
+        return False
+    else:
+        return True
