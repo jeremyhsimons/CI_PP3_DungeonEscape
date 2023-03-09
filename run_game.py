@@ -507,6 +507,7 @@ def maths_question():
     num1 = random.randint(5, 20)
     num2 = random.randint(5, 20)
     print("MULTIPLICATION QUESTION:")
+    print("Answer this to progress to the next level!")
     sleep(0.2)
     print(NEW_SECTION)
     sleep(0.2)
@@ -516,7 +517,7 @@ def maths_question():
         player_answer_int = int(player_answer)
         answer = num1 * num2
         if player_answer_int == answer:
-            print("\nCorrect! +20 points")
+            print("\nCorrect! +20 BONUS points")
             return True
         else:
             print("\nUh oh! That was incorrect...You lose 1 life!")
@@ -599,4 +600,4 @@ def player_die():
         player_die()
 
 
-start_game()
+# start_game()
