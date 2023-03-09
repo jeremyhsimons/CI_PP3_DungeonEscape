@@ -126,6 +126,7 @@ def start_game():
     level_order = random_layout_selector()
     game_layout = generate_levels(level_order)
     current_player = generate_player()
+    print(current_player.name)
     menu = run_menu(current_player)
     if menu == 1:
         print("instructions")
@@ -203,12 +204,14 @@ def generate_player():
     to keep track of the player's score and lives
     """
     print(Fore.GREEN + "What is your name?")
-    player_name = input("Type here: \n")
+    player_name = input("\nType here: \n")
     if validate_string(player_name):
         player = Player(player_name, 3, 0)
+        print(player.name)
+        print(player.lives)
+        print(player.points)
         return player
-    else:
-        generate_player()
+    return generate_player()
 
 
 def clear_screen():
