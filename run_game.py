@@ -164,6 +164,7 @@ def start_game():
                     print(f"You have {lives} lives remaining.")
                 if levels_played >= 10:
                     print("Game ended")
+                    points += lives * 20
                     return [points, lives]
             elif level_result[1] == 1:
                 break

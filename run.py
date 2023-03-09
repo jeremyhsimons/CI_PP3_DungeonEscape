@@ -5,6 +5,7 @@ from sheet_data import update_sheet
 
 from validation import validate_yes_no
 from validation import validate_details
+from validation import validate_message
 
 from run_game import start_game
 from run_game import clear_screen
@@ -123,6 +124,62 @@ def login():
     if logins_checked == len(logins):
         print('Sorry, this user does not exist. Please try again.\n')
         login()
+
+
+def end_game_menu(data):
+    """
+    Informs the user that the game is over,
+    saves their score to their account,
+    gives them the choice to quit or try again.
+    """
+    clear_screen()
+    sleep(0.5)
+    print("Congratulations! You escaped the dungeon!")
+    sleep(0.5)
+    print(f"You scored {data[0]} points in total!")
+    sleep(0.5)
+    print("Your score has been saved as your account's most recent score.")
+    sleep(1)
+    # call sheet data function that searches for the CURRENT USER name 
+    # and saves the CURRENT USER score to the score data field in the sheet.
+    print("Would you like to quit?")
+    quit_yes_no = input("\nType y for yes, n for no: \n")
+    if validate_yes_no(quit_yes_no):
+        if quit_yes_no == "y":
+            print("\nWould you like to give us feedback on this game?")
+            feedback_yes_no = input("\nType y for yes, n for no: \n")
+            if validate_yes_no(feedback_yes_no):
+                if feedback_yes_no == "y":
+                    feedback_message = input(
+                        "\nLeave your message here (max 80 char): \n"
+                        )
+                    feedback_data = [feedback_message]
+                    if validate_message(feedback_message):
+                        update_sheet(feedback_data, "feedback")
+                        sleep(2)
+                        clear_screen()
+                        print("Thanks for the feedback and for playing!")
+                        print("See you next time!")
+                        print(NEW_SECTION)
+                        print("Click 'Run Program' to begin!")
+                    else:
+                        print("Quitting game for security reasons")
+                        sleep(0.5)
+                        print("Thanks for playing! See you next time!")
+                        print(NEW_SECTION)
+                        print("Click 'Run Program' to begin!")
+                else:
+                    print("Thanks for playing! See you next time!")
+                    print(NEW_SECTION)
+                    print("Click 'Run Program' to begin!")
+            else:
+                return end_game_menu(data)
+        elif quit_yes_no == "n":
+            print("Restarting Game...")
+            sleep(1)
+            return start_game()
+    else:
+        return end_game_menu(data)
 
 
 def main():
