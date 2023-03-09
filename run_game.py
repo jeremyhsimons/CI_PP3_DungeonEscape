@@ -210,23 +210,25 @@ def run_menu(player):
     sleep(0.2)
     print(f"Welcome {player.name}! What would you like to do?\n")
     sleep(0.2)
-    print("Press i for game instructions")
-    print("Press s to start the game")
-    print("Press x to quit")
-    menu_selection = input("Type your choice here: \n")
-    if validate_main_menu(menu_selection):
-        if menu_selection == "i":
-            return 1
-        elif menu_selection == "s":
-            print("Starting...")
-            sleep(0.5)
-            print(NEW_SECTION)
-            sleep(0.5)
-            return 3
-        elif menu_selection == "x":
-            return 2
-    else:
-        run_menu(player)
+    while True:
+        print("Press i for game instructions")
+        print("Press s to start the game")
+        print("Press x to quit")
+        menu_selection = input("Type your choice here: \n")
+        if validate_main_menu(menu_selection):
+            if menu_selection == "i":
+                return 1
+            elif menu_selection == "s":
+                print("Starting...")
+                sleep(0.5)
+                print(NEW_SECTION)
+                sleep(0.5)
+                return 3
+            elif menu_selection == "x":
+                return 2
+        else:
+            clear_screen()
+            sleep(0.2)
 
 
 def get_level(levels, level_number):
