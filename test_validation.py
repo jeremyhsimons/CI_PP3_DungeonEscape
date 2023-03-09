@@ -8,8 +8,15 @@ class TestValidate(unittest.TestCase):
         """
         Tests if validate_yes_no function returns expected values.
         """
-        result = validation.validate_yes_no("y")
-        self.assertEqual(result, True)
+        self.assertEqual(validation.validate_yes_no("y"), True)
+        self.assertEqual(validation.validate_yes_no("n"), True)
+        # Edge cases
+        self.assertEqual(validation.validate_yes_no(""), False)
+        self.assertEqual(validation.validate_yes_no(" "), False)
+        self.assertEqual(validation.validate_yes_no("1"), False)
+        self.assertEqual(validation.validate_yes_no("h"), False)
+        self.assertEqual(validation.validate_yes_no("Y"), False)
+        self.assertEqual(validation.validate_yes_no("nn"), False)
 
 
 # code below from Corey Schafer
