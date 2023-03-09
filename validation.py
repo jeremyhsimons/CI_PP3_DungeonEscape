@@ -139,6 +139,22 @@ def validate_string(data):
     except ValueError as m:
         print(f"Invalid entry: {m}")
         return False
+    try:
+        if type(data) == type(123):
+            raise TypeError(
+                "You cannot enter a number in this field."
+            )
+    except TypeError as o:
+        print(f"Invalid entry: {o}")
+        return False
+    try:
+        if type(data) == type(True):
+            raise TypeError(
+                "You cannot enter a Boolean in this field"
+            )
+    except TypeError as p:
+        print(f"Invalid entry: {p}")
+        return False
     else:
         return True
 
