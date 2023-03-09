@@ -23,6 +23,12 @@ class TestValidate(unittest.TestCase):
         Tests if validate_details function returns expected values.
         """
         self.assertEqual(validation.validate_details("User123", "Password123"), True)
+        # Testing an existing user's details.
+        self.assertEqual(validation.validate_details("test_user", "password"), False)
+        self.assertEqual(validation.validate_details("User123", " "), False)
+        self.assertEqual(validation.validate_details("User123", ""), False)
+        self.assertEqual(validation.validate_details(" ", "Password123"), False)
+        self.assertEqual(validation.validate_details("", "Password123"), False)
 
 
 # code below from Corey Schafer
