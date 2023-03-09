@@ -23,7 +23,7 @@ class TestValidate(unittest.TestCase):
         Tests if validate_details function returns expected values.
         """
         self.assertEqual(validation.validate_details("User123", "Password123"), True)
-        # Testing an existing user's details.
+        # Testing an existing user's details -> should return false.
         self.assertEqual(validation.validate_details("test_user", "password"), False)
         # Edge cases.
         self.assertEqual(validation.validate_details("User123", " "), False)
@@ -38,11 +38,29 @@ class TestValidate(unittest.TestCase):
         self.assertEqual(validation.validate_main_menu("x"), True)
         self.assertEqual(validation.validate_main_menu("s"), True)
         self.assertEqual(validation.validate_main_menu("i"), True)
+        # Edge cases.
         self.assertEqual(validation.validate_main_menu("X"), False)
         self.assertEqual(validation.validate_main_menu(" "), False)
         self.assertEqual(validation.validate_main_menu(""), False)
         self.assertEqual(validation.validate_main_menu("1"), False)
         self.assertEqual(validation.validate_main_menu("%"), False)
+
+    def test_validate_math(self):
+        """
+        Tests if the validate_math function returns expected values.
+        """
+        self.assertEqual(validation.validate_math("1"), True)
+        self.assertEqual(validation.validate_math("0"), True)
+        self.assertEqual(validation.validate_math("1234567"), True)
+        # Edge cases.
+        self.assertEqual(validation.validate_math(""), False)
+        self.assertEqual(validation.validate_math(" "), False)
+        self.assertEqual(validation.validate_math("abc"), False)
+        self.assertEqual(validation.validate_math("$"), False)
+
+
+
+
 
 
 # code below from Corey Schafer
