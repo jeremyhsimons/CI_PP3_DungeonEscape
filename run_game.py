@@ -138,17 +138,12 @@ def start_game():
         LEVELS_PLAYED = 0
         lives = current_player.lives
         points = current_player.points
-        game_stats = [
-            f"Level: {LEVELS_PLAYED + 1}",
-            f"Lives: {lives}",
-            f"points: {points}"
-            ]
         for i in range(len(game_layout)):  # MAIN LOOP
             get_new_level = get_level(game_layout, i)
             # returns a list: [layout, number]
             print_level(get_new_level)
             sleep(0.5)
-            lives = run_level(get_new_level, lives, game_stats)
+            lives = run_level(get_new_level, lives)
             print(f"### LEVEL COMPLETED ### Lives remaining: {lives}")
             sleep(0.5)
             LEVELS_PLAYED += 1
@@ -250,7 +245,7 @@ def print_level(data):
         print(y)
 
 
-def run_level(current_level, lives, stats):
+def run_level(current_level, lives):
     """
     Runs the game logic for each level.
     """
@@ -260,7 +255,6 @@ def run_level(current_level, lives, stats):
     while level_win is False:
         current_layout = current_level[0]
         level_screenshot = current_level[0]
-        print(f"\n{stats}")
         print(NEW_SECTION)
         print("Enter your move in the form DIRECTION,STEPS")
         print("Direction = L, R, U, or D (left, right, up, down)")
@@ -271,7 +265,7 @@ def run_level(current_level, lives, stats):
             nav_data = nav_str.split(",")
             int_nav_data = [nav_data[0], int(nav_data[1])]
         else:
-            run_level(current_level, lives, stats)
+            run_level(current_level, lives)
         player_move = calc_navigation(
             int_nav_data,
             player_position,
@@ -286,7 +280,6 @@ def run_level(current_level, lives, stats):
             clear_screen()
             sleep(1)
             print_level([level_screenshot, 1])
-            run_level(current_level, lives, stats)
         if player_move[1] == 1:
             sleep(0.2)
             current_layout = player_move[0]
