@@ -58,6 +58,33 @@ class TestValidate(unittest.TestCase):
         self.assertEqual(validation.validate_math("abc"), False)
         self.assertEqual(validation.validate_math("$"), False)
 
+    def test_validate_navigation(self):
+        """
+        """
+        print("hello")
+
+
+    def test_validate_string(self):
+        """
+        Tests that validate_string returns expected values.
+        """
+        self.assertEqual(validation.validate_string('abc'), True)
+        self.assertEqual(validation.validate_string('123'), True)
+        self.assertEqual(validation.validate_string('ab£'), True)
+        # Edge cases
+        self.assertEqual(validation.validate_string(''), False)
+        self.assertEqual(validation.validate_string(' '), False)
+        self.assertEqual(validation.validate_string(123), False)
+        self.assertEqual(validation.validate_string(True), False)
+
+
+
+    def test_validate_message(self):
+        """
+        Tests that validate_message returns expected values.
+        """
+
+
 
 
 
