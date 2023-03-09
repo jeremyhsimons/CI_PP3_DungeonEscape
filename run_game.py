@@ -121,6 +121,7 @@ def start_game():
     """
     The function that controls the flow of the game
     """
+    clear_screen()
     level_order = random_layout_selector()
     game_layout = generate_levels(level_order)
     current_player = generate_player()
@@ -144,12 +145,14 @@ def start_game():
             print_level(get_new_level)
             sleep(0.5)
             lives = run_level(get_new_level, lives)
-            print(f"### LEVEL COMPLETED ### Lives remaining: {lives}")
             sleep(0.5)
             LEVELS_PLAYED += 1
             points += 15
+            print(Fore.GREEN + f"+ 15 points! You have {points} points")
+            sleep(1)
             if LEVELS_PLAYED >= 10:
                 print("Game ended")
+                return [points, lives]
 
 
 def random_layout_selector():
@@ -262,7 +265,9 @@ def run_level(current_level, lives):
         print("Direction = L, R, U, or D (left, right, up, down)")
         print("Steps = a number between 1 and 9")
         print("e.g. U,3 will move your character up 3 steps")
-        nav_str = input("\nEnter your move here: \n")
+        nav_str = input("\nEnter your move here (press x to quit): \n")
+        if nav_str == "x":
+            quit_game()
         if validate_navigation(nav_str):
             nav_data = nav_str.split(",")
             int_nav_data = [nav_data[0], int(nav_data[1])]
@@ -529,26 +534,31 @@ def quit_game():
     print("Are you sure you want to quit?")
     quit_yes_no = input("\nType y for yes, n for no: \n")
     if validate_yes_no(quit_yes_no):
-        print("\nWould you like to give us feedback on this game?")
-        feedback_yes_no = input("\nType y for yes, n for no: \n")
-        if validate_yes_no(feedback_yes_no):
-            if feedback_yes_no == "y":
-                feedback_message = input("\nLeave your message here: \n")
-                feedback_data = [feedback_message]
-                # call validation function to stop long message.
-                update_sheet(feedback_data, "feedback")
-                sleep(2)
-                clear_screen()
-                print("Thanks for the feedback and Thanks for playing!")
-                print("See you next time!")
-                print(NEW_SECTION)
-                print("Click 'Run Program' to begin!")
+        if quit_yes_no == "y":
+            print("\nWould you like to give us feedback on this game?")
+            feedback_yes_no = input("\nType y for yes, n for no: \n")
+            if validate_yes_no(feedback_yes_no):
+                if feedback_yes_no == "y":
+                    feedback_message = input("\nLeave your message here: \n")
+                    feedback_data = [feedback_message]
+                    # call validation function to stop long message.
+                    update_sheet(feedback_data, "feedback")
+                    sleep(2)
+                    clear_screen()
+                    print("Thanks for the feedback and Thanks for playing!")
+                    print("See you next time!")
+                    print(NEW_SECTION)
+                    print("Click 'Run Program' to begin!")
+                else:
+                    print("Thanks for playing! See you next time!")
+                    print(NEW_SECTION)
+                    print("Click 'Run Program' to begin!")
             else:
-                print("Thanks for playing! See you next time!")
-                print(NEW_SECTION)
-                print("Click 'Run Program' to begin!")
-        else:
-            quit_game()
+                quit_game()
+        elif quit_yes_no == "n":
+            print("Restarting Game...")
+            sleep(1)
+            start_game()
     else:
         quit_game()
 
