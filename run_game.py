@@ -355,7 +355,7 @@ def run_level(current_level, lives):
     print(Fore.GREEN + f"Level {current_level[1] + 1} complete!")
     sleep(0.2)
     print(Fore.MAGENTA + f"{lives} lives remaining")
-    sleep(0.2)
+    sleep(1.5)
     return [lives, 0]
 
 
