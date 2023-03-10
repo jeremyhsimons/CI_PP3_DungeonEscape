@@ -22,6 +22,7 @@ class TestValidate(unittest.TestCase):
         """
         Tests if validate_details function returns expected values.
         """
+        #Testing entry for new user -> should return true.
         self.assertEqual(
             validation.validate_details("User123", "Password123"), True
             )

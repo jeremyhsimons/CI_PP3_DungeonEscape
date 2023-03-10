@@ -20,7 +20,7 @@ CURRENT_USER = {
     'name': "Jeremy",
     'score': 0
     }
-NEW_SECTION = "-"*30
+NEW_SECTION = "-  "*26
 
 
 def welcome():
