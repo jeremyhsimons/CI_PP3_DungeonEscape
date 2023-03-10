@@ -388,10 +388,12 @@ def calc_navigation(nav, position, level):
     """
     if nav[0] == "L":
         new_position = [(position[0] - nav[1]), position[1]]
-        outcome = check_move_left(level, position, new_position)
+        route_slice = level[position[1]][new_position[0]: position[0] + 1]
+        outcome = check_move_horiz(level, position, new_position, route_slice)
     if nav[0] == "R":
         new_position = [(position[0] + nav[1]), position[1]]
-        outcome = check_move_right(level, position, new_position)
+        route_slice = level[position[1]][position[0]: new_position[0] + 1]
+        outcome = check_move_horiz(level, position, new_position, route_slice)
     if nav[0] == "U":
         new_position = [position[0], (position[1] - nav[1])]
         outcome = check_move_up(level, position, new_position)
@@ -401,7 +403,7 @@ def calc_navigation(nav, position, level):
     return outcome
 
 
-def check_move_left(level, pos1, pos2):
+def check_move_horiz(level, pos1, pos2, slice):
     """
     Checks the players move by looping back through the level
     list to see if their route is valid.
@@ -410,8 +412,7 @@ def check_move_left(level, pos1, pos2):
     if out_of_bounds is False:
         return [False, "FALSE"]
     level_layout = level
-    route = level_layout[pos1[1]][pos2[0]:pos1[0] + 1]
-    route_checked = check_route(route)
+    route_checked = check_route(slice)
     return return_to_run_level(
         level_layout, route_checked, pos1, pos2, out_of_bounds
         )
@@ -606,3 +607,6 @@ def player_die():
     else:
         sleep(1)
         player_die()
+
+
+start_game()
