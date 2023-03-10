@@ -386,24 +386,29 @@ def calc_navigation(nav, position, level):
     Calculates where the player is in the level, and where
     they will move to based on their input.
     """
+    col = []
+    for i in range(len(level)):
+        col.append(level[i][position[0]])
     if nav[0] == "L":
         new_position = [(position[0] - nav[1]), position[1]]
         route_slice = level[position[1]][new_position[0]: position[0] + 1]
-        outcome = check_move_horiz(level, position, new_position, route_slice)
+        outcome = check_move(level, position, new_position, route_slice)
     if nav[0] == "R":
         new_position = [(position[0] + nav[1]), position[1]]
         route_slice = level[position[1]][position[0]: new_position[0] + 1]
-        outcome = check_move_horiz(level, position, new_position, route_slice)
+        outcome = check_move(level, position, new_position, route_slice)
     if nav[0] == "U":
         new_position = [position[0], (position[1] - nav[1])]
-        outcome = check_move_up(level, position, new_position)
+        route_slice = col[new_position[1]:position[1] + 1]
+        outcome = check_move(level, position, new_position, route_slice)
     if nav[0] == "D":
         new_position = [position[0], (position[1] + nav[1])]
-        outcome = check_move_down(level, position, new_position)
+        route_slice = col[position[1]:new_position[1] + 1]
+        outcome = check_move(level, position, new_position, route_slice)
     return outcome
 
 
-def check_move_horiz(level, pos1, pos2, slice):
+def check_move(level, pos1, pos2, route):
     """
     Checks the players move by looping back through the level
     list to see if their route is valid.
@@ -412,60 +417,6 @@ def check_move_horiz(level, pos1, pos2, slice):
     if out_of_bounds is False:
         return [False, "FALSE"]
     level_layout = level
-    route_checked = check_route(slice)
-    return return_to_run_level(
-        level_layout, route_checked, pos1, pos2, out_of_bounds
-        )
-
-
-def check_move_right(level, pos1, pos2):
-    """
-    Checks the players move by looping forward through the level
-    list to see if their route is valid.
-    """
-    out_of_bounds = check_out_of_bounds(pos2)
-    if out_of_bounds is False:
-        return [False, "FALSE"]
-    level_layout = level
-    route = level_layout[pos1[1]][pos1[0]:pos2[0] + 1]
-    route_checked = check_route(route)
-    return return_to_run_level(
-        level_layout, route_checked, pos1, pos2, out_of_bounds
-        )
-
-
-def check_move_up(level, pos1, pos2):
-    """
-    Checks the player's move by looping back through the elements of
-    each level list with the same index as the player horizontal position.
-    """
-    out_of_bounds = check_out_of_bounds(pos2)
-    if out_of_bounds is False:
-        return [False, "FALSE"]
-    level_layout = level
-    col = []
-    for i in range(len(level_layout)):
-        col.append(level_layout[i][pos1[0]])
-    route = col[pos2[1]:pos1[1] + 1]
-    route_checked = check_route(route)
-    return return_to_run_level(
-        level_layout, route_checked, pos1, pos2, out_of_bounds
-        )
-
-
-def check_move_down(level, pos1, pos2):
-    """
-    Checks the player's move by looping forward through the elements of
-    each level list with the same index as the player horizontal position.
-    """
-    out_of_bounds = check_out_of_bounds(pos2)
-    if out_of_bounds is False:
-        return [False, "FALSE"]
-    level_layout = level
-    col = []
-    for i in range(len(level_layout)):
-        col.append(level_layout[i][pos1[0]])
-    route = col[pos1[1]:pos2[1] + 1]
     route_checked = check_route(route)
     return return_to_run_level(
         level_layout, route_checked, pos1, pos2, out_of_bounds
