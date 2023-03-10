@@ -177,6 +177,7 @@ def start_game():
                     break
     if quit_game():
         print("quit successful")
+        return False
     else:
         sleep(1)
         start_game()
@@ -558,6 +559,3 @@ def player_die():
     else:
         sleep(1)
         player_die()
-
-
-start_game()

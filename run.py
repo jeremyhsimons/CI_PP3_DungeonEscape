@@ -139,7 +139,7 @@ def end_game_menu(data):
     sleep(0.5)
     print("Your score has been saved as your account's most recent score.")
     sleep(1)
-    # call sheet data function that searches for the CURRENT USER name 
+    # call sheet data function that searches for the CURRENT USER name
     # and saves the CURRENT USER score to the score data field in the sheet.
     print("Would you like to quit?")
     quit_yes_no = input("\nType y for yes, n for no: \n")
