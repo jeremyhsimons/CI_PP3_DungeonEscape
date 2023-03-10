@@ -74,132 +74,41 @@ Potential users of the site may include, but are not limited to:
 
 ### User Stories
 #### As a first time user...
-* (1) I want to easily navigate the site to find both main features (i.e. savings and time-frame calculators). 
-* (2) I want to enter my take-home pay, expenses, interest rate, and savings target to find out how long it will take me (in months) to reach my financial goals. 
-* (3) I might not have a lot of experience in managing my finances and I want to find more information about saving/definitions of jargon terms.
-* (4) I want to interact with the Savvy Saver website and test my knowledge of managing personal finances. 
-* (5) I want to be able to contact the site owner to ask more questions that are not addressed in the site content. 
-* (6) I want the site to be intuitive to use/give me feedback on what my interactions with site elements will achieve.
+
 
 #### As a returning user... 
-* (7) I want to recalculate my savings or time-frame to reach my goals if my income/expenses/interest rate changes.
-* (8) I want the results of my calculation to be displayed in a clear, visually pleasing manner.
-* (9) I want to be able to save a copy of the information breakdown so that I can return to the data/compare it to new data in the future.
-* (10) I want to test my knowledge to see how my finances and attitudes to finances have improved.
+
 
 #### As the site owner...
-* (11) I want to direct users to the main calculator feature of the site, whilst also making it easy to access other features.
-* (12) I want all inputs/user actions to have error handling and warnings that log to the console to minimize the impact of user error and feedback to users the correct actions they should take.
-* (13) I want the features to be clear and self-explanatory in case the user does not have much experience managing their personal finances.
-* (14) I want the site to have an FAQ with links to external resources in case first-time users have additional questions about managing their finances. 
-* (15) I want a way for users to contact me and offer me feedback about the site/ask questions that are not addressed on the site. 
-* (16) I want to be sure that if users break the url or if a link in the site breaks they can get back to site content
-* (17) I want to advertise my social media pages and GitHub account.
 
-## Design
 
-### Design Summary
-The aim of this website's design is to make the user feel like managing their personal finances is something that they can manage. The features of the site need to be simple enough to give the users confidence that what they learn here can be immediately transferred to how they manage their money. The design does not want to leave the user feeling confused and lost because that may make them feel lost and confused about managing their money and perhaps getting out of a bad financial situation.
+## Technical Design
 
-As a result the design of this site needed to be:
-* Simple.
-* Intuitive.
-* Offer the user feedback on their actions.
-* Be interactive to aid learning.
-* Be accessible so that a wide range of users can benefit from the site's features.
+### Flowchart
 
-### Colour Scheme
-[Colormind.io](http://colormind.io/) was used to generate the colorscheme for this website.
+A flowchart was created using [Lucidchart](https://lucid.app/) to visualise the logic flow of the game.
 
-<img src="readme-docs/design/colour-palate.png">
+### Data Models
 
-### Fonts
-[Google Fonts](https://fonts.google.com/) was used to import fonts into this website.
-
-Ubuntu was chosen as the main font in the website because of it's readability and less severe/corporate style. The design of the website needs to appeal to younger users or users who might not be acquainted with good financial practices and so a colder and less-readable font would potentially deter prospective users.
-
-Sans-serif was chosen as the back-up font - in case Ubuntu doesn't load - because of it's clear readability.
-
-### Page layout
-
-Each page subsequent to the landing page has a similar layout. Heading and page summary are at the top of each page and there is a sticky footer with a navigation bar at the bottom. different sections of pages or groups of information are given separate colour schemes to denote their unique function.
-
-### Wireframes
-
-The wireframes below were created using [figma](https://www.figma.com/). The layout for each of the pages has been designed to suit mobile, tablet, and desktop devices.
+* 2 Classes were used to represent each level and each new player.
+    * This allowed attributes to be preset as and when they were needed, such as level design data.
+* Dictionaries were used to store user data.
+    * This helped to verify user input when signing up to the game as the dictionary of players could be iterated through to prevent usernames getting duplicated.
+* Nested Lists were used to represent the levels, as well as groups of data that are returned to functions. 
+    * This data model worked best because the level could be sliced/changed/iterated through at multiple levels of abstraction.
+* The Google Sheets API was used for user data and user feedback submissions.
+    * This allows user data to persist beyond their browser session and allows the site owner to view any user feedback so that changes/improvements can be made to the game. 
 
 <details>
-    <summary>Home page</summary>
-    <img src="readme-docs/wireframes/ss-mobile-home.png" alt="Home page wireframe mobile">
-    <img src="readme-docs/wireframes/ss-tablet-home.png" alt="Home page wireframe tablet">
-    <img src="readme-docs/wireframes/ss-desktop-home.png" alt="Home page wireframe desktop">
-</details><br>
+    <summary>Flowchart</summary>
+    <p>Dungeon Escape game logic:</p>
+    <img src="" alt="">
 
-<details>
-    <summary>Calculator page</summary>
-    <img src="readme-docs/wireframes/ss-mobile-calc.png" alt="Calculator page wireframe mobile">
-    <img src="readme-docs/wireframes/ss-tablet-calc.png" alt="Calculator page wireframe tablet">
-    <img src="readme-docs/wireframes/ss-desktop-calca.png" alt="Calculator page wireframe desktop">
-</details><br>
+</details>
 
-<details>
-    <summary>FAQ page</summary>
-    <img src="readme-docs/wireframes/ss-mobile-faq.png" alt="FAQ page wireframe mobile">
-    <img src="readme-docs/wireframes/ss-tablet-faq.png" alt="FAQ page wireframe tablet">
-    <img src="readme-docs/wireframes/ss-desktop-faq.png" alt="FAQ page wireframe desktop">
-</details><br>
-
-<details>
-    <summary>Quiz page</summary>
-    <img src="readme-docs/wireframes/ss-mobile-quiz.png" alt="quiz page wireframe mobile">
-    <img src="readme-docs/wireframes/ss-tablet-quiz.png" alt="quiz page wireframe tablet">
-    <img src="readme-docs/wireframes/ss-desktop-quiz.png" alt="quiz page wireframe desktop">
-</details><br>
-
-<details>
-    <summary>404 page</summary>
-    <img src="readme-docs/wireframes/ss-mobile-404.png" alt="404 page wireframe mobile">
-    <img src="readme-docs/wireframes/ss-tablet-404.png" alt="404 page wireframe tablet">
-    <img src="readme-docs/wireframes/ss-desktop-404.png" alt="404 page wireframe desktop">
-</details><br>
 
 ## Features
-The website has 5 pages and the features of each page are listed below:
-
-<details>
-    <summary>Home page</summary>
-    <p>The home page is the first thing the user sees. It gives insructions on how to use the calculator and directs the user to other features.</p>
-    <ul>
-        <li>
-            <p>Instructions for how to use the calculator feature on the site.</p>
-        </li>
-        <li>
-            <p>User story covered: 6, 13</p>
-            <img src="readme-docs/features/instructions-home.png" alt="A screenshot of the home page instructions.">
-        </li>
-        <li>
-            <p>Button directing the user to the calculator feature.</p>
-        </li>
-        <li>
-            <p>User story covered: 11</p>
-            <img src="readme-docs/features/button-home.png" alt="A screenshot of the button on home page.">
-        </li>
-        <li>
-            <p>Navbar directing users to the rest of the site's features.</p>
-        </li>
-        <li>
-            <p>User story covered: 1, 11</p>
-            <img src="readme-docs/features/navbar-home.png" alt="A screenshot of the navigation bar">
-        </li>
-                <li>
-            <p>Footer directing users to the site owner's social media pages.</p>
-        </li>
-        <li>
-            <p>User story covered: 17</p>
-            <img src="readme-docs/features/footer-home.png" alt="A screenshot of the socials footer">
-        </li>
-    </ul>
-</details><br>
+The website has a single page with several features within the mock python terminal. These features are listed below:
 
 <details>
     <summary>Calculator page</summary>
@@ -225,76 +134,6 @@ The website has 5 pages and the features of each page are listed below:
         <li>
             <p>User story covered: 6, 9</p>
             <img src="readme-docs/features/print-calc.png" alt="A screenshot of the print button">
-        </li>
-    </ul>
-</details><br>
-
-<details>
-    <summary>FAQ page</summary>
-    <p>The FAQ page offers extra information about how to manage savings and answers to common questions new users might have. It also features a contact form to reach the site owner with any questions or problems.</p>
-    <ul>
-        <li>
-            <p>A list of potential questions and answers that users might have.</p>
-        </li>
-        <li>
-            <p>User story covered: 3, 14</p>
-            <img src="readme-docs/features/faq-faq.png" alt="A screenshot of the questions on the FAQ page.">
-        </li>
-        <li>
-            <p>Contact form that the user can use to reach the site owner.</p>
-        </li>
-        <li>
-            <p>User story covered: 5, 15</p>
-            <img src="readme-docs/features/contact-faq.png" alt="A screenshot of the contact form">
-        </li>
-    </ul>
-</details><br>
-
-<details>
-    <summary>Quiz page</summary>
-    <p>The quiz page is a small game that the user can play to test their knowledge of some of the principles explained in the calculator results.</p>
-    <ul>
-        <li>
-            <p>Score counter that records the user's best quiz score in the session.</p>
-        </li>
-        <li>
-            <p>User story covered: 4, 10</p>
-            <img src="readme-docs/features/score-counter-quiz.png" alt="A screenshot of the score counter">
-        </li>
-                <li>
-            <p>Quiz form that tests users' knowledge.</p>
-        </li>
-        <li>
-            <p>User story covered: 4, 10</p>
-            <img src="readme-docs/features/quiz-quiz.png" alt="A screenshot of the quiz.">
-        </li>
-                <li>
-            <p>Feedback on questions that appears after check answers button is clicked.</p>
-        </li>
-        <li>
-            <p>User story covered: 4, 10, 6</p>
-            <img src="readme-docs/features/feedback-quiz.png" alt="A screenshot of the quiz feedback elements.">
-        </li>
-                <li>
-            <p>Alert that pops up if incomplete quiz is submitted</p>
-        </li>
-        <li>
-            <p>User story covered: 6, 12</p>
-            <img src="readme-docs/features/alert-quiz.png" alt="A screenshot of an alert to the user who has submitted an incomplete quiz.">
-        </li>
-    </ul>
-</details><br>
-
-<details>
-    <summary>404 page</summary>
-    <p>The 404 page notifies users that they have tried to access a page that does not exist, or a link has broken, or they have mistyped the url. It offers navigation back to the main content of the site without having to click the browser's back button.</p>
-    <ul>
-        <li>
-            <p>Error message that appears in the event of a broken link or an error in the url in the browser's search bar.</p>
-        </li>
-        <li>
-            <p>User story covered: 16</p>
-            <img src="readme-docs/features/404-404.png" alt="A screenshot of the 404 page.">
         </li>
     </ul>
 </details><br>
