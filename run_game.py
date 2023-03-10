@@ -128,7 +128,7 @@ def start_game():
     if menu == 1:
         print("instructions")
     elif menu == 2:
-        quit_game()
+        pass
     elif menu == 3:
         # All wrapped in For loop that loops through game layout.
         # Successfull passing of each level, triggers next iteration.
@@ -175,7 +175,7 @@ def start_game():
     elif not quit_game():
         print("restarting game...")
         sleep(5)
-        #start_game()
+        start_game()
 
 
 def random_layout_selector():
