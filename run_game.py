@@ -140,7 +140,9 @@ def start_game():
         points = current_player.points
         for i in range(len(game_layout)):  # MAIN LOOP
             if lives == 0:
-                return player_die()
+                level_result = player_die()
+                if level_result[1] == 1:
+                    break
             else:
                 get_new_level = get_level(game_layout, i)
                 # returns a list: [layout, number]
@@ -152,7 +154,9 @@ def start_game():
                     lives = level_result[0]
                     levels_played += 1
                     points += 15
-                    print(Fore.GREEN + f"+ 15 points! You have {points} points")
+                    print(
+                        Fore.GREEN + f"+ 15 points! You have {points} points"
+                        )
                     sleep(1)
                     clear_screen()
                     if levels_played >= 10:
@@ -327,9 +331,9 @@ def run_level(current_level, lives):
                 print_level(current_level)
             elif player_move[1] == 2:
                 lives -= 1
-                sleep(1)
-                clear_screen()
                 sleep(0.2)
+                clear_screen()
+                sleep(0.5)
                 print_level(current_level)
             elif player_move[1] == 0:
                 sleep(0.2)
@@ -407,6 +411,8 @@ def check_move_left(level, pos1, pos2):
         return [False, "FALSE"]
     level_layout = level
     route = level_layout[pos1[1]][pos2[0]:pos1[0] + 1]
+    print(route)
+    sleep(2)
     route_checked = check_route(route)
 
     if route_checked == 1:
@@ -429,6 +435,8 @@ def check_move_right(level, pos1, pos2):
         return [False, "FALSE"]
     level_layout = level
     route = level_layout[pos1[1]][pos1[0]:pos2[0] + 1]
+    print(route)
+    sleep(2)
     route_checked = check_route(route)
 
     if route_checked == 1 and out_of_bounds is True:
@@ -454,6 +462,8 @@ def check_move_up(level, pos1, pos2):
     for i in range(len(level_layout)):
         col.append(level_layout[i][pos1[0]])
     route = col[pos2[1]:pos1[1] + 1]
+    print(route)
+    sleep(2)
     route_checked = check_route(route)
 
     if route_checked == 1:
@@ -479,6 +489,8 @@ def check_move_down(level, pos1, pos2):
     for i in range(len(level_layout)):
         col.append(level_layout[i][pos1[0]])
     route = col[pos1[1]:pos2[1] + 1]
+    print(route)
+    sleep(2)
     route_checked = check_route(route)
 
     if route_checked == 1:
@@ -495,13 +507,14 @@ def check_route(route):
     """
     Checks if the player runs into any obstacles in their move.
     """
-    if ("|" or "_" or "-" or "O") in route:
-        print("You tried to navigate into a wall.")
-        sleep(1)
-        print("You lose one life!")
-        sleep(1)
-        return 2
-    elif "B" in route:
+    for i in route:
+        if i in ("|", "-", "_", "O"):
+            print("You tried to navigate into a wall.")
+            sleep(1)
+            print("You lose one life!")
+            sleep(1)
+            return 2
+    if "B" in route:
         return 0
     else:
         return 1
@@ -610,3 +623,6 @@ def player_die():
     else:
         sleep(1)
         player_die()
+
+
+start_game()
