@@ -115,7 +115,6 @@ def login():
                 sleep(0.2)
                 print(NEW_SECTION)
                 sleep(0.2)
-                start_game()
             else:
                 print('Incorrect password. Please try again.\n')
                 login()
@@ -193,9 +192,13 @@ def main():
         add_user()
         login()
     game_result = start_game()
-    sleep(2)
-    print(game_result)
-    end_game_menu(game_result)
+    if not game_result:
+        sleep(0.2)
+        print("\n")
+    else:
+        sleep(2)
+        print(game_result)
+        end_game_menu(game_result)
 
 
 main()

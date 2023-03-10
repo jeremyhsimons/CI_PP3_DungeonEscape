@@ -140,7 +140,7 @@ def start_game():
         points = current_player.points
         for i in range(len(game_layout)):  # MAIN LOOP
             if lives == 0:
-                player_die()
+                return player_die()
             get_new_level = get_level(game_layout, i)
             # returns a list: [layout, number]
             print_level(get_new_level)
@@ -170,7 +170,12 @@ def start_game():
                     print(f"You have {lives} lives remaining.")
             elif level_result[1] == 1:
                 break
-        quit_game()
+    if quit_game():
+        print("quit successful")
+    elif not quit_game():
+        print("restarting game...")
+        sleep(5)
+        #start_game()
 
 
 def random_layout_selector():
@@ -301,7 +306,7 @@ def run_level(current_level, lives):
             sleep(0.2)
             print_level(current_level)
 
-        if player_move == []:
+        if not player_move:
             sleep(0.2)
         elif player_move[0] is False:
             sleep(1)
@@ -555,24 +560,27 @@ def quit_game():
                         print("See you next time!")
                         print(NEW_SECTION)
                         print("Click 'Run Program' to begin!")
+                        return True
                     else:
                         print("Quitting game for security reasons")
                         sleep(0.5)
                         print("Thanks for playing! See you next time!")
                         print(NEW_SECTION)
                         print("Click 'Run Program' to begin!")
+                        return True
                 else:
                     print("Thanks for playing! See you next time!")
                     print(NEW_SECTION)
                     print("Click 'Run Program' to begin!")
+                    return True
             else:
-                quit_game()
+                return quit_game()
         elif quit_yes_no == "n":
             print("Restarting Game...")
             sleep(1)
-            start_game()
+            return False
     else:
-        quit_game()
+        return quit_game()
 
 
 def player_die():
@@ -591,7 +599,7 @@ def player_die():
     if validate_yes_no(replay_yes_no):
         if replay_yes_no == "y":
             print("Restarting Game")
-            start_game()
+            #start_game()
         elif replay_yes_no == "n":
             return [0, 1]
     else:
