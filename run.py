@@ -108,11 +108,16 @@ def login():
     for i in logins:
         if uname == i['Username']:
             if pword == i['Password']:
-                print('login successful! Welcome!')
+                clear_screen()
+                sleep(0.5)
+                print(Fore.GREEN + 'login successful!')
                 CURRENT_USER['score'] = i["Latest Score"]
                 CURRENT_USER['name'] = i['Username']
-                print(f"login successful! Welcome {CURRENT_USER['name']}!")
-                print(f"Your most recent score is {CURRENT_USER['score']}")
+                print(f"Welcome {CURRENT_USER['name']}!")
+                print(
+                    f"Your most recent score is {CURRENT_USER['score']}"
+                    )
+                print(NEW_SECTION)
                 sleep(2)
                 clear_screen()
                 sleep(0.5)

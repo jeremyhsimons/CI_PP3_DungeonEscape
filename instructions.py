@@ -1,8 +1,15 @@
+from colorama import init
+from colorama import Fore
+
+init(autoreset=True)
+
+
 def print_instructions():
     """
     A function that prints the game instructions to the terminal
     """
     print(
+        Fore.YELLOW +
         """
         Dungeon escape is a maze game with an a couple of added twists...
         Your job is to navigate your character (represented by letter 'A')
@@ -14,7 +21,7 @@ def print_instructions():
         Be careful how you navigate your character!
         If you enter an instruction that moves you outside the bounds
         of the level you will lose a life and have to restart the level
-        from the beginning.\n\n
+        from the beginning.\n
         After each level there is a multiplication question that you must
         complete in order to progress to the next level.
         Correct answers will result in BONUS POINTS.
@@ -23,4 +30,4 @@ def print_instructions():
         DIRECTION,STEPS
         E.G an entry of U,2 will move your character UP by 2 steps.
         """
-    )
+        )

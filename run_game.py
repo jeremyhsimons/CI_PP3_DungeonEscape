@@ -128,6 +128,7 @@ def start_game():
     current_player = generate_player()
     menu = run_menu(current_player)
     if menu == 1:
+        clear_screen()
         print_instructions()
         input("press 'Enter' to return to menu")
         clear_screen()
@@ -173,7 +174,7 @@ def start_game():
                     if maths_answer is True:
                         points += 20
                         sleep(1)
-                        print(f"You have {points} points!")
+                        print(f"{current_player.name} has {points} points!")
                     else:
                         lives -= 1
                         sleep(1)
@@ -181,7 +182,7 @@ def start_game():
                 elif level_result[1] == 1:
                     break
     if quit_game():
-        print("quit successful")
+        print("\n")
         return False
     else:
         sleep(1)
@@ -217,7 +218,7 @@ def generate_player():
     A function to generate an instance of the player class
     to keep track of the player's score and lives
     """
-    print(Fore.GREEN + "What is your name?")
+    print(Fore.GREEN + "What will your character's name be?")
     player_name = input("Type here: \n")
     if validate_string(player_name):
         player = Player(player_name, 3, 0)
@@ -351,9 +352,9 @@ def run_level(current_level, lives):
     sleep(2)
     print(NEW_SECTION)
     sleep(0.2)
-    print(f"Level {current_level[1] + 1} complete!")
+    print(Fore.GREEN + f"Level {current_level[1] + 1} complete!")
     sleep(0.2)
-    print(f"{lives} lives remaining")
+    print(Fore.MAGENTA + f"{lives} lives remaining")
     sleep(0.2)
     return [lives, 0]
 
