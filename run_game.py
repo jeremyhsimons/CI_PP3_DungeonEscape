@@ -327,7 +327,10 @@ def run_level(current_level, lives):
                 print_level(current_level)
             elif player_move[1] == 2:
                 lives -= 1
+                sleep(1)
+                clear_screen()
                 sleep(0.2)
+                print_level(current_level)
             elif player_move[1] == 0:
                 sleep(0.2)
                 break
