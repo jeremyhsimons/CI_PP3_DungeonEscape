@@ -33,3 +33,21 @@ def update_sheet(data, worksheet):
     sheet_to_update = SHEET.worksheet(worksheet)
     sheet_to_update.append_row(data)
     print(f"{worksheet} data updated successfully!")
+
+
+def update_user_score(data):
+    """
+    Takes the current user dictionary as an argument and updates
+    sheet with the score value when player completes the game.
+    """
+    usernames = USERS.col_values(1)
+    print(usernames)
+    user_index = 0
+    count = 0
+    for ind in usernames:
+        if ind == data['name']:
+            user_index = count + 1
+            USERS.update_cell(user_index, 3, str(data['score']))
+            break
+        count += 1
+    print("Updating user score...")

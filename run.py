@@ -2,6 +2,7 @@ from time import sleep
 
 from sheet_data import get_logins
 from sheet_data import update_sheet
+from sheet_data import update_user_score
 
 from validation import validate_yes_no
 from validation import validate_details
@@ -16,7 +17,7 @@ from colorama import Fore
 init(autoreset=True)
 
 CURRENT_USER = {
-    'name': "",
+    'name': "Jeremy",
     'score': 0
     }
 NEW_SECTION = "-"*30
@@ -139,8 +140,13 @@ def end_game_menu(data):
     sleep(0.5)
     print("Your score has been saved as your account's most recent score.")
     sleep(1)
-    # call sheet data function that searches for the CURRENT USER name
-    # and saves the CURRENT USER score to the score data field in the sheet.
+    CURRENT_USER['score'] = data[0]
+    print(CURRENT_USER['name'])
+    print(CURRENT_USER['score'])
+    update_user_score(CURRENT_USER)
+    sleep(2)
+    print("Score saved successfully!")
+    sleep(0.2)
     print("Would you like to quit?")
     quit_yes_no = input("\nType y for yes, n for no: \n")
     if validate_yes_no(quit_yes_no):
@@ -201,4 +207,6 @@ def main():
         end_game_menu(game_result)
 
 
-main()
+# main()
+
+end_game_menu([300, 2])
