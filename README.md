@@ -6,15 +6,7 @@ Developed by Jeremy Simons
 [Link to live site](https://jeremyhsimons.github.io/CI_PP2_SavvySaver/)
 
 ## Introduction
-Many young people today enter adult life having no concept of how to manage their finances wisely. They have no experience saving money for large purchases and, in Western countries, are engulfed by one of the most consumerist cultures that has ever existed. This combination of factors means that many are adopting lifestyles that are not conducive to long-term financial stability. 
 
-Savvy Saver is a website that aims to help people like this. It offers three main features that can help young people and those wishing to learn more about saving:
-
-1. The savings calculator: a simple-to-use webform that calculates what you will save and offers a print-out of recommendations for your finances.
-2. The Quiz: a small game to test the user's knowledge of some basic principles of managing money.
-3. An FAQ page which seeks to answer some questions that users might have about finances, and a contact form with working email notification to submit questions that are not addressed.
-
-These features aims to achieve the project goals [below](#project-goals) through offering an interactive and responsive website that gives regular visual feedback and notification of what their interactions with the site achieve.
 
 ## Contents
 * [Project Goals](#project-goals)<br>
@@ -24,53 +16,35 @@ These features aims to achieve the project goals [below](#project-goals) through
     * [Target audience](#target-audience)
     * [User requirements](#user-requirements)
     * [User Stories](#user-stories)
-* [Design](#design)
-    * [Design Summary](#design-summary)
-    * [Colour Scheme](#colour-scheme)
-    * [Wireframes](#wireframes)
+* [Technical Design](#technical-design)
+    * [Data Models](#data-models)
+    * [Flowchart](#flowchart)
 * [Features](#features)
     * [Feature Ideas for future development](#feature-ideas-for-future-development)
 * [Technologies Used](#technologies-used)
 * [Deployment & Local Development](#deployment--local-development)
 * [Testing](#testing)
     * [Validation](#validation)
-        * [HTML](#html)
-        * [CSS](#css)
-        * [JavaScript](#js)
-        * [Accessibility](#accessibility)
-        * [Performance](#performance)
-    * [Testing user stories](#testing-user-stories)
+    * [Manual Testing](#manual-testing)
+    * [Automated Testing](#automated-testing)
     * [Bugs](#bugs)
 * [Credits](#credits)
 
 ## Project Goals
 
 ### ...For the user
-* This project will be a helpful tool in checking whether they meet their savings goal.
-* This project will offer information/education about how to manage their finances/budget better.
-* Where either of these things is not achieved, This project will have a way for feedback to be given to the site owner about problems/questions.
+
 
 ### ...For the site owner
-* This project will help others who are looking to manage their money better.
-* This project will answer a good proportion of the questions that the user may have about the site itself and how to use it.
-* This project will showcase the site owner's development skills and direct users to their GitHub page.
+
 
 ## User Experience
 
 ### Target audience
-Potential users of the site may include, but are not limited to:
-* Young people, university students, or recent graduates who are entering the workplace.
-* People who may have been in the workplace for a while, but who are looking to improve how they manage their money.
-* People who are looking to save for a significant expense and want an easy way to find out how best to do it.
+
 
 ### User requirements
-* The features of the site work as expected and any interaction provides visual or information feedback/notification.
-* Users can calculate their savings.
-* Users can print off their results.
-* Users can send a message to site owner.
-* Users can complete a quiz and keep track of their highscore while on the tab.
-* Site content is accessible to users with visual impairments.
-* User can access the site on multiple kinds of devices/screen widths.
+
 
 ### User Stories
 #### As a first time user...
@@ -195,7 +169,7 @@ Code institute's own Python Linter was used to validate all Python code in this 
 
 
 
-### Testing user stories
+### Manual Testing
 
 |User story|Feature|Test|Expected Result|Actual Result|
 |---|---|---|---|---|
@@ -212,11 +186,12 @@ Code institute's own Python Linter was used to validate all Python code in this 
     <img src="readme-docs/testing-user-stories/us1-7.png" alt="A screenshot of quiz page">
 </details><br>
 
+### Automated Testing
+
 ### Bugs
 
 | Bug Description  | Action Taken to Fix  |
 |---|---|
-
 
 ## Credits
 
