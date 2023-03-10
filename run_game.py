@@ -154,6 +154,11 @@ def start_game():
                 print(Fore.GREEN + f"+ 15 points! You have {points} points")
                 sleep(1)
                 clear_screen()
+                if levels_played >= 10:
+                    sleep(1)
+                    print("Game ended")
+                    points += lives * 20
+                    return [points, lives]
                 maths_answer = maths_question()
                 if maths_answer is True:
                     points += 20
@@ -163,10 +168,6 @@ def start_game():
                     lives -= 1
                     sleep(1)
                     print(f"You have {lives} lives remaining.")
-                if levels_played >= 10:
-                    print("Game ended")
-                    points += lives * 20
-                    return [points, lives]
             elif level_result[1] == 1:
                 break
         quit_game()
