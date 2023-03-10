@@ -412,15 +412,9 @@ def check_move_left(level, pos1, pos2):
     level_layout = level
     route = level_layout[pos1[1]][pos2[0]:pos1[0] + 1]
     route_checked = check_route(route)
-
-    if route_checked == 1:
-        level_layout[pos1[1]][pos1[0]] = "."
-        level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, 1, pos2, out_of_bounds]
-    elif route_checked == 0:
-        return [level_layout, 0, pos2, out_of_bounds]
-    else:
-        return [level_layout, 2, pos2, out_of_bounds]
+    return return_to_run_level(
+        level_layout, route_checked, pos1, pos2, out_of_bounds
+        )
 
 
 def check_move_right(level, pos1, pos2):
@@ -434,15 +428,9 @@ def check_move_right(level, pos1, pos2):
     level_layout = level
     route = level_layout[pos1[1]][pos1[0]:pos2[0] + 1]
     route_checked = check_route(route)
-
-    if route_checked == 1 and out_of_bounds is True:
-        level_layout[pos1[1]][pos1[0]] = "."
-        level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, 1, pos2, out_of_bounds]
-    elif route_checked == 0:
-        return [level_layout, 0, pos2, out_of_bounds]
-    else:
-        return [level_layout, 2, pos2, out_of_bounds]
+    return return_to_run_level(
+        level_layout, route_checked, pos1, pos2, out_of_bounds
+        )
 
 
 def check_move_up(level, pos1, pos2):
@@ -459,15 +447,9 @@ def check_move_up(level, pos1, pos2):
         col.append(level_layout[i][pos1[0]])
     route = col[pos2[1]:pos1[1] + 1]
     route_checked = check_route(route)
-
-    if route_checked == 1:
-        level_layout[pos1[1]][pos1[0]] = "."
-        level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, 1, pos2, out_of_bounds]
-    elif route_checked == 0:
-        return [level_layout, 0, pos2, out_of_bounds]
-    else:
-        return [level_layout, 2, pos2, out_of_bounds]
+    return return_to_run_level(
+        level_layout, route_checked, pos1, pos2, out_of_bounds
+        )
 
 
 def check_move_down(level, pos1, pos2):
@@ -484,15 +466,24 @@ def check_move_down(level, pos1, pos2):
         col.append(level_layout[i][pos1[0]])
     route = col[pos1[1]:pos2[1] + 1]
     route_checked = check_route(route)
+    return return_to_run_level(
+        level_layout, route_checked, pos1, pos2, out_of_bounds
+        )
 
-    if route_checked == 1:
-        level_layout[pos1[1]][pos1[0]] = "."
-        level_layout[pos2[1]][pos2[0]] = "A"
-        return [level_layout, 1, pos2, out_of_bounds]
-    elif route_checked == 0:
-        return [level_layout, 0, pos2, out_of_bounds]
+
+def return_to_run_level(layout, route, pos1, pos2, bounds):
+    """
+    Passes back all data from player's move to the run_level
+    function
+    """
+    if route == 1:
+        layout[pos1[1]][pos1[0]] = "."
+        layout[pos2[1]][pos2[0]] = "A"
+        return [layout, 1, pos2, bounds]
+    elif route == 0:
+        return [layout, 0, pos2, bounds]
     else:
-        return [level_layout, 2, pos2, out_of_bounds]
+        return [layout, 2, pos2, bounds]
 
 
 def check_route(route):
