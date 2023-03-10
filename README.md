@@ -300,13 +300,11 @@ The website has 5 pages and the features of each page are listed below:
 </details><br>
 
 ### Feature ideas for future development
-In future the website could be further developed and improved to offer greater insights for users into their finances. Possible future features could include:
-* In the calculator...
-    * A currency converter for non-UK users.
-    * Different recommendations based on best practices in other countries/regions based on their legislation.
-    * Increased FAQ page answering more questions.
-    * A greater number of quiz questions which are stored in a database and randomly selected for the user each time they play.
-
+In future the website could be further developed and improved to offer more
+game rules and greater complexity in the levels. Some ideas include:
+* A counter to measure how many moves it takes the user to complete each level and reward them for passing the level in the fewest steps possible.
+* Add other symbols in the levels that trigger different events for extra (optional) bonus points. This would reward players who take greater risks in extending the amount of time navigating and potentially losing lives.
+* Alter the score saving system so that the user's score is only saved if it is higher than the one stored in the spreadsheet.
 ## Technologies Used
 ### Languages used
 Python
