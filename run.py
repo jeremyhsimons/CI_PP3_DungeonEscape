@@ -205,6 +205,4 @@ def main():
         end_game_menu(game_result)
 
 
-# main()
-
-end_game_menu([300, 2])
+main()
