@@ -130,7 +130,8 @@ def start_game():
     if menu == 1:
         print_instructions()
         input("press 'Enter' to return to menu")
-        menu = run_menu(current_player)
+        clear_screen()
+        return start_game()
     elif menu == 2:
         pass
     elif menu == 3:

@@ -113,11 +113,9 @@ def login():
                 CURRENT_USER['name'] = i['Username']
                 print(f"login successful! Welcome {CURRENT_USER['name']}!")
                 print(f"Your most recent score is {CURRENT_USER['score']}")
-                sleep(1)
+                sleep(2)
                 clear_screen()
-                sleep(0.2)
-                print(NEW_SECTION)
-                sleep(0.2)
+                sleep(0.5)
             else:
                 print('Incorrect password. Please try again.\n')
                 login()
