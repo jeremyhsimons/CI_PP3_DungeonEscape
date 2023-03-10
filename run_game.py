@@ -411,8 +411,6 @@ def check_move_left(level, pos1, pos2):
         return [False, "FALSE"]
     level_layout = level
     route = level_layout[pos1[1]][pos2[0]:pos1[0] + 1]
-    print(route)
-    sleep(2)
     route_checked = check_route(route)
 
     if route_checked == 1:
@@ -435,8 +433,6 @@ def check_move_right(level, pos1, pos2):
         return [False, "FALSE"]
     level_layout = level
     route = level_layout[pos1[1]][pos1[0]:pos2[0] + 1]
-    print(route)
-    sleep(2)
     route_checked = check_route(route)
 
     if route_checked == 1 and out_of_bounds is True:
@@ -462,8 +458,6 @@ def check_move_up(level, pos1, pos2):
     for i in range(len(level_layout)):
         col.append(level_layout[i][pos1[0]])
     route = col[pos2[1]:pos1[1] + 1]
-    print(route)
-    sleep(2)
     route_checked = check_route(route)
 
     if route_checked == 1:
@@ -489,8 +483,6 @@ def check_move_down(level, pos1, pos2):
     for i in range(len(level_layout)):
         col.append(level_layout[i][pos1[0]])
     route = col[pos1[1]:pos2[1] + 1]
-    print(route)
-    sleep(2)
     route_checked = check_route(route)
 
     if route_checked == 1:
@@ -623,6 +615,3 @@ def player_die():
     else:
         sleep(1)
         player_die()
-
-
-start_game()
