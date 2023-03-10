@@ -11,6 +11,8 @@ from validation import validate_navigation
 from validation import validate_string
 from validation import validate_message
 
+from instructions import print_instructions
+
 from colorama import init
 from colorama import Fore
 
@@ -126,7 +128,9 @@ def start_game():
     current_player = generate_player()
     menu = run_menu(current_player)
     if menu == 1:
-        print("instructions")
+        print_instructions()
+        input("press 'Enter' to return to menu")
+        menu = run_menu(current_player)
     elif menu == 2:
         pass
     elif menu == 3:

@@ -24,6 +24,3 @@ def print_instructions():
         E.G an entry of U,2 will move your character UP by 2 steps.
         """
     )
-
-
-print_instructions()
