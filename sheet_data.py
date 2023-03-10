@@ -41,7 +41,6 @@ def update_user_score(data):
     sheet with the score value when player completes the game.
     """
     usernames = USERS.col_values(1)
-    print(usernames)
     user_index = 0
     count = 0
     for ind in usernames:

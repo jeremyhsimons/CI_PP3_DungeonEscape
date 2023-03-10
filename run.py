@@ -138,11 +138,9 @@ def end_game_menu(data):
     sleep(0.5)
     print(f"You scored {data[0]} points in total!")
     sleep(0.5)
-    print("Your score has been saved as your account's most recent score.")
+    print("Your score will be saved as your account's most recent score.")
     sleep(1)
     CURRENT_USER['score'] = data[0]
-    print(CURRENT_USER['name'])
-    print(CURRENT_USER['score'])
     update_user_score(CURRENT_USER)
     sleep(2)
     print("Score saved successfully!")
