@@ -141,40 +141,40 @@ def start_game():
         for i in range(len(game_layout)):  # MAIN LOOP
             if lives == 0:
                 return player_die()
-            get_new_level = get_level(game_layout, i)
-            # returns a list: [layout, number]
-            print_level(get_new_level)
-            sleep(0.5)
-            level_result = run_level(get_new_level, lives)
-            if level_result[1] == 0:
+            else:
+                get_new_level = get_level(game_layout, i)
+                # returns a list: [layout, number]
+                print_level(get_new_level)
                 sleep(0.5)
-                lives = level_result[0]
-                levels_played += 1
-                points += 15
-                print(Fore.GREEN + f"+ 15 points! You have {points} points")
-                sleep(1)
-                clear_screen()
-                if levels_played >= 10:
+                level_result = run_level(get_new_level, lives)
+                if level_result[1] == 0:
+                    sleep(0.5)
+                    lives = level_result[0]
+                    levels_played += 1
+                    points += 15
+                    print(Fore.GREEN + f"+ 15 points! You have {points} points")
                     sleep(1)
-                    print("Game ended")
-                    points += lives * 20
-                    return [points, lives]
-                maths_answer = maths_question()
-                if maths_answer is True:
-                    points += 20
-                    sleep(1)
-                    print(f"You have {points} points!")
-                else:
-                    lives -= 1
-                    sleep(1)
-                    print(f"You have {lives} lives remaining.")
-            elif level_result[1] == 1:
-                break
+                    clear_screen()
+                    if levels_played >= 10:
+                        sleep(1)
+                        print("Game ended")
+                        points += lives * 20
+                        return [points, lives]
+                    maths_answer = maths_question()
+                    if maths_answer is True:
+                        points += 20
+                        sleep(1)
+                        print(f"You have {points} points!")
+                    else:
+                        lives -= 1
+                        sleep(1)
+                        print(f"You have {lives} lives remaining.")
+                elif level_result[1] == 1:
+                    break
     if quit_game():
         print("quit successful")
-    elif not quit_game():
-        print("restarting game...")
-        sleep(5)
+    else:
+        sleep(1)
         start_game()
 
 
@@ -277,62 +277,64 @@ def run_level(current_level, lives):
     Runs the game logic for each level.
     """
     player_position = [0, 3]
-    level_win = False
+    level_complete = False
 
-    while level_win is False:
+    while level_complete is False:
         if lives == 0:
-            player_die()
-        current_layout = current_level[0]
-        player_move = []
-        print(f"Level: {current_level[1] + 1}, Lives: {lives}")
-        print(NEW_SECTION)
-        print("Enter your move in the form DIRECTION,STEPS")
-        print("Direction = L, R, U, or D (left, right, up, down)")
-        print("Steps = a number between 1 and 9")
-        print("e.g. U,3 will move your character up 3 steps")
-        nav_str = input("\nEnter your move here (press x to quit): \n")
-        if nav_str == "x":
-            return [lives, 1]
-        if validate_navigation(nav_str):
-            nav_data = nav_str.split(",")
-            int_nav_data = [nav_data[0], int(nav_data[1])]
-            player_move = calc_navigation(
-                int_nav_data,
-                player_position,
-                current_layout
-                )
+            death = player_die()
+            return death
         else:
-            sleep(0.2)
-            sleep(0.2)
-            print_level(current_level)
+            current_layout = current_level[0]
+            player_move = []
+            print(f"Level: {current_level[1] + 1}, Lives: {lives}")
+            print(NEW_SECTION)
+            print("Enter your move in the form DIRECTION,STEPS")
+            print("Direction = L, R, U, or D (left, right, up, down)")
+            print("Steps = a number between 1 and 9")
+            print("e.g. U,3 will move your character up 3 steps")
+            nav_str = input("\nEnter your move here (press x to quit): \n")
+            if nav_str == "x":
+                return [lives, 1]
+            if validate_navigation(nav_str):
+                nav_data = nav_str.split(",")
+                int_nav_data = [nav_data[0], int(nav_data[1])]
+                player_move = calc_navigation(
+                    int_nav_data,
+                    player_position,
+                    current_layout
+                    )
+            else:
+                sleep(0.2)
+                sleep(0.2)
+                print_level(current_level)
 
-        if not player_move:
-            sleep(0.2)
-        elif player_move[0] is False:
-            sleep(1)
-            print("Restarting level!")
-            player_position = [0, 3]
-            sleep(1)
-            lives -= 1
-            clear_screen()
-            reset_level = reset(current_level)
-            print_level([reset_level, current_level[1]])
-        elif player_move[1] == 1:
-            sleep(0.2)
-            current_layout = player_move[0]
-            player_position = player_move[2]
-            current_level[0] = current_layout
-            print_level(current_level)
-        elif player_move[1] == 2:
-            lives -= 1
-            sleep(0.2)
-        elif player_move[1] == 0:
-            sleep(0.2)
-            break
-        else:
-            pass
+            if not player_move:
+                sleep(0.2)
+            elif player_move[0] is False:
+                sleep(1)
+                print("Restarting level!")
+                player_position = [0, 3]
+                sleep(1)
+                lives -= 1
+                clear_screen()
+                reset_level = reset(current_level)
+                print_level([reset_level, current_level[1]])
+            elif player_move[1] == 1:
+                sleep(0.2)
+                current_layout = player_move[0]
+                player_position = player_move[2]
+                current_level[0] = current_layout
+                print_level(current_level)
+            elif player_move[1] == 2:
+                lives -= 1
+                sleep(0.2)
+            elif player_move[1] == 0:
+                sleep(0.2)
+                break
+            else:
+                pass
     clear_screen()
-    level_win = True
+    level_complete = True
     sleep(2)
     print(NEW_SECTION)
     sleep(0.2)
@@ -590,7 +592,7 @@ def player_die():
     """
     clear_screen()
     sleep(0.2)
-    print(Fore.RED + "### UH OH ###")
+    print(Fore.RED + "###  UH OH   ###")
     sleep(0.2)
     print(Fore.RED + "### YOU DIED ###")
     sleep(0.2)
@@ -599,7 +601,7 @@ def player_die():
     if validate_yes_no(replay_yes_no):
         if replay_yes_no == "y":
             print("Restarting Game")
-            #start_game()
+            start_game()
         elif replay_yes_no == "n":
             return [0, 1]
     else:
