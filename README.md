@@ -120,31 +120,28 @@ The website has a single page with several features within the mock python termi
             <p>Sign up y/n options</p>
         </li>
         <li>
-            <img src="" alt="A screenshot of the signup y/n feature">
+            <img src="docs/features/signup.png" alt="A screenshot of the signup y/n feature">
         </li>
         <li>
             <p>User story covered: 1, 7</p>
-            <img src="" alt="">
         </li>
         <li>
             <p>Authentication - you cannot log in with an account that doesn't exist.</p>
         </li>
         <li>
-            <img src="" alt="A screenshot of the login auth">
+            <img src="docs/features/authentication.png" alt="A screenshot of the login auth">
         </li>
         <li>
             <p>User story covered: 4, 11, 12</p>
-            <img src="" alt="">
         </li>
         <li>
             <p>Validation - cannot sign up with invalid user data</p>
         </li>
         <li>
-            <img src="" alt="A screenshot of the login auth">
+            <img src="docs/features/signup-valid.png" alt="A screenshot of the login auth">
         </li>
         <li>
             <p>User story covered: 4, 11, 12</p>
-            <img src="" alt="">
         </li>
     </ul>
 </details><br>
@@ -158,7 +155,7 @@ The website has a single page with several features within the mock python termi
             <p>The menu also prompts the player to provide a character name that will be used throughout the game.</p>
         </li>
         <li>
-            <img src="" alt="A screenshot of the game menu">
+            <img src="docs/features/gamemenu.png" alt="A screenshot of the game menu">
         </li>
         <li>
             <p>User story covered: 2, 8</p>
@@ -167,7 +164,7 @@ The website has a single page with several features within the mock python termi
             <p>Instructions for the player.</p>
         </li>
         <li>
-            <img src="" alt="A screenshot of instructions">
+            <img src="docs/features/instructions.png" alt="A screenshot of instructions">
         </li>
         <li>
             <p>User stories covered: 2, 8</p>
@@ -176,7 +173,7 @@ The website has a single page with several features within the mock python termi
             <p>Quit option for the player - prompts the user to leave a feedback message (subject to validation) for the developer.</p>
         </li>
         <li>
-            <img src="" alt="A screenshot of quit menu">
+            <img src="docs/features/feedback.png" alt="A screenshot of quit menu">
         </li>
         <li>
             <p>User stories covered: 10, 14</p>
@@ -193,7 +190,7 @@ The website has a single page with several features within the mock python termi
             <p>The order of the levels is randomised for each game session. The level is reset to this default layout if the user navigates out of bounds at any point during the level.</p>
         </li>
         <li>
-            <img src="" alt="A screenshot of a level">
+            <img src="docs/features/level-view.png" alt="A screenshot of a level">
         </li>
         <li>
             <p>User story covered: 3, 9, 5, 12</p>
@@ -202,8 +199,8 @@ The website has a single page with several features within the mock python termi
             <p>If a player makes an invalid entry, they are notified. If they make a valid entry that is a mistake, they lose 1 life.</p>
         </li>
         <li>
-            <img src="" alt="A screenshot of invalid entry.">
-            <img src="" alt="A screenshot of incorrect entry.">
+            <img src="docs/features/level-invalid.png" alt="A screenshot of invalid entry.">
+            <img src="docs/features/level-incorrect.png" alt="A screenshot of incorrect entry.">
         </li>
         <li>
             <p>User stories covered: 5, 11</p>
@@ -218,7 +215,7 @@ The website has a single page with several features within the mock python termi
             <p>A randomly generated multiplication question with 2 integers between 5 and 20.</p>
             <p>A Wrong answer leads to a loss of 1 life. A correct answer gains +20 bonus points.</p>
         <li>
-            <img src="" alt="A screenshot of a maths question">
+            <img src="docs/features/maths-challenge.png" alt="A screenshot of a maths question">
         </li>
         <li>
             <p>User story covered: 5, 9, 13</p>
@@ -233,7 +230,7 @@ The website has a single page with several features within the mock python termi
         <li>
             <p>User is told how many points they get, and points are updated to google sheet.</p>
         <li>
-            <img src="" alt="A screenshot of the end game screen">
+            <img src="docs/features/end-game.png" alt="A screenshot of the end game screen">
         </li>
         <li>
             <p>User story covered: 6</p>
@@ -423,9 +420,7 @@ For each unit test, the assertions test:
 
 * How to create unit tests in Python [Corey Schafer](https://www.youtube.com/watch?v=6tNS--WetLI)
 
-
-
 ### Acknowledgements
 * Thanks to my Mentor Mo Shami for his <strong>immensely valuable</strong> feedback, advice and encouragement throughout this project!
 * Thanks to the wonderful CI London Community for all the moral support!
-* Thanks to my housemates: Thommy, Lars, Matt, and Nesu for testing the game and reporting back any bugs found.
+* Thanks to my friends: Thommy, Lars, Matt, Nesu, Nathan, Rob, and Oli for testing the game and reporting back any bugs found.
