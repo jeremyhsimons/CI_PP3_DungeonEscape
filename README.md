@@ -1,7 +1,7 @@
 # **Dungeon Escape**
 Developed by Jeremy Simons
 
-<img src="readme-docs/design/ss-amiresponsive2.png" alt="A screenshot of Am I Responsive representation of the website">
+<img src="docs/amiresponsivepp3.png" alt="A screenshot of Am I Responsive representation of the website">
 
 [Link to live site](https://dungeonescape.herokuapp.com/)
 
