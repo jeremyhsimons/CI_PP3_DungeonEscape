@@ -158,11 +158,29 @@ Python
 
 #### 3rd party Python Libraries used
 * [Gspread / Google Sheets API](https://github.com/burnash/gspread)
-* [Google OAuth 2.0](https://google-auth.readthedocs.io/en/stable/reference/google.oauth2.credentials.html)
+* [Google OAuth 2.0](https://ui.dev/amiresponsive?url=https://dungeonescape.herokuapp.com/)
 * [Colorama](https://pypi.org/project/colorama/)
 
 ## Deployment & Local Development
 The website was deployed to [Heroku](https://id.heroku.com/) using the following process:
+1. Login or create an account at [Heroku](https://dashboard.heroku.com/)
+1. Click on New > Create new app in the top right of the screen.
+1. Add an app name and select location, then click 'create app'.
+1. Under the deploy tab of the next page, select connect to GitHub
+1. Log in to your GitHub account when prompted.
+1. Select the repository that you want to be connected to the Heroku app.
+1. Click on the settings tab.
+1. Scroll down to the config vars section, and add 2 config vars:
+    * The first key is CREDS and the value here is the creds.json file that was generated for the google sheets API to work properly.
+    * The second key is PORT and the Value is 8000
+1. Once you have set up the config vars, scroll down to buildpacks (still under the settings tab)
+1. Add the Python and Node.js buildpacks to your app and make sure that when they are displayed, they appear in the order:
+    * Python
+    * Node.JS
+1. Navigate back to the settings tab.
+1. Select automatic deploys to allow Heroku to build the site with new changes each time changes are pushed to GitHub.
+1. In the 'manual deploy' section beneath this, make sure the branch selected is 'main' and click deploy branch.
+1. The site should now be built and Heroku should provide a url for the built site.
 
 This repository can be forked using the following process:
 1. On the repository's page, go to the top-right of the page underneath the dark ribbon.
@@ -294,6 +312,7 @@ For each unit test, the assertions test:
 * [Gspread / Google Sheets API](https://github.com/burnash/gspread) was used to handle getting/sending data to the google sheet used in the project.
 * [Google OAuth 2.0](https://google-auth.readthedocs.io/en/stable/reference/google.oauth2.credentials.html) was used to set up the connection between the project and the developers personal google account.
 * [Colorama](https://pypi.org/project/colorama/) was used to add colour to the game for increased visual appeal.
+* [Ascii art generator](http://patorjk.com/software/taag/#p=display&f=Varsity&t=Dungeon%0AEscape) was used to generate title text. Varsity font was used.
 
 #### Code found online when solving bugs in own code.
 * How to clear screen in python: [www.scaler.com](https://www.scaler.com/topics/how-to-clear-screen-in-python/)
