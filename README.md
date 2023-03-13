@@ -89,6 +89,12 @@ The game would also suit older users who want to refresh their mental arithmetic
 
 A flowchart was created using [Lucidchart](https://lucid.app/) to visualise the logic flow of the game.
 
+<details>
+    <summary>Flowchart</summary>
+    <p>Dungeon Escape game logic:</p>
+    <img src="docs/technical-design" alt="A screenshot of the flowchart of game logic">
+</details>
+
 ### Data Models
 
 * Two Classes were used to represent each **level** and each new **player**.
@@ -98,15 +104,7 @@ A flowchart was created using [Lucidchart](https://lucid.app/) to visualise the 
 * Nested Lists were used to represent the levels, as well as groups of data that are returned to functions. 
     * This data model worked best because the level could be sliced/changed/iterated through at multiple levels of abstraction.
 * The Google Sheets API was used for user data and user feedback submissions.
-    * This allows user data to persist beyond their browser session and allows the site owner to view any user feedback so that changes/improvements can be made to the game. 
-
-<details>
-    <summary>Flowchart</summary>
-    <p>Dungeon Escape game logic:</p>
-    <img src="" alt="">
-
-</details>
-
+    * This allows user data to persist beyond their browser session and allows the site owner to view any user feedback so that changes/improvements can be made to the game.
 
 ## Features
 The website has a single page with several features within the mock python terminal. These features are listed below:
