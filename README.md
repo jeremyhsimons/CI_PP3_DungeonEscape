@@ -155,12 +155,13 @@ Python
 * [GitHub](https://github.com/) was used for saving and storing files.
 * [GitPod](https://gitpod.io/) was the IDE used for writing and editing code.
 * [Heroku](https://id.heroku.com/) was used as the hosting platform for this site.
+* [Ascii art generator](http://patorjk.com/software/taag/#p=display&f=Varsity&t=Dungeon%0AEscape) was used to generate title text. Varsity font was used.
 * [amiresponsive](https://ui.dev/amiresponsive?url=https://jeremyhsimons.github.io/CI_PP2_SavvySaver/) was used to test the website across different screens and generate the picture in the [Design](#design) section.
 
-#### 3rd party Python Libraries
-* [Gspread / Google Sheets API]()
-* [Colorama]()
-
+#### 3rd party Python Libraries used
+* [Gspread / Google Sheets API](https://github.com/burnash/gspread)
+* [Google OAuth 2.0](https://google-auth.readthedocs.io/en/stable/reference/google.oauth2.credentials.html)
+* [Colorama](https://pypi.org/project/colorama/)
 
 ## Deployment & Local Development
 The website was deployed to [Heroku](https://id.heroku.com/) using the following process:
@@ -216,6 +217,7 @@ Code institute's own Python Linter was used to validate all Python code in this 
 
 ### Automated Testing
 
+
 ### Bugs
 
 | Bug Description  | Action Taken to Fix  |
@@ -228,22 +230,23 @@ Code institute's own Python Linter was used to validate all Python code in this 
 | When player moved out of bounds, the level would not reset to the original layout, and the updated level with all progress so far was re-printed to the terminal. | A separate reset function was created to loop through the level elements and reset the “A” character to the start. |
 | If player selected “no” to whether they wanted to quit, the game still quit. | I added the missing if else statement that I’d forgotten to include to handle that choice. |
 
-
-
 ## Credits
 
 ### 3rd party code used
 
 #### 3rd party Python libraries/modules
-* [Gspread / Google Sheets API]()
-* [Colorama]()
-
-#### External APIs/libraries
-
+* [Gspread / Google Sheets API](https://github.com/burnash/gspread) was used to handle getting/sending data to the google sheet used in the project.
+* [Google OAuth 2.0](https://google-auth.readthedocs.io/en/stable/reference/google.oauth2.credentials.html) was used to set up the connection between the project and the developers personal google account.
+* [Colorama](https://pypi.org/project/colorama/) was used to add colour to the game for increased visual appeal.
 
 #### Code found online when solving bugs in own code.
+* How to clear screen in python: [www.scaler.com](https://www.scaler.com/topics/how-to-clear-screen-in-python/)
+
+* How to create unit tests in Python [Corey Schafer](https://www.youtube.com/watch?v=6tNS--WetLI)
+
 
 
 ### Acknowledgements
 * Thanks to my Mentor Mo Shami for his <strong>immensely valuable</strong> feedback, advice and encouragement throughout this project!
 * Thanks to the wonderful CI London Community for all the moral support!
+* Thanks to my housemates: Thommy, Lars, Matt, and Nesu for testing the game and reporting back any bugs found.
