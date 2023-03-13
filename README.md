@@ -1,12 +1,16 @@
-# **Savvy Saver**
+# **Dungeon Escape**
 Developed by Jeremy Simons
 
 <img src="readme-docs/design/ss-amiresponsive2.png" alt="A screenshot of Am I Responsive representation of the website">
 
-[Link to live site](https://jeremyhsimons.github.io/CI_PP2_SavvySaver/)
+[Link to live site](https://dungeonescape.herokuapp.com/)
 
 ## Introduction
+Dungeon escape is a maze-solving game which also tests the user's multiplication skills. The objective of the game is to complete all 10 levels (mazes) without making more than 2 mistakes. After each level, the user must answer a multiplication question to progress to the next round. Any wrong move or incorrect answer will cost the user a life!
 
+If the user loses all three lives, the game will be over and they will have to start from the beginning.
+
+Users can sign up and complete the game, trying to get the highest score possible which is recorded in a google spreadsheet. This allows potential groups of users to play the game on their own devices and compete to see who gets the highest score.
 
 ## Contents
 * [Project Goals](#project-goals)<br>
@@ -32,6 +36,7 @@ Developed by Jeremy Simons
 
 ## Project Goals
 
+
 ### ...For the user
 
 
@@ -41,7 +46,9 @@ Developed by Jeremy Simons
 ## User Experience
 
 ### Target audience
+There are no specific users for the site, but the game would suit young users who are learning their times tables in school and need to practise them.
 
+The game would also suit older users who want to refresh their mental arithmetic skills.
 
 ### User requirements
 
