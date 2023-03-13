@@ -91,7 +91,7 @@ A flowchart was created using [Lucidchart](https://lucid.app/) to visualise the 
 
 ### Data Models
 
-* 2 Classes were used to represent each level and each new player.
+* Two Classes were used to represent each **level** and each new **player**.
     * This allowed attributes to be preset as and when they were needed, such as level design data.
 * Dictionaries were used to store user data.
     * This helped to verify user input when signing up to the game as the dictionary of players could be iterated through to prevent usernames getting duplicated.
@@ -112,15 +112,15 @@ A flowchart was created using [Lucidchart](https://lucid.app/) to visualise the 
 The website has a single page with several features within the mock python terminal. These features are listed below:
 
 <details>
-    <summary>Calculator page</summary>
-    <p>The calculator page is the main feature of the site and contains a form which the user fills in to check if they will meet their savings goal.</p>
+    <summary>Game Title</summary>
+    <p>This is what the user sees upon loading the site. The title text appears with a simple animation for visual appeal. There is also a login/signup feature here.</p>
     <ul>
         <li>
-            <p>Calculator form.</p>
+            <p>Sign up y/n</p>
         </li>
         <li>
-            <p>User story covered: 2, 7</p>
-            <img src="readme-docs/features/calc-form.png" alt="A screenshot of the calculator form">
+            <p>User story covered:</p>
+            <img src="" alt="">
         </li>
         <li>
             <p>Results of their calculation and recommendations that are generated based on the user's inputs</p>
@@ -150,14 +150,16 @@ game rules and greater complexity in the levels. Some ideas include:
 Python
 
 ### Other tools/websites/libraries used
-* [figma](https://www.figma.com/) was used to create wireframes.
+* [Lucidchart](https://lucid.app/) was used to create wireframes.
 * [Git](https://git-scm.com/) was used for version control.
 * [GitHub](https://github.com/) was used for saving and storing files.
 * [GitPod](https://gitpod.io/) was the IDE used for writing and editing code.
-*[Heroku](https://id.heroku.com/) was used as the hosting platform for this site.
-icons in the site.
-* [Favicon.io](https://favicon.io/) was used to generate the site's favicon.
+* [Heroku](https://id.heroku.com/) was used as the hosting platform for this site.
 * [amiresponsive](https://ui.dev/amiresponsive?url=https://jeremyhsimons.github.io/CI_PP2_SavvySaver/) was used to test the website across different screens and generate the picture in the [Design](#design) section.
+
+#### 3rd party Python Libraries
+* [Gspread / Google Sheets API]()
+* [Colorama]()
 
 
 ## Deployment & Local Development
@@ -195,7 +197,6 @@ The site was tested on the following devices:
 Code institute's own Python Linter was used to validate all Python code in this project.
 
 
-
 ### Manual Testing
 
 |User story|Feature|Test|Expected Result|Actual Result|
@@ -219,6 +220,15 @@ Code institute's own Python Linter was used to validate all Python code in this 
 
 | Bug Description  | Action Taken to Fix  |
 |---|---|
+|The user could sign up with empty username/password fields | I added condition to the validation function that catches empty strings. |
+| Submitting user’s feedback would throw an error in the terminal | I had forgotten to format the feedback data as a list, and I was trying to update the sheet with a string. Making a single element list out of the feedback before sending it to the update function fixed the issue. |
+| Index error each time the levels were generated. | The list used to randomly order layouts was numbered 1-10 where layouts are indexed 0-9. Changing random order list to integers between 0 and 9 fixed this. |
+| When player makes a mistake and navigates into a wall, the notification gets printed twice to the terminal. | Change each check direction function so that it only calls the check route function once. |
+| When player makes invalid menu choice, “start” selection doesn’t work on second try and script stops. | I put the menu in a while loop rather than re-calling the function with the same parameters in an if-else statement. |
+| When player moved out of bounds, the level would not reset to the original layout, and the updated level with all progress so far was re-printed to the terminal. | A separate reset function was created to loop through the level elements and reset the “A” character to the start. |
+| If player selected “no” to whether they wanted to quit, the game still quit. | I added the missing if else statement that I’d forgotten to include to handle that choice. |
+
+
 
 ## Credits
 
@@ -229,7 +239,6 @@ Code institute's own Python Linter was used to validate all Python code in this 
 * [Colorama]()
 
 #### External APIs/libraries
-* [favicon.io](https://favicon.io/) code was used in the head elements to generate favicon, and images are stored in assets/images.
 
 
 #### Code found online when solving bugs in own code.
