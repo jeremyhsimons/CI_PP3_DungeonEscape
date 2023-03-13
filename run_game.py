@@ -315,8 +315,7 @@ def run_level(current_level, lives):
                     current_layout
                     )
             else:
-                sleep(0.2)
-                sleep(30)
+                sleep(3)
                 print_level(current_level)
 
             if not player_move:
