@@ -6,7 +6,9 @@ Developed by Jeremy Simons
 [Link to live site](https://dungeonescape.herokuapp.com/)
 
 ## Introduction
-Dungeon escape is a maze-solving game which also tests the user's multiplication skills. The objective of the game is to complete all 10 levels (mazes) without making more than 2 mistakes. After each level, the user must answer a multiplication question to progress to the next round. Any wrong move or incorrect answer will cost the user a life!
+Dungeon escape is a maze-solving game which also tests the user's multiplication skills. The objective of the game is to complete all 10 levels (mazes) without making more than 2 mistakes, in order to escape the dungeon!. 
+
+After each level, the user must answer a multiplication question to progress to the next round. Any wrong move or incorrect answer will cost the user a life!
 
 If the user loses all three lives, the game will be over and they will have to start from the beginning.
 
@@ -36,12 +38,16 @@ Users can sign up and complete the game, trying to get the highest score possibl
 
 ## Project Goals
 
-
 ### ...For the user
-
+* Play a maze puzzle game and see how many points are earned
+* To understand the instructions/how to play
+* To sign up with a new account.
+* Log back in to an existing account.
 
 ### ...For the site owner
-
+* To provide users with all instructions on how to play the game.
+* To make sure any user errors are handled and communicated back to the user.
+* To receive feedback from the user about the game.
 
 ## User Experience
 
@@ -51,17 +57,31 @@ There are no specific users for the site, but the game would suit young users wh
 The game would also suit older users who want to refresh their mental arithmetic skills.
 
 ### User requirements
-
+* A game that is understandable and works as expected.
+* Log-in works as expected and incorrect details do not allow the user access to their account.
+* User can quit the game when they want.
+* Game score is communicated clearly back to the user.
 
 ### User Stories
 #### As a first time user...
-
+(1) Sign up with a username and for the game.
+(2) Have instructions on how to play the game before starting.
+(3) To have a visual representation of the dungeon where my in-game character is trapped.
+(4) For inputs (whether text or numerical) to work as expected and any erroneous inputs to be flagged by the program
+(5) For the program to give me feedback when I answer game questions correctly or incorrectly.
+(6) To receive a score at the end of the game that gets saved by the program in case the user returns to the game to play again.
 
 #### As a returning user... 
-
+(7) Be able to log in with my username and password to beat previous scores.
+(8) To skip the instructions because the user is already familiar with them.
+(9) Play a game that is not exactly identical to the last time it was played, e.g. questions and dungeon rooms are randomly generated.
+(10) To send feedback to the site owner about the game.
 
 #### As the site owner...
-
+(11) Ensure that all data entered by the user is validated so as not to break the program/create bad user experience.
+(12) Ensure that all user actions are given feedback in the terminal so that users feel they know what to do next in the game.
+(13) To test users’ ability to solve simple arithmetic problems.
+(14) To get feedback from the users about how they found the game when they finish the game (either due to failing or completing).
 
 ## Technical Design
 
