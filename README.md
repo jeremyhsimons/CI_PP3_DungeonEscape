@@ -216,7 +216,33 @@ Code institute's own Python Linter was used to validate all Python code in this 
 </details><br>
 
 ### Automated Testing
+Seven unit tests were written for this project. The test check that the validation functions (used to check user inputs) return the expected results.
 
+For each unit test, the assertions test:
+* Valid data
+* Invalid data and edge cases.
+
+<details>
+    <summary>Screenshots</summary>
+    <p>All tests passed OK.</p>
+    <img src="docs/unittests/tests-passed.png" alt="A screenshot of the Gitpod terminal stating that all tests have passed.">
+    <p>1. Test validate_yes_no</p>
+    <img src="docs/unittests/test1.png" alt="A screenshot of the first test">
+    <p>2. Test validate_details</p>
+    <img src="docs/unittests/test2.png" alt="A screenshot of the second test">
+    <p>3. Test validate_main_menu</p>
+    <img src="docs/unittests/test3.png" alt="A screenshot of the third test">
+    <p>4. Test validate_math</p>
+    <img src="docs/unittests/test4.png" alt="A screenshot of the fourth test">
+    <p>5. Test validate_navigation</p>
+    <img src="docs/unittests/test5.png" alt="A screenshot of the fifth test">
+    <p>6. Test validate_string</p>
+    <p>The test originally failed because there was no handling in the validation for non-string data types. Extra code had to be added to check for this in order for this test to pass.</p>
+    <img src="docs/unittests/test6.png" alt="A screenshot of the sixth test">
+    <p>7. Test validate_message</p>
+    <p>This test originally failed because checks for empty strings or spaces had been omitted. Once this had been added to the validation function, the test passed.</p>
+    <img src="docs/unittests/test7.png" alt="A screenshot of the seventh test">
+</details><br>
 
 ### Bugs
 
