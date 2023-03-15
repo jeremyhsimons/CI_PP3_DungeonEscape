@@ -63,6 +63,61 @@ The game would also suit older users who want to refresh their mental arithmetic
 * User can quit the game when they want.
 * Game score is communicated clearly back to the user.
 
+### User Manual
+Click the dropdown to view the user manual:
+<details>
+<summary>User Manual</summary>
+
+### Log in
+When the program starts, the user will be prompted to:
+* Enter their existing login
+* Sign up for a new account
+This choice is navigated by pressing y or n on the keyboard and pressing enter to submit.
+
+The user will then type in their details. The program will reject any incorrect or invalid details and the user will have to try again.
+
+### Main menu
+The user will be prompted to enter a player name, and will then be directed to the main menu.
+There are 3 options in the menu:
+1. Read game instructions
+2. Start game
+3. Quit game
+The user must type i, s, or x and press enter to select one of these options.
+
+### Reading instructions
+If i is selected at the main menu, a screen detailing game instructions will appear.
+The user can press enter to return to the main menu.
+
+### Quitting the game
+If x is selected in the main menu (or at any time during the levels):
+* User will be asked if they're sure they want to quit (type y or n, press enter)
+* User prompted for feedback (type y or n, press enter)
+* User thanked for playing and reminded how to restart the game.
+
+### Playing the game
+Once the game is started, the user must complete 10 levels, and successfully answer maths questions between each level. If the user makes 3 mistakes, the game ends and the user must restart or quit.
+
+#### Level navigation
+The player must move the character (represented by the letter 'A') to the exit of each level/maze.
+
+In order to navigate through levels of the dungeon, the user must type their moves in the format:
+DIRECTION,STEPS where:
+* DIRECTION is U, D, L, R (up, down, left, right)
+* STEPS is a whole number between 1 and 9
+#### Examples
+* Entering U,3 in the terminal would move the character up by 3 steps.
+* Entering R,1 in the terminal would move the character right by 1 step.
+
+#### Beware
+* If the user navigates into a level wall, the character will lose 1 life.
+* If the user tries to navigate out of bounds (i.e. enters a number that would move the character outside the level), the character will lose 1 life AND the level will be reset!
+* If the user completes a level, but fails to answer the subsequent maths question correctly, the character will lose 1 life and the player will miss out on bonus points. 
+
+### Completing the game
+On successful completion of the tenth level, the player will receive their overall score. This score will be saved to the user's account as the most recent score, and it will overwrite any previous score that the user has already attained.
+
+</details>
+
 ### User Stories
 #### As a first time user...
 (1) Sign up with a username and for the game.
@@ -444,6 +499,6 @@ For each unit test, the assertions test:
 * How to create unit tests in Python [Corey Schafer](https://www.youtube.com/watch?v=6tNS--WetLI)
 
 ### Acknowledgements
-* Thanks to my Mentor Mo Shami for his <strong>immensely valuable</strong> feedback, advice and encouragement throughout this project!
+* Thanks to my Mentor Mo Shami for his <strong>immensely valuable</strong> feedback, advice and encouragement throughout this project. Thanks for pushing me to do the best I can!
 * Thanks to the wonderful CI London Community for all the moral support!
-* Thanks to my friends: Thommy, Lars, Matt, Nesu, Nathan, Rob, and Oli for testing the game and reporting back any bugs found.
+* Thanks to my friends: Thommy, Lars, Matt, Nesu, Nathan, Rob, and Oli for testing the game and for their feedback.
