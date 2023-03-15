@@ -66,22 +66,33 @@ The game would also suit older users who want to refresh their mental arithmetic
 ### User Stories
 #### As a first time user...
 (1) Sign up with a username and for the game.
+
 (2) Have instructions on how to play the game before starting.
+
 (3) To have a visual representation of the dungeon where my in-game character is trapped.
-(4) For inputs (whether text or numerical) to work as expected and any erroneous inputs to be flagged by the program
+
+(4) For inputs (whether text or numerical) to work as expected and any erroneous inputs to be flagged by the program.
+
 (5) For the program to give me feedback when I answer game questions correctly or incorrectly.
+
 (6) To receive a score at the end of the game that gets saved by the program in case the user returns to the game to play again.
 
 #### As a returning user... 
 (7) Be able to log in with my username and password to beat previous scores.
+
 (8) To skip the instructions because the user is already familiar with them.
+
 (9) Play a game that is not exactly identical to the last time it was played, e.g. questions and dungeon rooms are randomly generated.
+
 (10) To send feedback to the site owner about the game.
 
 #### As the site owner...
 (11) Ensure that all data entered by the user is validated so as not to break the program/create bad user experience.
+
 (12) Ensure that all user actions are given feedback in the terminal so that users feel they know what to do next in the game.
+
 (13) To test users’ ability to solve simple arithmetic problems.
+
 (14) To get feedback from the users about how they found the game when they finish the game (either due to failing or completing).
 
 ## Technical Design
@@ -258,29 +269,40 @@ Python
 * [amiresponsive](https://ui.dev/amiresponsive?url=https://jeremyhsimons.github.io/CI_PP2_SavvySaver/) was used to test the website across different screens and generate the picture in the [Design](#design) section.
 
 #### 3rd party Python Libraries used
-* [Gspread / Google Sheets API](https://github.com/burnash/gspread)
-* [Google OAuth 2.0](https://ui.dev/amiresponsive?url=https://dungeonescape.herokuapp.com/)
-* [Colorama](https://pypi.org/project/colorama/)
+* [Gspread / Google Sheets API](https://github.com/burnash/gspread) was used to handle getting/sending data to the google sheet used in the project. This is also not a standard feature of python, so it was necessary to install it for the purposes of this project.
+* [Google OAuth 2.0](https://google-auth.readthedocs.io/en/stable/reference/google.oauth2.credentials.html) was used to set up the connection between the project and the developers personal google account. This was necessary because access to a google account via a program is restricted for security reasons.
+* [Colorama](https://pypi.org/project/colorama/) was used to add colour to the game for increased visual appeal. It was necessary to install this dependency since python does not have this feature as standard.
+
 
 ## Deployment & Local Development
 The website was deployed to [Heroku](https://id.heroku.com/) using the following process:
 1. Login or create an account at [Heroku](https://dashboard.heroku.com/)
+<img src="docs/heroku/heroku1.png">
 1. Click on New > Create new app in the top right of the screen.
+<img src="docs/heroku/heroku2.png">
 1. Add an app name and select location, then click 'create app'.
-1. Under the deploy tab of the next page, select connect to GitHub
+<img src="docs/heroku/heroku3.png">
+1. Under the deploy tab of the next page, select connect to GitHub.
 1. Log in to your GitHub account when prompted.
+<img src="docs/heroku/heroku4.png">
 1. Select the repository that you want to be connected to the Heroku app.
+<img src="docs/heroku/heroku5.png">
 1. Click on the settings tab.
+<img src="docs/heroku/heroku6.png">
 1. Scroll down to the config vars section, and add 2 config vars:
     * The first key is CREDS and the value here is the creds.json file that was generated for the google sheets API to work properly.
     * The second key is PORT and the Value is 8000
+<img src="docs/heroku/heroku7.png">
 1. Once you have set up the config vars, scroll down to buildpacks (still under the settings tab)
 1. Add the Python and Node.js buildpacks to your app and make sure that when they are displayed, they appear in the order:
     * Python
     * Node.JS
+<img src="docs/heroku/heroku8.png">
 1. Navigate back to the settings tab.
 1. Select automatic deploys to allow Heroku to build the site with new changes each time changes are pushed to GitHub.
+<img src="docs/heroku/heroku9.png">
 1. In the 'manual deploy' section beneath this, make sure the branch selected is 'main' and click deploy branch.
+<img src="docs/heroku/heroku10.png">
 1. The site should now be built and Heroku should provide a url for the built site.
 
 This repository can be forked using the following process:
