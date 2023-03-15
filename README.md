@@ -367,6 +367,8 @@ All code passed with no errors apart from the run.py file where the line limit o
 ### Automated Testing
 Seven unit tests were written for this project. The test check that the validation functions (used to check user inputs) return the expected results.
 
+Most tests originally failed because error handling to catch invalid data types had not been included. Once this had been addressed, all tests passed OK.
+
 For each unit test, the assertions test:
 * Valid data
 * Invalid data and edge cases.
@@ -386,7 +388,6 @@ For each unit test, the assertions test:
     <p>5. Test validate_navigation</p>
     <img src="docs/unittests/test5.png" alt="A screenshot of the fifth test">
     <p>6. Test validate_string</p>
-    <p>The test originally failed because there was no handling in the validation for non-string data types. Extra code had to be added to check for this in order for this test to pass.</p>
     <img src="docs/unittests/test6.png" alt="A screenshot of the sixth test">
     <p>7. Test validate_message</p>
     <p>This test originally failed because checks for empty strings or spaces had been omitted. Once this had been added to the validation function, the test passed.</p>

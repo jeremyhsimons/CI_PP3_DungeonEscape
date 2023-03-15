@@ -132,7 +132,6 @@ class TestValidate(unittest.TestCase):
         self.assertEqual(validation.validate_message(False), False)
 
 
-
 # code below from Corey Schafer
 if __name__ == '__main__':
     unittest.main()
