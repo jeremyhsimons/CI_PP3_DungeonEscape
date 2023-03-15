@@ -21,6 +21,7 @@ Users can sign up and complete the game, trying to get the highest score possibl
 * [User Experience](#user-experience)<br>
     * [Target audience](#target-audience)
     * [User requirements](#user-requirements)
+    * [User Manual](#user-manual)
     * [User Stories](#user-stories)
 * [Technical Design](#technical-design)
     * [Data Models](#data-models)
@@ -115,8 +116,7 @@ DIRECTION,STEPS where:
 
 ### Completing the game
 On successful completion of the tenth level, the player will receive their overall score. This score will be saved to the user's account as the most recent score, and it will overwrite any previous score that the user has already attained.
-
-</details>
+</details><br>
 
 ### User Stories
 #### As a first time user...
@@ -160,7 +160,7 @@ A flowchart was created using [Lucidchart](https://lucid.app/) to visualise the 
     <summary>Flowchart</summary>
     <p>Dungeon Escape game logic:</p>
     <img src="docs/technical-design/flowchart.png" alt="A screenshot of the flowchart of game logic">
-</details>
+</details><br>
 
 ### Data Models
 
