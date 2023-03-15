@@ -1,20 +1,22 @@
+# Imports
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 from time import sleep
 import random
 import os
-
+# 3rd party
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from colorama import init
+from colorama import Fore
+# Internal
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 from sheet_data import update_sheet
-
 from validation import validate_main_menu
 from validation import validate_yes_no
 from validation import validate_math
 from validation import validate_navigation
 from validation import validate_string
 from validation import validate_message
-
 from instructions import print_instructions
-
-from colorama import init
-from colorama import Fore
 
 init(autoreset=True)
 
@@ -136,22 +138,17 @@ def start_game():
     elif menu == 2:
         pass
     elif menu == 3:
-        # All wrapped in For loop that loops through game layout.
-        # Successfull passing of each level, triggers next iteration.
-        # Each successful iteration adds 1 to LEVELS_PLAYED
-        # At the end of each iteration, LEVELS_PLAYED is checked to see
-        # if winning conditions are met.
         levels_played = 0
         lives = current_player.lives
         points = current_player.points
-        for i in range(len(game_layout)):  # MAIN LOOP
+        # Main game loop
+        for i in range(len(game_layout)):
             if lives == 0:
                 level_result = player_die()
                 if level_result[1] == 1:
                     break
             else:
                 get_new_level = get_level(game_layout, i)
-                # returns a list: [layout, number]
                 print_level(get_new_level)
                 sleep(0.5)
                 level_result = run_level(get_new_level, lives)
@@ -289,7 +286,7 @@ def run_level(current_level, lives):
     """
     player_position = [0, 3]
     level_complete = False
-
+    # Level loop
     while level_complete is False:
         if lives == 0:
             death = player_die()

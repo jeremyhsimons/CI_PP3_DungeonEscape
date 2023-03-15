@@ -1,18 +1,20 @@
+# Imports
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 from time import sleep
-
+# 3rd party
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from colorama import init
+from colorama import Fore
+# Internal
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 from sheet_data import get_logins
 from sheet_data import update_sheet
 from sheet_data import update_user_score
-
 from validation import validate_yes_no
 from validation import validate_details
 from validation import validate_message
-
 from run_game import start_game
 from run_game import clear_screen
-
-from colorama import init
-from colorama import Fore
 
 init(autoreset=True)
 
