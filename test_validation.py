@@ -9,7 +9,7 @@ import validation
 
 
 class TestValidate(unittest.TestCase):
-    
+
     def test_validate_yes_no(self):
         """
         Tests if validate_yes_no function returns expected values.
@@ -96,6 +96,8 @@ class TestValidate(unittest.TestCase):
         self.assertEqual(validation.validate_navigation("1,1"), False)
         self.assertEqual(validation.validate_navigation("1"), False)
         self.assertEqual(validation.validate_navigation("D,D"), False)
+        self.assertEqual(validation.validate_navigation(123), False)
+        self.assertEqual(validation.validate_navigation(True), False)
 
     def test_validate_string(self):
         """

@@ -48,23 +48,13 @@ def validate_details(value1, value2):
     except ValueError as f:
         print(f"Invalid username: {f}")
         return False
-
     try:
-        if isinstance(value1, int) or isinstance(value2, int):
+        if not (isinstance(value1, str) or isinstance(value2, str)):
             raise TypeError(
-                "You cannot enter an integer as your username or password."
+                "Please enter your details in a string format."
             )
     except TypeError as r:
         print(f"Invalid user data: {r}")
-        return False
-
-    try:
-        if isinstance(value1, bool) or isinstance(value2, bool):
-            raise TypeError(
-                "You cannot enter a boolean as your username or password."
-            )
-    except TypeError as s:
-        print(f"Invalid user data: {s}")
         return False
     else:
         print('New user confirmed...')
@@ -117,6 +107,14 @@ def validate_navigation(data):
     Checks if the user's input for moving around the level
     matches what is expected.
     """
+    try:
+        if not isinstance(data, str):
+            raise TypeError(
+                "Please enter your move in string format."
+            )
+    except TypeError as u:
+        print(f"Invalid move: {u}")
+        return False
     try:
         if "," not in data:
             raise ValueError(
