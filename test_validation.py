@@ -128,6 +128,9 @@ class TestValidate(unittest.TestCase):
             aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
             """
             ), False)
+        self.assertEqual(validation.validate_message(123), False)
+        self.assertEqual(validation.validate_message(False), False)
+
 
 
 # code below from Corey Schafer

@@ -193,6 +193,14 @@ def validate_message(data):
     Reduces the chance of abuse of the database (google sheet).
     """
     try:
+        if not isinstance(data, str):
+            raise TypeError(
+                "You must enter your message in string format."
+            )
+    except TypeError as v:
+        print(f"Invalid entry: {v}")
+        return False
+    try:
         if data == "" or data == " ":
             raise ValueError(
                 "You cannot submit an empty field or only spaces."
