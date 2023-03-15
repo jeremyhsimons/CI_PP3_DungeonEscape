@@ -29,31 +29,31 @@ def welcome():
     """
     print('\nwelcome to...')
     sleep(0.2)
-    print(Fore.RED + " ______                                                     ")
+    print(Fore.RED + " ______                                                     ")  # noqa
     sleep(0.2)
-    print(Fore.RED + "|_   _ `.                                                   ")
+    print(Fore.RED + "|_   _ `.                                                   ")  # noqa
     sleep(0.2)
-    print(Fore.MAGENTA + "  | | `. \ __   _   _ .--.   .--./) .---.   .--.   _ .--.   ")
+    print(Fore.MAGENTA + "  | | `. \ __   _   _ .--.   .--./) .---.   .--.   _ .--.   ")  # noqa
     sleep(0.2)
-    print(Fore.MAGENTA + "  | |  | |[  | | | [ `.-. | / /'`\;/ /__\\/ .'`\ \ [ `.-. |  ")
+    print(Fore.MAGENTA + "  | |  | |[  | | | [ `.-. | / /'`\;/ /__\\/ .'`\ \ [ `.-. |  ")  # noqa
     sleep(0.2)
-    print(Fore.MAGENTA + " _| |_.' / | \_/ |, | | | | \ \._//| \__.,| \__. | | | | |  ")
+    print(Fore.MAGENTA + " _| |_.' / | \_/ |, | | | | \ \._//| \__.,| \__. | | | | |  ")  # noqa
     sleep(0.2)
-    print(Fore.RED + "|______.'  '.__.'_/[___||__].',__`  '.__.' '.__.' [___||__] ")
+    print(Fore.RED + "|______.'  '.__.'_/[___||__].',__`  '.__.' '.__.' [___||__] ")  # noqa
     sleep(0.2)
-    print(Fore.RED + " ________                  ( ( __))            _            ")
+    print(Fore.RED + " ________                  ( ( __))            _            ")  # noqa
     sleep(0.2)
-    print(Fore.RED + "|_   __  |                                    | |           ")
+    print(Fore.RED + "|_   __  |                                    | |           ")  # noqa
     sleep(0.2)
-    print(Fore.RED + "  | |_ \_| .--.   .---.  ,--.  _ .--.   .---. | |           ")
+    print(Fore.RED + "  | |_ \_| .--.   .---.  ,--.  _ .--.   .---. | |           ")  # noqa
     sleep(0.2)
-    print(Fore.MAGENTA + "  |  _| _ ( (`\] / /'`\]`'_\ :[ '/'`\ \/ /__\\ | |           ")
+    print(Fore.MAGENTA + "  |  _| _ ( (`\] / /'`\]`'_\ :[ '/'`\ \/ /__\\ | |           ")  # noqa
     sleep(0.2)
-    print(Fore.MAGENTA + " _| |__/ | `'.'. | \__. // | |,| \__/ || \__.,|_|           ")
+    print(Fore.MAGENTA + " _| |__/ | `'.'. | \__. // | |,| \__/ || \__.,|_|           ")  # noqa
     sleep(0.2)
-    print(Fore.RED + "|________|[\__) )'.___.'\'-;__/ | ;.__/  '.__.'(_)           ")
+    print(Fore.RED + "|________|[\__) )'.___.'\'-;__/ | ;.__/  '.__.'(_)           ")  # noqa
     sleep(0.2)
-    print(Fore.RED + "                              [__|                          ")
+    print(Fore.RED + "                              [__|                          ")  # noqa
     sleep(0.2)
     print(f"\n{NEW_SECTION}")
     sleep(0.2)
