@@ -9,7 +9,7 @@ import validation
 
 
 class TestValidate(unittest.TestCase):
-
+    
     def test_validate_yes_no(self):
         """
         Tests if validate_yes_no function returns expected values.
@@ -23,6 +23,8 @@ class TestValidate(unittest.TestCase):
         self.assertEqual(validation.validate_yes_no("h"), False)
         self.assertEqual(validation.validate_yes_no("Y"), False)
         self.assertEqual(validation.validate_yes_no("nn"), False)
+        self.assertEqual(validation.validate_yes_no(0), False)
+        self.assertEqual(validation.validate_yes_no(True), False)
 
     def test_validate_details(self):
         """
@@ -43,6 +45,8 @@ class TestValidate(unittest.TestCase):
             validation.validate_details(" ", "Password123"), False
             )
         self.assertEqual(validation.validate_details("", "Password123"), False)
+        self.assertEqual(validation.validate_details(0, 0), False)
+        self.assertEqual(validation.validate_details(True, True), False)
 
     def test_validate_main_menu(self):
         """
@@ -57,6 +61,8 @@ class TestValidate(unittest.TestCase):
         self.assertEqual(validation.validate_main_menu(""), False)
         self.assertEqual(validation.validate_main_menu("1"), False)
         self.assertEqual(validation.validate_main_menu("%"), False)
+        self.assertEqual(validation.validate_main_menu(0), False)
+        self.assertEqual(validation.validate_main_menu(True), False)
 
     def test_validate_math(self):
         """
@@ -70,6 +76,8 @@ class TestValidate(unittest.TestCase):
         self.assertEqual(validation.validate_math(" "), False)
         self.assertEqual(validation.validate_math("abc"), False)
         self.assertEqual(validation.validate_math("$"), False)
+        self.assertEqual(validation.validate_math(0), False)
+        self.assertEqual(validation.validate_math(True), False)
 
     def test_validate_navigation(self):
         """
@@ -79,7 +87,7 @@ class TestValidate(unittest.TestCase):
         self.assertEqual(validation.validate_navigation("D,2"), True)
         self.assertEqual(validation.validate_navigation("R,3"), True)
         self.assertEqual(validation.validate_navigation("L,4"), True)
-        #
+        # Edge cases.
         self.assertEqual(validation.validate_navigation(""), False)
         self.assertEqual(validation.validate_navigation(" "), False)
         self.assertEqual(validation.validate_navigation("U1"), False)

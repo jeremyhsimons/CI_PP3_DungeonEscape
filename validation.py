@@ -49,6 +49,24 @@ def validate_details(value1, value2):
         print(f"Invalid username: {f}")
         return False
 
+    try:
+        if isinstance(value1, int) or isinstance(value2, int):
+            raise TypeError(
+                "You cannot enter an integer as your username or password."
+            )
+    except TypeError as r:
+        print(f"Invalid user data: {r}")
+        return False
+
+    try:
+        if isinstance(value1, bool) or isinstance(value2, bool):
+            raise TypeError(
+                "You cannot enter a boolean as your username or password."
+            )
+    except TypeError as s:
+        print(f"Invalid user data: {s}")
+        return False
+
     print('New user confirmed...')
     return True
 
