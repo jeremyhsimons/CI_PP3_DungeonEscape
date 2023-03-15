@@ -66,9 +66,9 @@ def validate_details(value1, value2):
     except TypeError as s:
         print(f"Invalid user data: {s}")
         return False
-
-    print('New user confirmed...')
-    return True
+    else:
+        print('New user confirmed...')
+        return True
 
 
 def validate_main_menu(data):
@@ -92,6 +92,14 @@ def validate_math(data):
     """
     Checks if the user's input for a math question is an integer.
     """
+    try:
+        if not isinstance(data, str):
+            raise TypeError(
+                "Please enter your answer in a string format."
+            )
+    except TypeError as t:
+        print(f"Invalid Answer: {t}")
+        return False
     try:
         if not data.isdigit():
             raise ValueError(
