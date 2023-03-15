@@ -260,6 +260,7 @@ def run_menu(player):
             elif menu_selection == "x":
                 return 2
         else:
+            sleep(2)
             clear_screen()
             sleep(0.2)
 
@@ -486,7 +487,9 @@ def maths_question():
             print(f"The correct answer was {answer}")
             return False
     else:
-        maths_question()
+        sleep(2)
+        clear_screen()
+        return maths_question()
 
 
 def quit_game():
