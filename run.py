@@ -129,12 +129,18 @@ def login():
                 clear_screen()
                 sleep(0.5)
             else:
-                print('Incorrect password. Please try again.\n')
+                print(Fore.RED + 'Incorrect password. Please try again.\n')
+                sleep(1.5)
+                clear_screen()
                 login()
         else:
             logins_checked += 1
     if logins_checked == len(logins):
-        print('Sorry, this user does not exist. Please try again.\n')
+        print(
+            Fore.RED + 'Sorry, this user does not exist. Please try again.\n'
+            )
+        sleep(1.5)
+        clear_screen()
         login()
 
 
