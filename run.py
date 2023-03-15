@@ -1,4 +1,5 @@
 # Imports
+# Python
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 from time import sleep
 # 3rd party
@@ -15,6 +16,8 @@ from validation import validate_details
 from validation import validate_message
 from run_game import start_game
 from run_game import clear_screen
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 init(autoreset=True)
 

@@ -1,4 +1,5 @@
 # Imports
+# Python
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 from time import sleep
 import random
@@ -17,6 +18,8 @@ from validation import validate_navigation
 from validation import validate_string
 from validation import validate_message
 from instructions import print_instructions
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 init(autoreset=True)
 
@@ -314,7 +317,6 @@ def run_level(current_level, lives):
             else:
                 sleep(3)
                 print_level(current_level)
-
             if not player_move:
                 sleep(0.2)
             elif player_move[0] is False:

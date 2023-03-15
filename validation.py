@@ -1,4 +1,8 @@
+# Imports
+# Internal
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 from sheet_data import get_logins
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 def validate_yes_no(data):

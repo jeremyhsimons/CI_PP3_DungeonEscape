@@ -1,5 +1,10 @@
+# Imports
+# 3rd party
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import gspread
 from google.oauth2.service_account import Credentials
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",

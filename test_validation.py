@@ -1,5 +1,11 @@
+# Imports
+# Python
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import unittest
+# Internal
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import validation
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 class TestValidate(unittest.TestCase):
