@@ -90,13 +90,15 @@ def add_user():
     print("\nPlease choose a valid username and password.\n")
     print('Make sure you remember the username and password you choose.')
     print('You will need them to log back in and see your score!')
-    new_uname = input('\n New username: \n')
-    new_pword = input(' New password: \n')
+    new_uname = input('\nNew username: \n')
+    new_pword = input('New password: \n')
     check_details = validate_details(new_uname, new_pword)
     if check_details:
         new_user = [new_uname, new_pword, 0]
         update_sheet(new_user, 'users')
     else:
+        sleep(2)
+        clear_screen()
         add_user()
 
 
@@ -107,8 +109,8 @@ def login():
     """
     logins = get_logins()
     print('Please enter your username and password')
-    uname = input('\n Username: \n')
-    pword = input(' Password: \n')
+    uname = input(Fore.YELLOW + '\nUsername: \n')
+    pword = input(Fore.YELLOW + 'Password: \n')
     logins_checked = 0
     for i in logins:
         if uname == i['Username']:

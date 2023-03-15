@@ -16,7 +16,7 @@ def validate_yes_no(data):
                 f"Please answer yes or no (y or n). You answered '{data}'."
                 )
     except ValueError as e:
-        print(f"Invalid response: {e}")
+        print(f"\nInvalid response: {e}")
         return False
     else:
         return True
@@ -36,7 +36,7 @@ def validate_details(value1, value2):
                 "You cannot submit an empty field as your username/password."
             )
     except ValueError as e:
-        print(f"Invalid data: {e}")
+        print(f"\nInvalid data: {e}")
         return False
     try:
         existing_users = get_logins()
@@ -46,7 +46,7 @@ def validate_details(value1, value2):
                     "This username already exists."
                 )
     except ValueError as f:
-        print(f"Invalid username: {f}")
+        print(f"\nInvalid username: {f}")
         return False
     try:
         if not (isinstance(value1, str) or isinstance(value2, str)):
@@ -54,7 +54,7 @@ def validate_details(value1, value2):
                 "Please enter your details in a string format."
             )
     except TypeError as r:
-        print(f"Invalid user data: {r}")
+        print(f"\nInvalid user data: {r}")
         return False
     else:
         print('New user confirmed...')
@@ -72,7 +72,7 @@ def validate_main_menu(data):
                 f"Please select i, s or x. You selected {data}"
             )
     except ValueError as g:
-        print(f"Invalid selection: {g}")
+        print(f"\nInvalid selection: {g}")
         return False
     else:
         return True
@@ -88,7 +88,7 @@ def validate_math(data):
                 "Please enter your answer in a string format."
             )
     except TypeError as t:
-        print(f"Invalid Answer: {t}")
+        print(f"\nInvalid Answer: {t}")
         return False
     try:
         if not data.isdigit():
@@ -96,7 +96,7 @@ def validate_math(data):
                 f"Please enter a valid number. You entered {data}"
             )
     except ValueError as h:
-        print(f"Invalid Answer: {h}")
+        print(f"\nInvalid Answer: {h}")
         return False
     else:
         return True
@@ -113,7 +113,7 @@ def validate_navigation(data):
                 "Please enter your move in string format."
             )
     except TypeError as u:
-        print(f"Invalid move: {u}")
+        print(f"\nInvalid move: {u}")
         return False
     try:
         if "," not in data:
@@ -121,7 +121,7 @@ def validate_navigation(data):
                  "Please separate the direction and steps with ','"
             )
     except ValueError as k:
-        print(f"Invalid entry: {k}")
+        print(f"\nInvalid entry: {k}")
         return False
 
     nav_input = data.split(",")
@@ -136,19 +136,23 @@ def validate_navigation(data):
                 "Please enter L,R,U or D as your direction."
             )
     except ValueError as i:
-        print(f"Invalid direction: {i}")
+        print(f"\nInvalid direction: {i}")
         return False
     try:
         if not nav_input[1].isdigit():
             raise ValueError(
                 "Please enter a number between 1 and 9 for the steps value."
             )
+    except ValueError as x:
+        print(f"\nInvalid steps: {x}")
+        return False
+    try:
         if int(nav_input[1]) > 9:
             raise ValueError(
                 "You cannot travel more than 9 steps at a time."
             )
     except ValueError as j:
-        print(f"Invalid steps: {j}")
+        print(f"\nInvalid steps: {j}")
         return False
     else:
         return True
@@ -165,7 +169,7 @@ def validate_string(data):
                 "You cannot have an entry that is empty/only spaces."
             )
     except ValueError as m:
-        print(f"Invalid entry: {m}")
+        print(f"\nInvalid entry: {m}")
         return False
     try:
         if isinstance(data, int):
@@ -173,7 +177,7 @@ def validate_string(data):
                 "You cannot enter a number in this field."
             )
     except TypeError as o:
-        print(f"Invalid entry: {o}")
+        print(f"\nInvalid entry: {o}")
         return False
     try:
         if isinstance(data, bool):
@@ -181,7 +185,7 @@ def validate_string(data):
                 "You cannot enter a Boolean in this field"
             )
     except TypeError as p:
-        print(f"Invalid entry: {p}")
+        print(f"\nInvalid entry: {p}")
         return False
     else:
         return True
@@ -198,7 +202,7 @@ def validate_message(data):
                 "You must enter your message in string format."
             )
     except TypeError as v:
-        print(f"Invalid entry: {v}")
+        print(f"\nInvalid entry: {v}")
         return False
     try:
         if data == "" or data == " ":
@@ -206,7 +210,7 @@ def validate_message(data):
                 "You cannot submit an empty field or only spaces."
             )
     except ValueError as q:
-        print(f"Invalid entry: {q}")
+        print(f"\nInvalid entry: {q}")
         return False
     try:
         if len(data) > 80:
@@ -214,7 +218,7 @@ def validate_message(data):
                 "You cannot have a feedback message longer than 80 characters."
             )
     except ValueError as n:
-        print(f"Invalid entry: {n}")
+        print(f"\nInvalid entry: {n}")
         return False
     else:
         return True
