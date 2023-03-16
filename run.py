@@ -163,7 +163,7 @@ def end_game_menu(data):
     sleep(2)
     print("Score saved successfully!")
     sleep(0.2)
-    print("Would you like to quit?")
+    print("Would you like to quit and save your score to your account?")
     quit_yes_no = input("\nType y for yes, n for no: \n")
     if validate_yes_no(quit_yes_no):
         if quit_yes_no == "y" or quit_yes_no == "Y":

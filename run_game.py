@@ -166,8 +166,7 @@ def start_game():
                     sleep(1)
                     clear_screen()
                     if levels_played >= 10:
-                        sleep(1)
-                        print("Game ended")
+                        sleep(0.5)
                         points += lives * 20
                         return [points, lives]
                     maths_answer = maths_question()
