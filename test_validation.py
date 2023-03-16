@@ -16,12 +16,12 @@ class TestValidate(unittest.TestCase):
         """
         self.assertEqual(validation.validate_yes_no("y"), True)
         self.assertEqual(validation.validate_yes_no("n"), True)
+        self.assertEqual(validation.validate_yes_no("Y"), True)
         # Edge cases.
         self.assertEqual(validation.validate_yes_no(""), False)
         self.assertEqual(validation.validate_yes_no(" "), False)
         self.assertEqual(validation.validate_yes_no("1"), False)
         self.assertEqual(validation.validate_yes_no("h"), False)
-        self.assertEqual(validation.validate_yes_no("Y"), False)
         self.assertEqual(validation.validate_yes_no("nn"), False)
         self.assertEqual(validation.validate_yes_no(0), False)
         self.assertEqual(validation.validate_yes_no(True), False)

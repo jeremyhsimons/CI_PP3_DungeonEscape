@@ -11,6 +11,14 @@ def validate_yes_no(data):
     to a y/n question in the game.
     """
     try:
+        if not isinstance(data, int):
+            raise TypeError(
+                "You must enter your response in string format"
+            )
+    except TypeError as d:
+        print(f"Invalid response: {d}")
+        return False
+    try:
         if not (data.lower() == "y" or data.lower() == "n"):
             raise ValueError(
                 f"Please answer yes or no (y or n). You answered '{data}'."
