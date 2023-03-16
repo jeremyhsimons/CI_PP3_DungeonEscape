@@ -432,7 +432,11 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 <details>
     <summary>Screenshots</summary>
-    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+    <img src="docs/manualtest/us1-1.png" alt="A screenshot of the sign up prompt."><br>
+    <img src="docs/manualtest/us1-2.png" alt="A screenshot of the sign up prompt."><br>
+    <img src="docs/manualtest/us1-3.png" alt="A screenshot of the new users details."><br>
+    <img src="docs/manualtest/us1-4.png" alt="A screenshot of the success notification."><br>
+    <img src="docs/manualtest/us1-5.png" alt="A screenshot of the new user stored in google sheets."><br>
 </details><br>
 
 |User story|Feature|Test|Expected Result|Actual Result|
@@ -441,7 +445,8 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 <details>
     <summary>Screenshots</summary>
-    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+    <img src="docs/manualtest/us2-1.png" alt="A screenshot of the main menu."><br>
+    <img src="docs/manualtest/us2-2.png" alt="A screenshot of the instructions."><br>
 </details><br>
 
 |User story|Feature|Test|Expected Result|Actual Result|
@@ -450,7 +455,8 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 <details>
     <summary>Screenshots</summary>
-    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+    <img src="readme-docs/testing-user-stories/us3-1.png" alt="A screenshot of the main menu with s selected."><br>
+    <img src="readme-docs/testing-user-stories/us3-2.png" alt="A screenshot of a new game"><br>
 </details><br>
 
 |User story|Feature|Test|Expected Result|Actual Result|
@@ -459,7 +465,8 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 <details>
     <summary>Screenshots</summary>
-    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+    <img src="docs/manualtest/us4-1.png" alt="A screenshot of the sign up prompt with invalid entry."><br>
+    <img src="docs/manualtest/us4-2.png" alt="A screenshot of the error message."><br>
 </details><br>
 
 |User story|Feature|Test|Expected Result|Actual Result|
@@ -468,7 +475,7 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 <details>
     <summary>Screenshots</summary>
-    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+    <img src="docs/manualtest/us5.png" alt="A screenshot of a maths question with wrong answer and program's feedback."><br>
 </details><br>
 
 |User story|Feature|Test|Expected Result|Actual Result|
@@ -477,7 +484,7 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 <details>
     <summary>Screenshots</summary>
-    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+    <img src="docs/manualtest/us6.png" alt="A screenshot of the end game page."><br>
 </details><br>
 
 |User story|Feature|Test|Expected Result|Actual Result|
@@ -486,7 +493,8 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 <details>
     <summary>Screenshots</summary>
-    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+    <img src="docs/manualtest/us7-1.png" alt="A screenshot of existing user logging in."><br>
+    <img src="docs/manualtest/us7-2.png" alt="A screenshot of welcome message"><br>
 </details><br>
 
 |User story|Feature|Test|Expected Result|Actual Result|
@@ -495,7 +503,8 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 <details>
     <summary>Screenshots</summary>
-    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+    <img src="docs/manualtest/us8-1.png" alt="A screenshot of the main menu"><br>
+    <img src="docs/manualtest/us8-2.png" alt="A screenshot of a new game."><br>
 </details><br>
 
 |User story|Feature|Test|Expected Result|Actual Result|
@@ -504,7 +513,8 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 <details>
     <summary>Screenshots</summary>
-    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+    <img src="docs/manualtest/us9-1.png" alt="A screenshot of a new level 1."><br>
+    <img src="docs/manualtest/us9-2.png" alt="A screenshot of a different randomised level 1."><br>
 </details><br>
 
 |User story|Feature|Test|Expected Result|Actual Result|
@@ -513,7 +523,9 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 <details>
     <summary>Screenshots</summary>
-    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+    <img src="docs/manualtest/us10-1.png" alt="A screenshot of a new feedback message from user."><br>
+    <img src="docs/manualtest/us10-2.png" alt="A screenshot of program's response."><br>
+    <img src="docs/manualtest/us10-3.png" alt="A screenshot of the feedback saved in google sheets."><br>
 </details><br>
 
 |User story|Feature|Test|Expected Result|Actual Result|
@@ -532,7 +544,9 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 <details>
     <summary>Screenshots</summary>
-    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+    <img src="docs/manualtest/us13-1.png" alt="A screenshot of level 1 being completed"><br>
+    <img src="docs/manualtest/us13-2.png" alt="A screenshot of level complete screen."><br>
+    <img src="docs/manualtest/us13-3.png" alt="A screenshot of a new maths question after level complete."><br>
 </details><br>
 
 |User story|Feature|Test|Expected Result|Actual Result|
