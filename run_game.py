@@ -137,6 +137,7 @@ def start_game():
         print_instructions()
         input("press 'Enter' to return to menu")
         clear_screen()
+        sleep(0.5)
         return start_game()
     elif menu == 2:
         pass

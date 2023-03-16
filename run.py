@@ -219,7 +219,6 @@ def main():
         print("\n")
     else:
         sleep(2)
-        print(game_result)
         end_game_menu(game_result)
 
 
