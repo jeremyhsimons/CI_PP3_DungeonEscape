@@ -11,7 +11,7 @@ def validate_yes_no(data):
     to a y/n question in the game.
     """
     try:
-        if not (data == "y" or data == "n"):
+        if not (data.lower() == "y" or data.lower() == "n"):
             raise ValueError(
                 f"Please answer yes or no (y or n). You answered '{data}'."
                 )

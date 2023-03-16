@@ -16,7 +16,7 @@ def print_instructions():
     print(
         Fore.YELLOW +
         """
-        Dungeon escape is a maze game with an a couple of added twists...
+        Dungeon escape is a maze game with a couple of added twists...
         Your job is to navigate your character (represented by letter 'A')
         To the exit of each level (represented by letter 'B').
         Beware! The walls of each level are electrified!

@@ -74,9 +74,9 @@ def signup():
     sign_up_check = input("\n If yes, press 'y'. if no, press 'n': \n")
     signup_validation = validate_yes_no(sign_up_check)
     if signup_validation:
-        if sign_up_check == 'y':
+        if sign_up_check == 'y' or sign_up_check == "Y":
             return True
-        elif sign_up_check == 'n':
+        elif sign_up_check == 'n' or sign_up_check == "N":
             return False
     else:
         return signup()
@@ -166,11 +166,11 @@ def end_game_menu(data):
     print("Would you like to quit?")
     quit_yes_no = input("\nType y for yes, n for no: \n")
     if validate_yes_no(quit_yes_no):
-        if quit_yes_no == "y":
+        if quit_yes_no == "y" or quit_yes_no == "Y":
             print("\nWould you like to give us feedback on this game?")
             feedback_yes_no = input("\nType y for yes, n for no: \n")
             if validate_yes_no(feedback_yes_no):
-                if feedback_yes_no == "y":
+                if feedback_yes_no == "y" or feedback_yes_no == "Y":
                     feedback_message = input(
                         "\nLeave your message here (max 80 char): \n"
                         )
@@ -195,7 +195,7 @@ def end_game_menu(data):
                     print("Click 'Run Program' to begin!")
             else:
                 return end_game_menu(data)
-        elif quit_yes_no == "n":
+        elif quit_yes_no == "n" or quit_yes_no == "N":
             print("Restarting Game...")
             sleep(1)
             return start_game()

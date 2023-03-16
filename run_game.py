@@ -504,11 +504,11 @@ def quit_game():
     print("Are you sure you want to quit?")
     quit_yes_no = input("\nType y for yes, n for no: \n")
     if validate_yes_no(quit_yes_no):
-        if quit_yes_no == "y":
+        if quit_yes_no == "y" or quit_yes_no == "Y":
             print("\nWould you like to give us feedback on this game?")
             feedback_yes_no = input("\nType y for yes, n for no: \n")
             if validate_yes_no(feedback_yes_no):
-                if feedback_yes_no == "y":
+                if feedback_yes_no == "y" or feedback_yes_no == "Y":
                     feedback_message = input(
                         "\nLeave your message here (max 80 char): \n"
                         )
@@ -536,7 +536,7 @@ def quit_game():
                     return True
             else:
                 return quit_game()
-        elif quit_yes_no == "n":
+        elif quit_yes_no == "n" or quit_yes_no == "N":
             print("Restarting Game...")
             sleep(1)
             return False
