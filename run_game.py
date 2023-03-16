@@ -175,6 +175,7 @@ def start_game():
                         points += 20
                         sleep(1)
                         print(f"{current_player.name} has {points} points!")
+                        sleep(1.5)
                     else:
                         lives -= 1
                         sleep(1)
