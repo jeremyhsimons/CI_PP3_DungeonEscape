@@ -298,7 +298,7 @@ def run_level(current_level, lives):
         else:
             current_layout = current_level[0]
             player_move = []
-            print(f"Level: {current_level[1] + 1}, Lives: {lives}")
+            print(f"Level: {current_level[1] + 1}/10, Lives: {lives}")
             print(NEW_SECTION)
             print("Enter your move in the form DIRECTION,STEPS")
             print("Direction = L, R, U, or D (left, right, up, down)")
