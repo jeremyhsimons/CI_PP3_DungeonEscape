@@ -558,10 +558,10 @@ def player_die():
     print("Press y to start again, press n to quit")
     replay_yes_no = input("\nType choice here: \n")
     if validate_yes_no(replay_yes_no):
-        if replay_yes_no == "y":
+        if replay_yes_no == "y" or replay_yes_no == "Y":
             print("Restarting Game")
             start_game()
-        elif replay_yes_no == "n":
+        elif replay_yes_no == "n" or replay_yes_no == "N":
             return [0, 1]
     else:
         sleep(1)
