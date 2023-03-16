@@ -428,18 +428,117 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 |User story|Feature|Test|Expected Result|Actual Result|
 |---|---|---|---|---|
-| 1. Navigate main features | Navigation bar | Starting at home page navigate to about page and reviews page. | Navigation elements lead to the expected pages. | Works as expected. |
+| 1. Sign up as a new player | Sign-up prompt | When prompted by the opening view of the game, answer 'n', enter new details and type 'enter' | Program accepts/signs user up. | Works as expected. |
 
 <details>
     <summary>Screenshots</summary>
     <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
-    <img src="readme-docs/testing-user-stories/us1-2.png" alt="A screenshot of the calculator nav element highlighted"><br>
-    <img src="readme-docs/testing-user-stories/us1-3.png" alt="A screenshot of the calculator page"><br>
-    <img src="readme-docs/testing-user-stories/us1-4.png" alt="A screenshot of the faq nav element highlighted"><br>
-    <img src="readme-docs/testing-user-stories/us1-5.png" alt="A screenshot of faq page"><br>
-    <img src="readme-docs/testing-user-stories/us1-6.png" alt="A screenshot of quiz nav element highlighted"><br>
-    <img src="readme-docs/testing-user-stories/us1-7.png" alt="A screenshot of quiz page">
 </details><br>
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+| 2. Instructions before starting game. | Main menu | When in the main menu, enter 'i' to access instructions. | Program displays instructions and a way to get back to the menu. | Works as expected. |
+
+<details>
+    <summary>Screenshots</summary>
+    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+</details><br>
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+| 3. Visual representation of the game | Level view | When user starts the game, a view of the level appears clearly. | Program displays level, which is updated with each successful move the player makes | Works as expected. |
+
+<details>
+    <summary>Screenshots</summary>
+    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+</details><br>
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+| 4. Erroneous data entry to be caught by the program. | Sign up prompt | When at the starting view, enter a response that is not y or n. | Program flags this as an incorrect response. | Works as expected. |
+
+<details>
+    <summary>Screenshots</summary>
+    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+</details><br>
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+| 5. Player mistakes/wrong answers to receive feedback.| Maths question | When presented with a maths question, deliberately enter the wrong answer. | Program flags this as an incorrect answer and tells the user that they have lost a life. | Works as expected. |
+
+<details>
+    <summary>Screenshots</summary>
+    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+</details><br>
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+| 6. Receive a score at the end of the game.| End game view | Complete the game | Program notifies user of their score and saves it to the google sheet. | Works as expected. |
+
+<details>
+    <summary>Screenshots</summary>
+    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+</details><br>
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+| 7. Log into existing account. | Sign up prompt | When prompted, answer yes to existing account and log in with existing details | Program checks user and lets them access the game menu. | Works as expected. |
+
+<details>
+    <summary>Screenshots</summary>
+    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+</details><br>
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+| 8. Skip instructions. | Main menu | When in main menu, enter 's' to start the game immediately | Program loads the game when this response is submitted. | Works as expected. |
+
+<details>
+    <summary>Screenshots</summary>
+    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+</details><br>
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+| 9. Play a different game than before. | Level view | Start the game and complete a few levels. | Program has re-organised levels into a different order than before, and maths questions are different. | Works as expected. |
+
+<details>
+    <summary>Screenshots</summary>
+    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+</details><br>
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+|10. Send feedback. | Quit screen | When prompted, answer yes to giving feedback and type a message. Then press enter to submit. | Program sends message to the google sheet. | Works as expected. |
+
+<details>
+    <summary>Screenshots</summary>
+    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+</details><br>
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+| 11. (Site owner) Ensure data is validated. | Sign up prompt | Same test as user story 4. See details above. | Same test as user story 4. See details above.  | Same test as user story 4. See details above. |
+
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+| 12. (Site owner) Ensure user actions are given feedback. | Maths question | Same test as user story 5. See details above. | Same test as user story 5. See details above.  | Same test as user story 5. See details above. |
+
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+| 13. (Site owner) Test user's arithmetic ability. | Maths question | Complete a level in the game | To be presented with a multiplication question with 2 random numbers between 5 and 20. | Works as expected. |
+
+<details>
+    <summary>Screenshots</summary>
+    <img src="readme-docs/testing-user-stories/us1-1.png" alt="A screenshot of the home page"><br>
+</details><br>
+
+|User story|Feature|Test|Expected Result|Actual Result|
+|---|---|---|---|---|
+| 14. (Site owner) To get feedback from users. | Quit screen | Same test as user story 10. See details above. | Same test as user story 10. See details above.  | Same test as user story 10. See details above. |
+
 
 ### Automated Testing
 Seven unit tests were written for this project. The test check that the validation functions (used to check user inputs) return the expected results.
