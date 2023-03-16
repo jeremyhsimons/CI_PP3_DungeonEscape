@@ -6,7 +6,7 @@ Developed by Jeremy Simons
 [Link to live site](https://dungeonescape.herokuapp.com/)
 
 ## Introduction
-Dungeon escape is a maze-solving game which also tests the user's multiplication skills. The objective of the game is to complete all 10 levels (mazes) without making more than 2 mistakes, in order to escape the dungeon!. 
+Dungeon escape is a maze-solving game which also tests the user's multiplication skills. The objective of the game is to complete all 10 levels (mazes) without making more than 2 mistakes, in order to escape the dungeon! 
 
 After each level, the user must answer a multiplication question to progress to the next round. Any wrong move or incorrect answer will cost the user a life!
 
@@ -41,8 +41,8 @@ Users can sign up and complete the game, trying to get the highest score possibl
 ## Project Goals
 
 ### ...For the user
-* Play a maze puzzle game and see how many points are earned
-* To understand the instructions/how to play
+* Play a maze puzzle game and see how many points are earned.
+* To understand the instructions/how to play.
 * To sign up with a new account.
 * Log back in to an existing account.
 
@@ -71,8 +71,8 @@ Click the dropdown to view the user manual:
 
 ### Log in
 When the program starts, the user will be prompted to:
-* Enter their existing login
-* Sign up for a new account
+* Enter their existing login.
+* Sign up for a new account.
 This choice is navigated by pressing y or n on the keyboard and pressing enter to submit.
 
 The user will then type in their details. The program will reject any incorrect or invalid details and the user will have to try again.
@@ -91,8 +91,8 @@ The user can press enter to return to the main menu.
 
 ### Quitting the game
 If x is selected in the main menu (or at any time during the levels):
-* User will be asked if they're sure they want to quit (type y or n, press enter)
-* User prompted for feedback (type y or n, press enter)
+* User will be asked if they're sure they want to quit (type y or n, press enter).
+* User prompted for feedback (type y or n, press enter).
 * User thanked for playing and reminded how to restart the game.
 
 ### Playing the game
@@ -103,8 +103,8 @@ The player must move the character (represented by the letter 'A') to the exit o
 
 In order to navigate through levels of the dungeon, the user must type their moves in the format:
 DIRECTION,STEPS where:
-* DIRECTION is U, D, L, R (up, down, left, right)
-* STEPS is a whole number between 1 and 9
+* DIRECTION is U, D, L, R (up, down, left, right).
+* STEPS is a whole number between 1 and 9.
 #### Examples
 * Entering U,3 in the terminal would move the character up by 3 steps.
 * Entering R,1 in the terminal would move the character right by 1 step.

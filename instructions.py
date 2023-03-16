@@ -32,7 +32,7 @@ def print_instructions():
         Correct answers will result in BONUS POINTS.
         Incorrect answers will result in lost lives!\n
         Remember to enter your characters movements in the form:
-        DIRECTION,STEPS
+        DIRECTION,STEPS (U=up, D=down, L=left, R=right). Steps must be 1-9.
         E.G an entry of U,2 will move your character UP by 2 steps.
         """
         )
